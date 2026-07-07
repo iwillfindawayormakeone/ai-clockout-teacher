@@ -1,17 +1,21 @@
 # Leave at the Bell — Webinar Registration Page
 
-The registration funnel for the free live training that leads into the **Leave at the Bell** founding cohort. No build step — host the folder anywhere (Netlify drop, Vercel, any static host) or open the files directly.
+The registration funnel for the free live training that leads into the **Leave at the Bell** founding cohort. No build step — host the folder anywhere (GitHub Pages, Netlify drop, Vercel, any static host) or open the files directly.
+
+**👉 To take this from files to a live, self-running funnel (emails + texts sending automatically, $0/month), follow [`SETUP.md`](SETUP.md) — it's the complete click-by-click launch guide.**
 
 - `index.html` — registration page (redirects to the thank-you page on signup)
-- `thanks.html` — thank-you page (calendar add, inbox rescue, "bring your most annoying task" micro-commitment)
-- `emails.md` — the full Brevo confirmation + reminder sequence with send timing, plus optional SMS lines
+- `thanks.html` — thank-you page (calendar add, inbox rescue, **text-reminder opt-in**, "bring your most annoying task" micro-commitment)
+- `privacy.html` — privacy policy (template — fill the two bracketed placeholders; required before running ads)
+- `emails.md` — the full Brevo confirmation + reminder sequence with send timing, plus the 3 SMS reminder texts
+- `SETUP.md` — the launch guide: hosting, Brevo, automation, SMS, Zoom, costs, and the pre-flight checklist
 
 ## Before launch — 4 swaps, all in one place
 
 Everything you need to touch is in the `CONFIG` block at the top of the `<script>` in `index.html`:
 
 1. **Date & time** — set `webinarDate` (ISO format with timezone) and the matching `dateLabel` / `timeLabel`. The countdown, calendar links, and both date lines update automatically. Current values are PLACEHOLDERS. **Update the matching CONFIG in `thanks.html` too**, and the `{{DATE}}`/`{{TIME}}` placeholders in `emails.md`.
-2. **Brevo** — paste your Brevo form's POST action URL into `brevoFormAction`. Field names already match Brevo defaults (`FIRSTNAME`, `EMAIL`). Until you set it, the form runs in demo mode (shows the success state, sends nothing).
+2. **Brevo** — paste your Brevo form's POST action URL into `brevoFormAction` — in **both** `index.html` and `thanks.html` (the thank-you page uses it for the text-reminder opt-in, which saves the phone number to the contact's `SMS` field). Field names already match Brevo defaults (`FIRSTNAME`, `EMAIL`, `SMS`). Until you set it, the forms run in demo mode (show the success state, send nothing).
    **⚠️ Then do one real test signup and confirm the contact appears in Brevo.** Browsers can't read Brevo's response (`no-cors`), so a wrong or expired form URL still shows "You're in!" while the lead silently vanishes. One live test before launch is non-negotiable. If your Brevo form embed includes hidden fields (e.g. `email_address_check`, `locale`), add them to both forms as hidden inputs.
 3. **Hero photo** — drop a `hero.jpg` into this folder and the page upgrades from the gradient automatically. Two candidates matching the brief ("teacher walking out of school in daylight, relieved, bag empty") are already generated and waiting in your Higgsfield library (July 6, soul_2, 16:9, 2K).
 4. **JD's headshot** — save it as `jd.jpg` in this folder, then in `index.html` replace the placeholder inside `#host-photo` with the commented-out `<img>` tag right above it.
@@ -24,7 +28,7 @@ In the `<head>` of `index.html` there are three commented-out tags (`og:image`, 
 
 ## Before running any paid ads
 
-Add a **privacy policy page** and link it from the footer. The form collects names and emails, the footer promises "we will never sell or share your email," and Meta/Google ad policies require a linked privacy policy. Not included here because it's legal copy — use a generator or have it reviewed, then link it.
+A privacy policy page (`privacy.html`) is included and linked from both footers — the form collects names, emails, and optional phone numbers, and Meta/Google ad policies require it. It's a plain-language template, not legal advice: fill in the two `[BRACKETED]` placeholders (effective date + contact email) and have it reviewed if you can.
 
 ## What's deliberately NOT on this page
 

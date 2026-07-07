@@ -149,7 +149,9 @@ First ten minutes: the "cheating" question, settled for good. Don't miss it.
 
 ---
 
-## SMS lines (if collecting phone numbers later — optional)
+## SMS lines
+
+The thank-you page now collects phone numbers (optional "get a text reminder" opt-in) and saves them to the contact's `SMS` field in Brevo. Add three **Send SMS** steps to the same Brevo automation — Brevo automatically skips contacts with no phone number. Setup details (credits, sender registration, cost): see `SETUP.md`.
 
 Keep under 160 characters. Send: morning-of, 1 hour before, at start.
 
@@ -157,7 +159,7 @@ Keep under 160 characters. Send: morning-of, 1 hour before, at start.
 2. **1 hour:** "One hour until we're live. Grab your seat: {{ZOOM_LINK}} — JD"
 3. **Live:** "We're LIVE right now. Come in: {{ZOOM_LINK}} — JD"
 
-*Note: the current registration form collects name + email only. Adding a phone field costs some conversion on the page; the usual play is to ask for the number on the thank-you page instead ("want a text reminder?"). Decide before launch — the form change is easy either way.*
+*Note: the registration form itself stays name + email only (a phone field on the main form costs conversion). The number is asked for on the thank-you page instead — already built and wired.*
 
 ---
 

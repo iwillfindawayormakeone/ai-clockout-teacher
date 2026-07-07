@@ -379,6 +379,7 @@
     }
     footer b { color: rgba(255, 255, 255, 0.75); }
     footer p { max-width: 52em; margin: 6px auto; }
+    footer a { color: rgba(255, 255, 255, 0.75); }
 
     /* ---------- sticky mobile CTA ---------- */
     .sticky-cta {
@@ -595,7 +596,7 @@
     <div class="wrap">
       <p><b>AI Clock Out Teacher</b> · Leave at the Bell™</p>
       <p>This is a free educational training. Results described reflect real teacher experiences and published research; your time savings will depend on your subjects, tools, and school context. Not affiliated with or endorsed by any school district.</p>
-      <p>© <span id="year"></span> AI Clock Out Teacher. All rights reserved. · We will never sell or share your email.</p>
+      <p>© <span id="year"></span> AI Clock Out Teacher. All rights reserved. · We will never sell or share your email. · <a href="privacy.html">Privacy policy</a></p>
     </div>
   </footer>
 
@@ -685,6 +686,15 @@
 
         btn.disabled = true;
         btn.textContent = "Saving your seat…";
+
+        // Hand the signup to thanks.html so its SMS opt-in can attach the phone
+        // number to the same Brevo contact without re-asking for the email.
+        try {
+          sessionStorage.setItem("latb_signup", JSON.stringify({
+            fname: name.value.trim(),
+            email: email.value.trim()
+          }));
+        } catch (_) { /* private mode — SMS card will just ask for the email */ }
 
         try {
           if (CONFIG.brevoFormAction) {

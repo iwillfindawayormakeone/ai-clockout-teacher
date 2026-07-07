@@ -106,10 +106,42 @@
     }
     .btn:hover { background: var(--gold-deep); }
     .btn:active { transform: scale(0.985); }
-    .btn:focus-visible, a:focus-visible {
+    .btn[disabled] { opacity: 0.7; cursor: wait; }
+    .btn:focus-visible, a:focus-visible, input:focus-visible {
       outline: 3px solid var(--bell);
       outline-offset: 2px;
     }
+
+    /* ---------- SMS opt-in ---------- */
+    .sms-step { border: 2px solid var(--gold); }
+    .sms-step .num { background: var(--night); color: var(--gold); }
+    .sms-fields { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 10px; }
+    .sms-fields .field { flex: 1 1 220px; }
+    .sms-fields label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      margin-bottom: 4px; color: var(--ink-soft);
+    }
+    .sms-fields input {
+      width: 100%;
+      padding: 12px 13px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      border: 1.5px solid #d8cdb8;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sms-fields input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.25);
+    }
+    .sms-fields input.invalid { border-color: #c0392b; }
+    .sms-consent { font-size: 0.78rem !important; }
+    .sms-error { display: none; margin-top: 8px; font-size: 0.85rem; color: #c0392b; }
+    .sms-success { display: none; }
+    .sms-success p { color: var(--ok); font-weight: 600; }
 
     .homework {
       background: var(--paper-deep);
@@ -141,6 +173,7 @@
       text-align: center;
     }
     footer b { color: rgba(255,255,255,0.75); }
+    footer a { color: rgba(255,255,255,0.75); }
 
     @media (max-width: 560px) {
       .step { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; }
@@ -195,6 +228,32 @@
         </div>
       </div>
 
+      <div class="step sms-step">
+        <div class="num" aria-hidden="true">📱</div>
+        <div>
+          <h3>Optional — but it doubles show-up rates: get a text reminder</h3>
+          <p>Email reminders get buried in a teacher's inbox. Drop your cell and you'll get at most <b>three texts</b>: the morning of, one hour before, and the moment we go live — each with your seat link.</p>
+          <form id="sms-form" novalidate>
+            <div class="sms-fields">
+              <div class="field" id="sms-email-field">
+                <label for="sms-email">The email you registered with</label>
+                <input type="email" id="sms-email" name="EMAIL" autocomplete="email" placeholder="you@example.com" />
+              </div>
+              <div class="field">
+                <label for="sms-phone">Cell number</label>
+                <input type="tel" id="sms-phone" name="SMS" autocomplete="tel" placeholder="(555) 123-4567" />
+              </div>
+            </div>
+            <button class="btn" type="submit" id="sms-btn">📲 Text Me the Reminders</button>
+            <p class="sms-error" role="alert">Please enter a valid US/Canada cell number (and the email you signed up with).</p>
+            <p class="sms-consent">Up to 3 reminder texts about this training only — never marketing blasts. Msg &amp; data rates may apply. Reply STOP anytime to opt out.</p>
+          </form>
+          <div class="sms-success" role="status">
+            <p>✅ You're set. Watch for a text the morning of the training — and one the moment we're live.</p>
+          </div>
+        </div>
+      </div>
+
       <div class="homework">
         <span class="eyebrow">Between now and then</span>
         <h3>That's it. No prep, no downloads, no tech setup.</h3>
@@ -213,7 +272,7 @@
   <footer>
     <div class="wrap">
       <p><b>AI Clock Out Teacher</b> · Leave at the Bell™</p>
-      <p>© <span id="year"></span> AI Clock Out Teacher. All rights reserved.</p>
+      <p>© <span id="year"></span> AI Clock Out Teacher. All rights reserved. · <a href="privacy.html">Privacy policy</a></p>
     </div>
   </footer>
 
@@ -223,7 +282,13 @@
       webinarDate: "2026-08-06T19:00:00-04:00",   // ⬅️ PLACEHOLDER — must match index.html
       dateLabel: "Thursday, August 6",
       timeLabel: "7:00 PM Eastern",
-      platformLabel: "Live on Zoom"
+      platformLabel: "Live on Zoom",
+
+      // ⬇️ BREVO — paste the SAME form POST URL as CONFIG.brevoFormAction in index.html.
+      // The SMS opt-in below re-submits the form with EMAIL + SMS, which updates the
+      // existing contact's SMS attribute in Brevo. Make sure your Brevo form includes
+      // an SMS field. Leave empty ("") for demo mode (shows success, sends nothing).
+      brevoFormAction: ""
     };
     document.querySelectorAll("[data-cfg]").forEach(el => {
       const key = el.getAttribute("data-cfg");
@@ -240,6 +305,72 @@
         + "&dates=" + fmt(start) + "/" + fmt(end)
         + "&details=" + encodeURIComponent("Your seat link arrives by email. Live training — how to walk out at the final bell with your work actually done. " + CONFIG.platformLabel + ".");
       document.querySelectorAll("[data-cal]").forEach(a => a.href = url);
+    })();
+
+    /* ---------- SMS opt-in (posts to the same Brevo form; updates the contact) ---------- */
+    (function () {
+      const form = document.getElementById("sms-form");
+      const step = form.closest(".sms-step");
+      const error = step.querySelector(".sms-error");
+      const success = step.querySelector(".sms-success");
+      const btn = document.getElementById("sms-btn");
+      const emailField = document.getElementById("sms-email-field");
+      const emailInput = document.getElementById("sms-email");
+      const phoneInput = document.getElementById("sms-phone");
+
+      // If index.html handed us the signup, pre-fill and hide the email question.
+      let saved = {};
+      try { saved = JSON.parse(sessionStorage.getItem("latb_signup") || "{}"); } catch (_) {}
+      if (saved.email) {
+        emailInput.value = saved.email;
+        emailField.style.display = "none";
+      }
+
+      // Accepts (555) 123-4567, 555-123-4567, 15551234567, +15551234567, or any
+      // full international +XX… number; returns E.164 for Brevo's SMS attribute.
+      function normalizePhone(raw) {
+        const digits = raw.replace(/\D/g, "");
+        if (raw.trim().startsWith("+") && digits.length >= 11 && digits.length <= 15) return "+" + digits;
+        if (digits.length === 10) return "+1" + digits;
+        if (digits.length === 11 && digits[0] === "1") return "+" + digits;
+        return null;
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        error.style.display = "none";
+        [emailInput, phoneInput].forEach(i => { i.classList.remove("invalid"); i.removeAttribute("aria-invalid"); });
+
+        const email = emailInput.value.trim();
+        const sms = normalizePhone(phoneInput.value);
+        let ok = true;
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailInput.classList.add("invalid"); emailInput.setAttribute("aria-invalid", "true"); emailField.style.display = ""; ok = false; }
+        if (!sms) { phoneInput.classList.add("invalid"); phoneInput.setAttribute("aria-invalid", "true"); ok = false; }
+        if (!ok) { error.style.display = "block"; return; }
+
+        btn.disabled = true;
+        btn.textContent = "Saving…";
+
+        try {
+          if (CONFIG.brevoFormAction) {
+            const data = new FormData();
+            data.append("EMAIL", email);
+            if (saved.fname) data.append("FIRSTNAME", saved.fname);
+            data.append("SMS", sms);
+            await fetch(CONFIG.brevoFormAction, { method: "POST", body: data, mode: "no-cors" });
+          } else {
+            console.warn("[Leave at the Bell] Demo mode: no Brevo form action configured in thanks.html CONFIG.");
+            await new Promise(r => setTimeout(r, 500));
+          }
+          form.style.display = "none";
+          success.style.display = "block";
+        } catch (err) {
+          error.textContent = "Something went wrong — please try again.";
+          error.style.display = "block";
+          btn.disabled = false;
+          btn.textContent = "📲 Text Me the Reminders";
+        }
+      });
     })();
   </script>
 </body>
