@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In — Leave at the Bell Free Training</title>
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Your seat is saved. Three quick steps to make sure you actually make it to the live training." />
+  <meta name="theme-color" content="#16202e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%94%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts load async so a slow font CDN can never block the page from rendering. -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+  <style>
+    :root {
+      --ink: #1e2a3a;
+      --ink-soft: #46586e;
+      --paper: #fdf9f1;
+      --paper-deep: #f6efe1;
+      --gold: #e8a33d;
+      --gold-deep: #c97f16;
+      --bell: #b3541e;
+      --night: #16202e;
+      --ok: #2e7d4f;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(30, 42, 58, 0.10);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; letter-spacing: -0.01em; }
+
+    .top {
+      background: var(--night);
+      color: #fff;
+      text-align: center;
+      padding: 56px 0 48px;
+      background-image:
+        radial-gradient(ellipse 55% 45% at 85% 90%, rgba(232, 163, 61, 0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 15% 100%, rgba(232, 163, 61, 0.18) 0%, transparent 65%);
+    }
+    .brandmark { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; color: rgba(255,255,255,0.65); margin-bottom: 28px; }
+    .check {
+      width: 64px; height: 64px; margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .top h1 { font-size: clamp(1.9rem, 5vw, 2.7rem); margin-bottom: 12px; }
+    .top h1 em { font-style: italic; color: var(--gold); }
+    .top p { color: rgba(255,255,255,0.85); max-width: 34em; margin: 0 auto; }
+    .top .when { margin-top: 18px; font-weight: 700; color: var(--gold); font-size: 1.02rem; }
+
+    .steps { padding: 56px 0 24px; }
+    .steps-intro { text-align: center; max-width: 34em; margin: 0 auto 36px; }
+    .steps-intro h2 { font-size: clamp(1.4rem, 3.5vw, 1.8rem); margin-bottom: 8px; }
+    .steps-intro p { color: var(--ink-soft); }
+    .step {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #eadfc9;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 26px;
+      margin-bottom: 18px;
+    }
+    .step .num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--night);
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+    }
+    .step h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .step p { color: var(--ink-soft); font-size: 0.97rem; margin-bottom: 10px; }
+    .step p:last-child { margin-bottom: 0; }
+    .step b { color: var(--ink); }
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      color: var(--night);
+      background: var(--gold);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn:hover { background: var(--gold-deep); }
+    .btn:active { transform: scale(0.985); }
+    .btn:focus-visible, a:focus-visible {
+      outline: 3px solid var(--bell);
+      outline-offset: 2px;
+    }
+
+    .homework {
+      background: var(--paper-deep);
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      margin: 34px 0 0;
+      text-align: center;
+    }
+    .homework .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--bell);
+      margin-bottom: 10px;
+    }
+    .homework h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .homework p { color: var(--ink-soft); max-width: 36em; margin: 0 auto; }
+    .homework p b { color: var(--ink); }
+
+    .signoff { padding: 48px 0 64px; text-align: center; }
+    .signoff p { max-width: 34em; margin: 0 auto 6px; color: var(--ink-soft); }
+    .signoff .sig { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink); margin-top: 14px; }
+
+    footer {
+      background: var(--night);
+      color: rgba(255,255,255,0.55);
+      padding: 26px 0 34px;
+      font-size: 0.78rem;
+      text-align: center;
+    }
+    footer b { color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 560px) {
+      .step { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .top .check { animation: pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }
+      @keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: none; opacity: 1; } }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="wrap">
+      <p class="brandmark">🔔 AI Clock Out Teacher</p>
+      <div class="check" aria-hidden="true">✓</div>
+      <h1>Your seat is saved. <em>Don't let it sit empty.</em></h1>
+      <p>Your confirmation and seat link are on the way to your inbox right now. This is taught live, once — and the teachers who show up live are the ones who walk out with something built.</p>
+      <p class="when"><span data-cfg="dateLabel">Thursday, August 6</span> · <span data-cfg="timeLabel">7:00 PM Eastern</span> · <span data-cfg="platformLabel">Live on Zoom</span></p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="wrap">
+      <div class="steps-intro">
+        <h2>Do these three things right now — they take 90 seconds</h2>
+        <p>Registering was the easy part. These three steps are the difference between "I meant to go" and actually being there.</p>
+      </div>
+
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>Put it on your calendar — right now, while you're here</h3>
+          <p>Teachers live and die by the calendar. If it's not on yours, a faculty meeting or a kid's practice will eat it.</p>
+          <a class="btn" data-cal href="#" target="_blank" rel="noopener">📅 Add to Google Calendar</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>Rescue the confirmation email</h3>
+          <p>Go find the email that just landed (subject: <b>"Your seat is saved 🔔"</b>). If it's in spam or Promotions, drag it into your Primary inbox — that's where your <b>Zoom seat link</b> lives, and it's how the reminders reach you.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3>Pick your most annoying task and bring it</h3>
+          <p>A parent email you've been dreading. Sunday's lesson plan. That rubric. Decide <b>right now</b> which task you want off your plate — because you're going to watch one get retired live, and it might as well be yours. Hit reply on the confirmation email and tell me what it is. I read every one, and I build the live demos around what you send.</p>
+        </div>
+      </div>
+
+      <div class="homework">
+        <span class="eyebrow">Between now and then</span>
+        <h3>That's it. No prep, no downloads, no tech setup.</h3>
+        <p>You don't need to know anything about AI to get value from this hour. Come skeptical — <b>especially</b> if you've tried AI before and it gave you garbage. Those are my favorite people in the room.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signoff">
+    <div class="wrap">
+      <p>I know what an hour of your evening costs. I've been grading at that same kitchen table for 18 years — this will be worth the trade.</p>
+      <p class="sig">— JD, AI Clock Out Teacher</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p><b>AI Clock Out Teacher</b> · Leave at the Bell™</p>
+      <p>© <span id="year"></span> AI Clock Out Teacher. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Keep these labels in sync with CONFIG in index.html */
+    const CONFIG = {
+      webinarDate: "2026-08-06T19:00:00-04:00",   // ⬅️ PLACEHOLDER — must match index.html
+      dateLabel: "Thursday, August 6",
+      timeLabel: "7:00 PM Eastern",
+      platformLabel: "Live on Zoom"
+    };
+    document.querySelectorAll("[data-cfg]").forEach(el => {
+      const key = el.getAttribute("data-cfg");
+      if (CONFIG[key]) el.textContent = CONFIG[key];
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+    (function () {
+      const start = new Date(CONFIG.webinarDate);
+      if (isNaN(start)) return;
+      const end = new Date(start.getTime() + 60 * 60000);
+      const fmt = d => d.toISOString().replace(/[-:]|\.\d{3}/g, "");
+      const url = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+        + "&text=" + encodeURIComponent("Free Live Training: Leave at the Bell")
+        + "&dates=" + fmt(start) + "/" + fmt(end)
+        + "&details=" + encodeURIComponent("Your seat link arrives by email. Live training — how to walk out at the final bell with your work actually done. " + CONFIG.platformLabel + ".");
+      document.querySelectorAll("[data-cal]").forEach(a => a.href = url);
+    })();
+  </script>
+</body>
+</html>
