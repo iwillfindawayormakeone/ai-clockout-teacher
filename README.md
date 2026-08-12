@@ -1,11 +1,5 @@
 # Leave at the Bell — Webinar Registration Page
 
-> **Part of the [Talk it Build it](CLAUDE.md) project.** Talk it Build it is the umbrella
-> for JD's community work; **AI Clock Out Teacher** is the teacher-facing offer inside it,
-> and this repo holds the **Leave at the Bell** cohort funnel. The repo name predates the
-> umbrella — see [`CLAUDE.md`](CLAUDE.md) for the full project map and the rules that are
-> easy to break by accident.
-
 The registration funnel for the free live training that leads into the **Leave at the Bell** founding cohort. No build step — host the folder anywhere (Netlify drop, Vercel, any static host) or open the files directly.
 
 - `index.html` — registration page (redirects to the thank-you page on signup)
