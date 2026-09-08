@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Burn-tested small-batch candles, honestly described gemstone bracelets, handmade beads, and cold-process soap. Every listing answers what it is, what it&#x27;s made from, and when it ships." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%231f4d3a'/%3E%3Cpath d='M50 22c-9 12-15 20-15 30a15 15 0 0 0 30 0c0-10-6-18-15-30z' fill='%23eef3ee'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#1f4d3a" />
+<title>Ember &amp; Stone Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   EMBER & STONE STUDIO
+   Palette: bone ground, deep forest green for every action and
+   the one color block, amber only for stars and small marks.
+   Shape rule: buttons are pills, containers are 14px, inputs 8px.
+   ============================================================ */
+:root {
+  color-scheme: light;
+  --ground: #f4f4ef;
+  --ground-2: #e9ebe3;
+  --surface: #fbfbf8;
+  --ink: #15231c;
+  --ink-soft: #4f5d55;
+  --ink-faint: #7c877f;
+  --forest: #1f4d3a;
+  --forest-deep: #163a2c;
+  --forest-tint: #dfe7e1;
+  --on-forest: #eef3ee;
+  --on-forest-soft: #b9cbbf;
+  --amber: #d99a2b;
+  --line: #d6d9cf;
+  --line-strong: #b9bfb3;
+  --slot-1: #dfe3d8;
+  --slot-2: #cfd6c9;
+  --slot-3: #e4e5dc;
+  --slot-4: #c3cfc4;
+  --ok: #2f6b4a;
+  --warn: #9a4b1c;
+  --r-box: 14px;
+  --r-input: 8px;
+  --shadow: 0 14px 34px rgba(21, 35, 28, 0.10);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --max: 1200px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0f1813; --ground-2: #15211a; --surface: #1a2721;
+    --ink: #e8ece6; --ink-soft: #aeb8b0; --ink-faint: #7f8b83;
+    --forest: #3f8a67; --forest-deep: #12241c; --forest-tint: #1e3229;
+    --on-forest: #eef3ee; --on-forest-soft: #b9cbbf;
+    --amber: #e0a63b; --line: #2a3a31; --line-strong: #3d5044;
+    --slot-1: #22332a; --slot-2: #1c2b23; --slot-3: #263630; --slot-4: #1a2e25;
+    --ok: #7fc39d; --warn: #e2935c;
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0f1813; --ground-2: #15211a; --surface: #1a2721;
+  --ink: #e8ece6; --ink-soft: #aeb8b0; --ink-faint: #7f8b83;
+  --forest: #3f8a67; --forest-deep: #12241c; --forest-tint: #1e3229;
+  --on-forest: #eef3ee; --on-forest-soft: #b9cbbf;
+  --amber: #e0a63b; --line: #2a3a31; --line-strong: #3d5044;
+  --slot-1: #22332a; --slot-2: #1c2b23; --slot-3: #263630; --slot-4: #1a2e25;
+  --ok: #7fc39d; --warn: #e2935c;
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; display: block; }
+a { color: var(--forest); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); }
+h2 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); }
+h3 { font-size: 1.45rem; letter-spacing: -0.01em; }
+h4 { font-size: 1.1rem; letter-spacing: 0; }
+p { margin: 0 0 1em; }
+.lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 58ch; line-height: 1.55; }
+.eyebrow {
+  display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--forest); margin-bottom: 0.8rem;
+}
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+.section.alt { background: var(--ground-2); }
+.section-head { max-width: 640px; margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+.muted { color: var(--ink-soft); }
+.small { font-size: 0.9rem; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 200; background: var(--ink); color: var(--ground); padding: 0.6rem 1rem; border-radius: 8px; }
+.skip:focus { top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ---------- Icons (Phosphor, inlined) ---------- */
+.ph { width: 1.25em; height: 1.25em; flex: none; }
+.ph svg { width: 100%; height: 100%; fill: currentColor; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 1rem; white-space: nowrap;
+  padding: 0.85rem 1.5rem; border-radius: 999px; border: 1.5px solid transparent;
+  cursor: pointer; text-decoration: none; line-height: 1.2;
+  transition: transform .25s var(--ease), background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn-primary { background: var(--forest); color: var(--on-forest); }
+.btn-primary:hover { background: var(--forest-deep); color: var(--on-forest); }
+:root[data-theme="dark"] .btn-primary:hover { background: #4d9f79; color: #0f1813; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+.on-forest .btn-primary { background: var(--on-forest); color: var(--forest-deep); }
+.on-forest .btn-primary:hover { background: #fff; color: var(--forest-deep); }
+.on-forest .btn-ghost { color: var(--on-forest); border-color: rgba(255,255,255,0.35); }
+.on-forest .btn-ghost:hover { border-color: var(--on-forest); color: var(--on-forest); }
+.btn-sm { padding: 0.55rem 1.05rem; font-size: 0.92rem; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+/* ---------- Header ---------- */
+.announce { background: var(--forest-deep); color: var(--on-forest-soft); font-size: 0.85rem; text-align: center; padding: 0.5rem 1rem; }
+.announce strong { color: var(--on-forest); font-weight: 600; }
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--ground); border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 68px; }
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+.brand-mark { width: 30px; height: 30px; border-radius: 50%; background: var(--forest); color: var(--on-forest); display: grid; place-items: center; flex: none; }
+.brand-mark .ph { width: 17px; height: 17px; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.nav-links .btn { color: var(--on-forest); }
+.nav-toggle { display: none; background: none; border: 1.5px solid var(--line-strong); border-radius: 999px; padding: 0.45rem 0.8rem; cursor: pointer; color: var(--ink); font: inherit; font-weight: 600; font-size: 0.9rem; align-items: center; gap: .4rem; }
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; }
+  .nav-links { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--ground); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); display: none; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid var(--line); }
+  .nav-links a { display: block; padding: 0.95rem 1.5rem; }
+  .nav-links .btn { margin: 0.9rem 1.5rem; }
+}
+
+/* ---------- Photo slots ---------- */
+.photo {
+  position: relative; overflow: hidden; border-radius: var(--r-box);
+  background: var(--slot-1);
+  background-image: radial-gradient(120% 90% at 30% 20%, rgba(255,255,255,0.35), transparent 60%);
+  display: grid; place-items: center; color: var(--ink);
+}
+.photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.18; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+:root[data-theme="dark"] .photo::after { mix-blend-mode: screen; opacity: 0.08; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .photo::after { mix-blend-mode: screen; opacity: 0.08; } }
+.photo .ph { width: 20%; height: 20%; max-width: 72px; max-height: 72px; opacity: 0.22; }
+.photo.tone-2 { background-color: var(--slot-2); }
+.photo.tone-3 { background-color: var(--slot-3); }
+.photo.tone-4 { background-color: var(--slot-4); }
+.photo.tone-forest { background-color: var(--forest-tint); }
+figure { margin: 0; }
+figcaption { font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.5rem; }
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4rem); }
+.hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hero h1 { margin-bottom: 1rem; max-width: 14ch; }
+.hero h1 strong { color: var(--forest); font-weight: 700; }
+.hero .lede { margin-bottom: 1.6rem; }
+.hero .photo { aspect-ratio: 4 / 5; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero .photo { aspect-ratio: 5 / 4; } }
+
+/* ---------- Trust strip ---------- */
+.trust { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trust > div { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.92rem; padding: 1.2rem 1.2rem 1.2rem 0; }
+.trust > div + div { border-left: 1px solid var(--line); padding-left: 1.2rem; }
+.trust .ph { color: var(--forest); margin-top: 2px; }
+.trust strong { display: block; font-weight: 600; }
+.trust span { color: var(--ink-soft); }
+@media (max-width: 900px) { .trust { grid-template-columns: 1fr 1fr; } .trust > div:nth-child(3) { border-left: 0; padding-left: 0; } .trust > div:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 520px) { .trust { grid-template-columns: 1fr; } .trust > div { border-left: 0 !important; padding-left: 0 !important; } .trust > div + div { border-top: 1px solid var(--line); } }
+
+/* ---------- Bento of collections ---------- */
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 240px; gap: 1rem; }
+.bento .tile { position: relative; display: grid; grid-template-rows: 1fr auto; text-decoration: none; color: var(--ink); border-radius: var(--r-box); overflow: hidden; background: var(--surface); border: 1px solid var(--line); transition: transform .35s var(--ease), border-color .2s ease; }
+.bento .tile:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.bento .tile .photo { border-radius: 0; border-bottom: 1px solid var(--line); }
+.bento .tile .body { padding: 1rem 1.15rem 1.1rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.bento .tile h3 { margin: 0; font-size: 1.3rem; }
+.bento .tile span { color: var(--ink-soft); font-size: 0.88rem; white-space: nowrap; }
+.bento .tile.big { grid-column: span 7; grid-row: span 2; }
+.bento .tile.tall { grid-column: span 5; grid-row: span 2; }
+.bento .tile.wide { grid-column: span 6; }
+@media (max-width: 900px) { .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; } .bento .tile.big, .bento .tile.tall, .bento .tile.wide { grid-column: span 1; grid-row: span 1; } }
+@media (max-width: 560px) { .bento { grid-template-columns: 1fr; } }
+
+/* ---------- Six questions ---------- */
+.six-wrap { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.six { list-style: none; margin: 0; padding: 0; counter-reset: q; display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2rem; }
+.six li { counter-increment: q; padding-top: 0.9rem; border-top: 1px solid var(--line-strong); }
+.six li::before { content: counter(q, decimal-leading-zero); font-family: var(--font-display); font-weight: 600; color: var(--forest); font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
+.six strong { display: block; font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.2rem; }
+.six span { color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 900px) { .six-wrap { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .six { grid-template-columns: 1fr; } }
+
+/* ---------- Products ---------- */
+.product { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); overflow: hidden; display: flex; flex-direction: column; }
+.product .photo { aspect-ratio: 1 / 1; border-radius: 0; border-bottom: 1px solid var(--line); }
+.product .body { padding: 1.1rem 1.2rem 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+.product figcaption { margin: 0; }
+.product .top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.product h3 { margin: 0; font-size: 1.3rem; }
+.product .price { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
+.product .tag { font-size: 0.82rem; color: var(--ink-faint); }
+.product .summary { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+.product .meta { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.2rem 0 0; padding: 0; list-style: none; }
+.product .meta li { font-size: 0.78rem; background: var(--ground-2); border-radius: 999px; padding: 0.22rem 0.6rem; color: var(--ink-soft); }
+.product details { margin-top: 0.5rem; border-top: 1px solid var(--line); padding-top: 0.6rem; }
+.product summary { cursor: pointer; font-weight: 600; font-size: 0.92rem; color: var(--forest); list-style: none; display: flex; align-items: center; gap: .4rem; }
+.product summary::-webkit-details-marker { display: none; }
+.product summary .ph { width: 1em; height: 1em; }
+.product details[open] summary .ph { transform: rotate(45deg); }
+.product .qa { margin: 0.7rem 0 0; padding: 0; list-style: none; font-size: 0.9rem; display: grid; gap: 0.55rem; }
+.product .qa li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.5rem; }
+.product .qa b { font-weight: 600; }
+.product .qa span { color: var(--ink-soft); }
+.product .actions { margin-top: auto; padding-top: 0.9rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.product .disclaimer { font-size: 0.78rem; color: var(--ink-faint); margin: 0.4rem 0 0; }
+.grid { display: grid; gap: 1.25rem; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+/* Featured: horizontal scroll row */
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 320px); gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem 1.5rem 1.25rem; margin: 0 -1.5rem; scrollbar-width: thin; }
+.rail > * { scroll-snap-align: start; }
+.rail-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.rail-head h2 { margin: 0; }
+
+.filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+.filter-bar button { font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; cursor: pointer; border: 1.5px solid var(--line-strong); background: transparent; color: var(--ink); border-radius: 999px; padding: 0.45rem 0.95rem; }
+.filter-bar button[aria-pressed="true"] { background: var(--forest); color: var(--on-forest); border-color: var(--forest); }
+
+/* ---------- Studio: full-width color block ---------- */
+.block { background: var(--forest-deep); color: var(--on-forest); }
+.block h2, .block h3 { color: #fff; }
+.block .lede, .block .muted { color: var(--on-forest-soft); }
+.block a:not(.btn) { color: var(--on-forest); }
+.block-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+@media (max-width: 900px) { .block-grid { grid-template-columns: 1fr; } }
+.block .form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); box-shadow: none; }
+.block label { color: var(--on-forest); }
+.block input, .block select { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: var(--on-forest); }
+.block input:focus, .block select:focus { border-color: var(--on-forest); }
+.block .fine { color: var(--on-forest-soft); }
+.block .form-msg.ok { color: #9fd3ae; }
+.block .form-msg.error { color: #f0b48a; }
+
+/* ---------- Process (studio) ---------- */
+.steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,0.18); }
+.steps > div { padding: 1.5rem 1.5rem 1.5rem 0; }
+.steps > div + div { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 1.5rem; }
+.steps h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+.steps p { color: var(--on-forest-soft); font-size: 0.95rem; margin: 0; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; } .steps > div + div { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.18); } }
+
+/* ---------- Checklists ---------- */
+.check { list-style: none; padding: 0; margin: 0 0 1.2rem; display: grid; gap: 0.6rem; }
+.check li { display: flex; gap: 0.6rem; align-items: flex-start; }
+.check li .ph { color: var(--forest); margin-top: 3px; }
+.block .check li .ph { color: var(--on-forest); }
+
+/* ---------- Quotes ---------- */
+.quotes { display: grid; grid-template-columns: 7fr 5fr; gap: 1.25rem; }
+.quote { border-top: 2px solid var(--ink); padding-top: 1.1rem; }
+.quote.lead { font-family: var(--font-display); font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; }
+.quote .stars { color: var(--amber); letter-spacing: 0.08em; font-size: 0.9rem; margin-bottom: 0.6rem; font-family: var(--font-body); }
+.quote p { margin-bottom: 0.7rem; }
+.quote footer { font-size: 0.85rem; color: var(--ink-soft); font-family: var(--font-body); font-weight: 400; letter-spacing: 0; }
+.quotes .side { display: grid; gap: 1.25rem; align-content: start; }
+.quotes .side .quote p { font-size: 1rem; }
+@media (max-width: 800px) { .quotes { grid-template-columns: 1fr; } }
+
+/* ---------- Forms ---------- */
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); padding: 1.5rem; }
+.field { margin-bottom: 1rem; }
+label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; }
+input[type="text"], input[type="email"], select, textarea { width: 100%; font: inherit; padding: 0.75rem 0.9rem; border-radius: var(--r-input); border: 1.5px solid var(--line-strong); background: var(--ground); color: var(--ink); }
+input:focus, select:focus, textarea:focus { border-color: var(--forest); outline: none; }
+input[aria-invalid="true"] { border-color: var(--warn); }
+.form-msg { font-size: 0.92rem; margin-top: 0.7rem; min-height: 1.3em; }
+.form-msg.error { color: var(--warn); }
+.form-msg.ok { color: var(--ok); font-weight: 600; }
+.fine { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.8rem; }
+
+/* ---------- Rhythm (community) ---------- */
+.rhythm { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line-strong); }
+.rhythm > div { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.rhythm b { font-family: var(--font-display); color: var(--forest); font-weight: 600; font-size: 1.05rem; }
+@media (max-width: 560px) { .rhythm > div { grid-template-columns: 1fr; gap: .2rem; } }
+
+/* ---------- Rules (community) ---------- */
+.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rules > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); padding: 1.4rem; }
+.rules > div:first-child { grid-row: span 2; background: var(--forest-tint); border-color: transparent; }
+.rules .ph { color: var(--forest); width: 28px; height: 28px; margin-bottom: 0.6rem; }
+.rules h3 { font-size: 1.25rem; }
+.rules p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 700px) { .rules { grid-template-columns: 1fr; } .rules > div:first-child { grid-row: auto; } }
+
+/* ---------- Learn page ---------- */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.split .photo { aspect-ratio: 4 / 3; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.safety { border: 1.5px solid var(--forest); border-radius: var(--r-box); padding: 1.4rem 1.5rem; background: var(--surface); }
+.safety h3 { margin-top: 0; display: flex; align-items: center; gap: 0.5rem; }
+.safety h3 .ph { color: var(--forest); width: 1.4em; height: 1.4em; }
+.safety ul { margin: 0; padding-left: 1.2rem; }
+.safety li { margin-bottom: 0.35rem; }
+.glossary { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 2rem; margin: 0; }
+.glossary > div { border-top: 1px solid var(--line-strong); padding-top: 0.7rem; }
+.glossary dt { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
+.glossary dd { margin: 0.2rem 0 0; color: var(--ink-soft); font-size: 0.93rem; }
+@media (max-width: 600px) { .glossary { grid-template-columns: 1fr; } }
+.care { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.care > div { padding: 1.4rem; border-radius: var(--r-box); background: var(--surface); border: 1px solid var(--line); }
+.care > div:first-child { grid-column: span 2; background: var(--forest-tint); border-color: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+.care .ph { color: var(--forest); width: 28px; height: 28px; margin-bottom: 0.5rem; }
+.care p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 700px) { .care { grid-template-columns: 1fr; } .care > div:first-child { grid-column: span 1; grid-template-columns: 1fr; } }
+.notes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.notes > article { border-top: 2px solid var(--ink); padding-top: 1rem; }
+.notes .kind { font-size: 0.8rem; color: var(--ink-faint); margin-bottom: 0.4rem; }
+.notes h3 { font-size: 1.25rem; }
+.notes p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 760px) { .notes { grid-template-columns: 1fr; } }
+
+.callout { background: var(--forest-tint); border-radius: var(--r-box); padding: 1.1rem 1.3rem; margin: 1.2rem 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-box); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; min-width: 560px; }
+th, td { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--ground-2); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+
+/* ---------- Promises (about) ---------- */
+.promises { columns: 2; column-gap: 3rem; list-style: none; padding: 0; margin: 0; counter-reset: p; }
+.promises li { break-inside: avoid; counter-increment: p; padding: 0.7rem 0 0.7rem 2.4rem; position: relative; border-bottom: 1px solid var(--line); }
+.promises li::before { content: counter(p, decimal-leading-zero); position: absolute; left: 0; top: 0.8rem; font-family: var(--font-display); font-weight: 600; color: var(--forest); font-size: 0.9rem; }
+@media (max-width: 640px) { .promises { columns: 1; } }
+
+/* ---------- Policies ---------- */
+.policy { max-width: 760px; }
+.policy h2 { font-size: 1.8rem; margin-top: 2.6rem; }
+.policy ul { padding-left: 1.2rem; }
+.policy li { margin-bottom: 0.4rem; }
+.toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.toc a { font-size: 0.88rem; text-decoration: none; border: 1.5px solid var(--line-strong); border-radius: 999px; padding: 0.3rem 0.85rem; color: var(--ink); }
+.toc a:hover { border-color: var(--ink); }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; font-size: 0.93rem; color: var(--ink-soft); }
+.site-footer a { color: var(--ink); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+.site-footer h2 { font-family: var(--font-body); font-size: 0.8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 0.7rem; color: var(--ink-faint); }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.footer-bottom { border-top: 1px solid var(--line); padding-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; justify-content: space-between; font-size: 0.85rem; color: var(--ink-faint); }
+@media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Page hero (inner) ---------- */
+.page-hero { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem); }
+.page-hero h1 { margin-bottom: 0.6rem; max-width: 18ch; }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero > .wrap > * { animation: rise .7s var(--ease) both; }
+  .hero-grid > :nth-child(2) { animation-delay: .12s; }
+  .will-reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .will-reveal.in { opacity: 1; transform: none; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .bento .tile { transition: none; }
+  .btn:hover, .bento .tile:hover { transform: none; }
+}
+
+/* ---------- Single-file preview (hash routing) ---------- */
+body[data-spa] .page { display: none; }
+body[data-spa] .page.active { display: block; }
+
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="app">
+<div class="announce">Every candle is burn-tested before it ships. Processing time: <strong data-processing>2-4 business days</strong>.</div>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Ember and Stone Studio home">
+      <span class="brand-mark"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></span>
+      Ember &amp; Stone
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg></span> Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" data-page="home" aria-current="page">Home</a></li><li><a href="#shop" data-page="shop">Shop</a></li><li><a href="#learn" data-page="learn">Learn</a></li><li><a href="#community" data-page="community">Community</a></li><li><a href="#about" data-page="about">About</a></li><li><a href="#policies" data-page="policies">Policies</a></li>
+      <li><a class="btn btn-primary btn-sm" data-shop-link href="#">Shop the collection</a></li>
+    </ul>
+  </div>
+</header>
+<main id="main">
+
+<div class="page" data-page="home">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Candles, gemstone jewelry, beads, and soap</span>
+      <h1>Small rituals, <strong>made by hand.</strong></h1>
+      <p class="lede">Burn-tested candles, gemstone bracelets, and cold-process soap. Every listing says what it's made from and when it ships.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#shop">Shop the collection</a>
+        <a class="btn btn-ghost" href="#community">Join the Circle</a>
+      </div>
+    </div>
+    <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: a lit candle, one bracelet, and a bar of soap together on linen, daylight, 4:5</figcaption></figure>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="trust">
+    <div><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><div><strong>Burn-tested candles</strong><span>Every wick, wax, and jar combination is logged and tested before it's sold.</span></div></div>
+    <div><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><strong>Stones described truthfully</strong><span>Natural, dyed, heated, or lab-created. We say which, every time.</span></div></div>
+    <div><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"/></svg></span><div><strong>Photos of the actual item</strong><span>No filters, no stock images, always something for scale.</span></div></div>
+    <div><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg></span><div><strong>Plain-language policies</strong><span>Damaged, wrong size, or late? Here's exactly what happens.</span></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Four things, made carefully, designed to go together.</h2>
+      <p class="lede">We don't sell a little of everything. A candle, a bracelet, a bar of soap, and the box that holds all three.</p>
+    </div>
+    <div class="bento">
+      <a class="tile big" href="#shop/candles" data-reveal><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><div class="body"><h3>Candles</h3><span>4 scents, 8 oz jars and 4 oz tins</span></div></a>
+      <a class="tile tall" href="#shop/jewelry" data-reveal><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><div class="body"><h3>Jewelry and beads</h3><span>6 pieces, 3 sizes</span></div></a>
+      <a class="tile wide" href="#shop/soap" data-reveal><div class="photo"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><div class="body"><h3>Soap and bath</h3><span>3 bars, cured 6 weeks</span></div></a>
+      <a class="tile wide" href="#shop/sets" data-reveal><div class="photo tone-4"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span></div><div class="body"><h3>Ritual gift sets</h3><span>3 boxes, ready to give</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap six-wrap">
+    <div>
+      <span class="eyebrow">The product rule</span>
+      <h2>Six questions every listing answers before you have to ask.</h2>
+      <p class="lede">The most common complaint about handmade shops is a vague listing. So every item here answers these six, in the shop and on the label.</p>
+    </div>
+    <ol class="six">
+      <li><strong>What exactly is it?</strong><span>Type, style, and what's in the box.</span></li>
+      <li><strong>What is it made from?</strong><span>Wax, wick, metal, stone, oils, and any treatments.</span></li>
+      <li><strong>How big is it?</strong><span>Weight, dimensions, burn time, or wrist size.</span></li>
+      <li><strong>How do I use and care for it?</strong><span>Wick trimming, cord care, soap drying.</span></li>
+      <li><strong>When will it ship?</strong><span>An honest processing time, plus tracking.</span></li>
+      <li><strong>What if there's a problem?</strong><span>Replace, repair, resize, or refund. In writing.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="rail-head">
+      <h2>Start here.</h2>
+      <a class="btn btn-ghost btn-sm" href="#shop">Shop the collection</a>
+    </div>
+    <div class="rail">
+      
+<article class="product" data-collection="candles">
+  <figure class=""><div class="photo"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the Still Morning candle, lit, on a plain surface with a hand or mug for scale</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Still Morning</h3><span class="price tnum">$28</span></div>
+    <span class="tag">Candle, 8 oz</span>
+    <p class="summary">Bergamot, white tea, and cedar. A clean, quiet scent for the first hour of the day.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 45 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured container candle in an amber glass jar with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (bergamot, white tea, cedar).</span></li>
+        <li><b>Size</b><span>8 oz net weight. Jar is 3.2 in tall and 2.9 in wide. About 45 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch before each burn. Burn 2 to 4 hours at a time until the melt pool reaches the edge. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="still-morning" href="#">Buy for $28</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Still Morning" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="candles">
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the Evening Hearth candle, unlit, label readable</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Evening Hearth</h3><span class="price tnum">$28</span></div>
+    <span class="tag">Candle, 8 oz</span>
+    <p class="summary">Smoked vanilla, clove, and sandalwood. Warm without being sweet.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 45 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured container candle in an amber glass jar with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (smoked vanilla, clove, sandalwood).</span></li>
+        <li><b>Size</b><span>8 oz net weight. Jar is 3.2 in tall and 2.9 in wide. About 45 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch before each burn. Burn 2 to 4 hours at a time. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="evening-hearth" href="#">Buy for $28</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Evening Hearth" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry">
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the rose quartz bracelet on a wrist, in daylight, no filter</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Rose Quartz Bracelet</h3><span class="price tnum">$34</span></div>
+    <span class="tag">Intention bracelet, 8 mm</span>
+    <p class="summary">Hand-strung rose quartz on stretch cord. A reminder of compassion and self-care.</p>
+    <ul class="meta"><li>Natural, untreated</li><li>3 sizes</li><li>Gift pouch</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stretch bracelet of 8 mm round rose quartz beads with one brass accent bead. Includes an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>Natural rose quartz, not dyed, heated, or coated. Brass accent bead. Double-strung 1 mm elastic cord.</span></li>
+        <li><b>Size</b><span>Choose 6.5, 7, or 7.5 in. Need another size? Message us before ordering. Natural variation in shade is expected.</span></li>
+        <li><b>Use and care</b><span>Roll it on and off over your hand; do not pull. Remove for swimming, showering, and sleeping. Wipe with a soft dry cloth.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="rose-quartz-bracelet" href="#">Buy for $34</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Rose Quartz Bracelet" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry">
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the amethyst bracelet flat on linen, close enough to see the facets</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Amethyst and Sterling Bracelet</h3><span class="price tnum">$42</span></div>
+    <span class="tag">Intention bracelet, 6 mm</span>
+    <p class="summary">Faceted amethyst with sterling silver spacers. Traditionally associated with calm and clear thinking.</p>
+    <ul class="meta"><li>Natural, unheated</li><li>Sterling silver</li><li>3 sizes</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stretch bracelet of 6 mm faceted amethyst with three sterling silver spacer beads. Includes an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>Natural amethyst, unheated and undyed. .925 sterling silver spacers. Double-strung 0.8 mm elastic cord.</span></li>
+        <li><b>Size</b><span>Choose 6.5, 7, or 7.5 in. Color ranges from lilac to deep violet; faceted beads catch light.</span></li>
+        <li><b>Use and care</b><span>Roll on and off; do not pull. Sterling tarnishes with time; polish with a silver cloth. Keep away from perfume and pools.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="amethyst-bracelet" href="#">Buy for $42</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Amethyst and Sterling Bracelet" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="soap">
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><figcaption>Photo to add: the bar unwrapped, and the wrapper with the ingredient list readable</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Oat and Honey Bar</h3><span class="price tnum">$9</span></div>
+    <span class="tag">Cold-process soap, 4.5 oz</span>
+    <p class="summary">Unscented, gentle, and creamy. Ground oats for a soft polish, local honey for lather.</p>
+    <ul class="meta"><li>Unscented</li><li>Cured 6 weeks</li><li>Palm-free</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A hand-cut bar of cold-process soap, cured for six weeks before it is wrapped.</span></li>
+        <li><b>Made from</b><span>Olive oil, coconut oil, shea butter, castor oil, water, sodium hydroxide (none remains after saponification), colloidal oats, honey.</span></li>
+        <li><b>Size</b><span>About 4.5 oz. Bars are hand-cut, so weight varies slightly.</span></li>
+        <li><b>Use and care</b><span>Keep it on a draining soap dish and let it dry between uses. It will last far longer.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">Full ingredient list on the wrapper. Stop using it if irritation occurs. Not tested on animals.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="oat-honey-soap" href="#">Buy for $9</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Oat and Honey Bar" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="sets">
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span></div><figcaption>Photo to add: the open gift box with every item visible, plus the closed box with ribbon</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Rest and Renewal Set</h3><span class="price tnum">$52</span></div>
+    <span class="tag">Ritual gift set</span>
+    <p class="summary">Rest and Renewal tin, Amethyst bracelet, an intention card, a care card, and a pouch. Ready to give.</p>
+    <ul class="meta"><li>Saves $6</li><li>Gift-ready</li><li>Optional note</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A boxed set: one Rest and Renewal 4 oz candle tin, one Amethyst and Sterling bracelet, an intention card, a care card, and a cotton pouch, in a kraft gift box with a sage ribbon.</span></li>
+        <li><b>Made from</b><span>See the individual listings for full materials. Box is recycled kraft; ribbon is cotton.</span></li>
+        <li><b>Size</b><span>Box measures 7 by 5 by 3 in. Choose bracelet size at checkout.</span></li>
+        <li><b>Use and care</b><span>Candle and bracelet care cards are included in the box.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="rest-set" href="#">Buy for $52</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Rest and Renewal Set" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+    </div>
+  </div>
+</section>
+
+<section class="section block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why a candle takes six weeks to become a product.</h2>
+      <p class="lede">Every new scent gets a testing log. If it tunnels, smokes, or runs too hot, it doesn't get sold. It gets fixed.</p>
+    </div>
+    <div class="steps">
+      <div data-reveal><h3>Test</h3><p>Wax, fragrance percentage, wick size, vessel, cure time, flame height, melt pool, soot, jar temperature, and the last inch of the burn.</p></div>
+      <div data-reveal><h3>Pull</h3><p>Bracelets are double-strung and every cord and clasp is pull-tested before it's packed. Necklaces are knotted so a break loses one pearl, not a strand.</p></div>
+      <div data-reveal><h3>Wait</h3><p>Soap cures on racks for six full weeks so it's hard, mild, and long-lasting. This is slower. It is also the whole point.</p></div>
+    </div>
+    <div class="btn-row on-forest" style="margin-top:2rem">
+      <a class="btn btn-primary" href="#about">How things are made</a>
+      <a class="btn btn-ghost" href="#learn">Care and safety guides</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Kind words.</h2>
+      <p class="lede">Example reviews to show the layout. Replace them with real, permission-granted reviews before launch.</p>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote lead" data-reveal>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>“The listing said 7 inches and it was 7 inches. It said natural rose quartz and it looks like rose quartz, not a pink plastic bead.”</p>
+        <footer>Marisol T., Rose Quartz Bracelet (example review)</footer>
+      </blockquote>
+      <div class="side">
+        <blockquote class="quote" data-reveal>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>“First candle from a small maker that didn't tunnel. Full melt pool on the first burn, no black smoke.”</p>
+          <footer>Devon A., Still Morning (example review)</footer>
+        </blockquote>
+        <blockquote class="quote" data-reveal>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>“I asked about a size that wasn't listed and got a reply in an hour. The box arrived with a handwritten note.”</p>
+          <footer>Priya R., Rest and Renewal Set (example review)</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap block-grid">
+    <div>
+      <span class="eyebrow">The Handmade Ritual Circle</span>
+      <h2>A place to learn, not a place to be sold to.</h2>
+      <p class="lede">A private group and a short letter for people who want to make bracelets, burn candles well, and understand what a treated stone actually means.</p>
+      <ul class="check">
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"/></svg></span><span>Material Monday: one stone, wax, scent note, or metal explained plainly.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg></span><span>A live beginner workshop every month. Make a bracelet with us.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><span>A quarterly vote on the next colorway, scent, or gift set.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="#community">Join the Circle</a>
+    </div>
+    <div class="form">
+      <h3 style="margin-top:0">Get the free care guide</h3>
+      <p class="muted small">How to Care for Gemstone Jewelry and Burn Candles Safely, the same guide printed on our care cards.</p>
+      <form data-email-form novalidate data-success-text="You're in. The care guide is on its way; check your inbox and the promotions tab.">
+        <div class="field"><label for="h-name">First name</label><input id="h-name" name="FIRSTNAME" type="text" autocomplete="given-name" /></div>
+        <div class="field"><label for="h-email">Email</label><input id="h-email" name="EMAIL" type="email" autocomplete="email" inputmode="email" /></div>
+        <button class="btn btn-primary" type="submit">Send me the guide</button>
+        <p class="form-msg" role="alert" aria-live="polite"></p>
+        <p class="fine">One or two letters a month. No countdown timers. Unsubscribe any time.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</div><div class="page" data-page="shop">
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Sixteen things, made well.</h1>
+    <p class="lede">A small, cohesive collection instead of a hundred scattered listings. Checkout happens on our shop platform, where the reviews live. The details, care, and policies live here so nothing is a surprise.</p>
+  </div>
+</section>
+<section class="wrap" style="padding-bottom:5rem">
+  <div class="filter-bar" role="group" aria-label="Filter by collection">
+    <button data-filter="all" aria-pressed="true">All</button>
+    <button data-filter="candles" aria-pressed="false" id="candles">Candles</button>
+    <button data-filter="jewelry" aria-pressed="false" id="jewelry">Jewelry and beads</button>
+    <button data-filter="soap" aria-pressed="false" id="soap">Soap and bath</button>
+    <button data-filter="sets" aria-pressed="false" id="sets">Ritual gift sets</button>
+  </div>
+  <p class="sr-only" id="filter-status" aria-live="polite"></p>
+  <h2 class="sr-only">All items</h2>
+  <div class="grid grid-3">
+    
+<article class="product" data-collection="candles" id="still-morning" data-reveal>
+  <figure class=""><div class="photo"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the Still Morning candle, lit, on a plain surface with a hand or mug for scale</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Still Morning</h3><span class="price tnum">$28</span></div>
+    <span class="tag">Candle, 8 oz</span>
+    <p class="summary">Bergamot, white tea, and cedar. A clean, quiet scent for the first hour of the day.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 45 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured container candle in an amber glass jar with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (bergamot, white tea, cedar).</span></li>
+        <li><b>Size</b><span>8 oz net weight. Jar is 3.2 in tall and 2.9 in wide. About 45 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch before each burn. Burn 2 to 4 hours at a time until the melt pool reaches the edge. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="still-morning" href="#">Buy for $28</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Still Morning" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="candles" id="evening-hearth" data-reveal>
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the Evening Hearth candle, unlit, label readable</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Evening Hearth</h3><span class="price tnum">$28</span></div>
+    <span class="tag">Candle, 8 oz</span>
+    <p class="summary">Smoked vanilla, clove, and sandalwood. Warm without being sweet.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 45 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured container candle in an amber glass jar with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (smoked vanilla, clove, sandalwood).</span></li>
+        <li><b>Size</b><span>8 oz net weight. Jar is 3.2 in tall and 2.9 in wide. About 45 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch before each burn. Burn 2 to 4 hours at a time. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="evening-hearth" href="#">Buy for $28</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Evening Hearth" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="candles" id="grounding" data-reveal>
+  <figure class=""><div class="photo tone-4"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the Grounding candle after a full first burn, showing the even melt pool</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Grounding</h3><span class="price tnum">$28</span></div>
+    <span class="tag">Candle, 8 oz</span>
+    <p class="summary">Vetiver, fir needle, and black pepper. Green, rooted, a little wild.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 45 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured container candle in an amber glass jar with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (vetiver, fir needle, black pepper).</span></li>
+        <li><b>Size</b><span>8 oz net weight. Jar is 3.2 in tall and 2.9 in wide. About 45 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch before each burn. Burn 2 to 4 hours at a time. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="grounding" href="#">Buy for $28</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Grounding" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="candles" id="rest-tin" data-reveal>
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span></div><figcaption>Photo to add: the travel tin open, next to the closed lid</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Rest and Renewal Tin</h3><span class="price tnum">$14</span></div>
+    <span class="tag">Travel tin, 4 oz</span>
+    <p class="summary">Lavender, chamomile, and oat milk in a travel tin. The candle inside every Rest set.</p>
+    <ul class="meta"><li>Coconut-soy wax</li><li>Cotton wick</li><li>About 22 hours</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Hand-poured candle in a seamless brushed-metal travel tin with a lid.</span></li>
+        <li><b>Made from</b><span>Coconut-soy wax blend, cotton wick, phthalate-free fragrance oil (lavender, chamomile, oat milk).</span></li>
+        <li><b>Size</b><span>4 oz net weight. Tin is 1.8 in tall and 2.6 in wide. About 22 hours of burn time.</span></li>
+        <li><b>Use and care</b><span>Trim the wick to a quarter inch. Burn on a heat-safe surface; the tin gets warm. Stop at half an inch of wax.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">This wick-and-wax combination was burn-tested in this jar before sale. Always burn within sight. <a href='learn.html#candle-care'>Candle safety</a>.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="rest-tin" href="#">Buy for $14</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Rest and Renewal Tin" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="rose-quartz-bracelet" data-reveal>
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the rose quartz bracelet on a wrist, in daylight, no filter</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Rose Quartz Bracelet</h3><span class="price tnum">$34</span></div>
+    <span class="tag">Intention bracelet, 8 mm</span>
+    <p class="summary">Hand-strung rose quartz on stretch cord. A reminder of compassion and self-care.</p>
+    <ul class="meta"><li>Natural, untreated</li><li>3 sizes</li><li>Gift pouch</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stretch bracelet of 8 mm round rose quartz beads with one brass accent bead. Includes an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>Natural rose quartz, not dyed, heated, or coated. Brass accent bead. Double-strung 1 mm elastic cord.</span></li>
+        <li><b>Size</b><span>Choose 6.5, 7, or 7.5 in. Need another size? Message us before ordering. Natural variation in shade is expected.</span></li>
+        <li><b>Use and care</b><span>Roll it on and off over your hand; do not pull. Remove for swimming, showering, and sleeping. Wipe with a soft dry cloth.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="rose-quartz-bracelet" href="#">Buy for $34</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Rose Quartz Bracelet" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="amethyst-bracelet" data-reveal>
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the amethyst bracelet flat on linen, close enough to see the facets</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Amethyst and Sterling Bracelet</h3><span class="price tnum">$42</span></div>
+    <span class="tag">Intention bracelet, 6 mm</span>
+    <p class="summary">Faceted amethyst with sterling silver spacers. Traditionally associated with calm and clear thinking.</p>
+    <ul class="meta"><li>Natural, unheated</li><li>Sterling silver</li><li>3 sizes</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stretch bracelet of 6 mm faceted amethyst with three sterling silver spacer beads. Includes an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>Natural amethyst, unheated and undyed. .925 sterling silver spacers. Double-strung 0.8 mm elastic cord.</span></li>
+        <li><b>Size</b><span>Choose 6.5, 7, or 7.5 in. Color ranges from lilac to deep violet; faceted beads catch light.</span></li>
+        <li><b>Use and care</b><span>Roll on and off; do not pull. Sterling tarnishes with time; polish with a silver cloth. Keep away from perfume and pools.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="amethyst-bracelet" href="#">Buy for $42</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Amethyst and Sterling Bracelet" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="tourmaline-bracelet" data-reveal>
+  <figure class=""><div class="photo tone-4"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the tourmaline bracelet on a wrist, showing the surface texture</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Black Tourmaline Bracelet</h3><span class="price tnum">$34</span></div>
+    <span class="tag">Intention bracelet, 8 mm</span>
+    <p class="summary">Matte black tourmaline with a single brass bead. A grounding, everyday piece.</p>
+    <ul class="meta"><li>Natural, untreated</li><li>Unisex</li><li>4 sizes</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stretch bracelet of 8 mm matte black tourmaline beads with one brass accent bead. Includes an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>Natural black tourmaline (schorl), not dyed or coated. Brass accent bead. Double-strung 1 mm elastic cord.</span></li>
+        <li><b>Size</b><span>Choose 6.5, 7, 7.5, or 8 in. Tourmaline has natural striations and small surface pits. That is the stone, not a flaw.</span></li>
+        <li><b>Use and care</b><span>Roll on and off; do not pull. Remove for swimming and sleeping. Wipe with a soft dry cloth.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="tourmaline-bracelet" href="#">Buy for $34</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Black Tourmaline Bracelet" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="pearl-necklace" data-reveal>
+  <figure class=""><div class="photo"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the pearl necklace worn, and a second shot of the knots and clasp</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Freshwater Pearl Necklace</h3><span class="price tnum">$78</span></div>
+    <span class="tag">Necklace, 16 or 18 in</span>
+    <p class="summary">Hand-knotted cultured freshwater pearls on silk with a 14k gold-filled clasp.</p>
+    <ul class="meta"><li>Cultured pearls</li><li>14k gold-filled</li><li>Hand-knotted</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Single strand of 6 to 7 mm near-round cultured freshwater pearls, hand-knotted between each pearl, with a lobster clasp.</span></li>
+        <li><b>Made from</b><span>Cultured freshwater pearls, bleached and polished as is standard for white freshwater pearls. Silk thread. 14k gold-filled clasp and findings.</span></li>
+        <li><b>Size</b><span>Choose 16 or 18 in. Pearls are near-round with natural surface texture; each strand is unique.</span></li>
+        <li><b>Use and care</b><span>Put it on last and take it off first. Pearls dislike perfume, hairspray, and lotion. Wipe after wearing. Store flat in the pouch.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="pearl-necklace" href="#">Buy for $78</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Freshwater Pearl Necklace" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="charm-trio" data-reveal>
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span></div><figcaption>Photo to add: the three beads in an open palm for scale</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Lampwork Bead Charm Trio</h3><span class="price tnum">$18</span></div>
+    <span class="tag">Bead charms, set of 3</span>
+    <p class="summary">Three glass beads made by hand at the torch. Add them to a bracelet, a keyring, or your own project.</p>
+    <ul class="meta"><li>Handmade glass</li><li>4 mm hole</li><li>Set of 3</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Three lampwork glass beads with 4 mm holes, so they slide onto cord, chain, or a bracelet. Colorways rotate seasonally.</span></li>
+        <li><b>Made from</b><span>Effetre soft glass, kiln-annealed for durability. No plating, no coatings.</span></li>
+        <li><b>Size</b><span>Each bead is roughly 12 to 14 mm. Being handmade, no two are identical.</span></li>
+        <li><b>Use and care</b><span>Glass is durable but not unbreakable. Avoid dropping on tile. Clean with warm water and a soft cloth.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="charm-trio" href="#">Buy for $18</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Lampwork Bead Charm Trio" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="jewelry" id="bracelet-kit" data-reveal>
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z"/></svg></span></div><figcaption>Photo to add: the kit contents laid out, plus one finished bracelet</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Beginner Bracelet Kit</h3><span class="price tnum">$29</span></div>
+    <span class="tag">Make-your-own kit</span>
+    <p class="summary">Everything to make two 8 mm stone bracelets at home, plus a video lesson from the Circle.</p>
+    <ul class="meta"><li>Makes 2 bracelets</li><li>Video lesson</li><li>Tools included</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>Stones, cord, a beading needle, a bead board card, an instruction card, and a link to a 20-minute video lesson.</span></li>
+        <li><b>Made from</b><span>Natural stone beads labeled by stone and treatment, 1 mm elastic cord, brass accent beads, glue tube, wire needle.</span></li>
+        <li><b>Size</b><span>Enough beads and cord for two 7 in bracelets, with extras in case one snaps while learning.</span></li>
+        <li><b>Use and care</b><span>Store leftover cord flat and away from sunlight; elastic ages faster in heat.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="bracelet-kit" href="#">Buy for $29</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Beginner Bracelet Kit" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="soap" id="oat-honey-soap" data-reveal>
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><figcaption>Photo to add: the bar unwrapped, and the wrapper with the ingredient list readable</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Oat and Honey Bar</h3><span class="price tnum">$9</span></div>
+    <span class="tag">Cold-process soap, 4.5 oz</span>
+    <p class="summary">Unscented, gentle, and creamy. Ground oats for a soft polish, local honey for lather.</p>
+    <ul class="meta"><li>Unscented</li><li>Cured 6 weeks</li><li>Palm-free</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A hand-cut bar of cold-process soap, cured for six weeks before it is wrapped.</span></li>
+        <li><b>Made from</b><span>Olive oil, coconut oil, shea butter, castor oil, water, sodium hydroxide (none remains after saponification), colloidal oats, honey.</span></li>
+        <li><b>Size</b><span>About 4.5 oz. Bars are hand-cut, so weight varies slightly.</span></li>
+        <li><b>Use and care</b><span>Keep it on a draining soap dish and let it dry between uses. It will last far longer.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">Full ingredient list on the wrapper. Stop using it if irritation occurs. Not tested on animals.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="oat-honey-soap" href="#">Buy for $9</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Oat and Honey Bar" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="soap" id="lavender-clay-soap" data-reveal>
+  <figure class=""><div class="photo"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><figcaption>Photo to add: the bar showing the swirl, cut face toward the camera</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Lavender and Clay Bar</h3><span class="price tnum">$9</span></div>
+    <span class="tag">Cold-process soap, 4.5 oz</span>
+    <p class="summary">French lavender essential oil with kaolin clay. Soft lather, calm scent.</p>
+    <ul class="meta"><li>Essential oil</li><li>Cured 6 weeks</li><li>Palm-free</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A hand-cut bar of cold-process soap with a lavender and clay swirl.</span></li>
+        <li><b>Made from</b><span>Olive oil, coconut oil, shea butter, castor oil, water, sodium hydroxide (none remains after saponification), kaolin clay, lavender essential oil, dried lavender buds.</span></li>
+        <li><b>Size</b><span>About 4.5 oz. Bars are hand-cut, so weight varies slightly.</span></li>
+        <li><b>Use and care</b><span>Keep it on a draining soap dish. Essential-oil scent softens over months; use within a year for the fullest scent.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">Full ingredient list on the wrapper. Stop using it if irritation occurs. Not tested on animals.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="lavender-clay-soap" href="#">Buy for $9</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Lavender and Clay Bar" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="soap" id="cedar-charcoal-soap" data-reveal>
+  <figure class=""><div class="photo tone-4"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><figcaption>Photo to add: the bar in use, lathered, or on a wooden soap dish</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Cedar and Charcoal Bar</h3><span class="price tnum">$9</span></div>
+    <span class="tag">Cold-process soap, 4.5 oz</span>
+    <p class="summary">Cedarwood and a touch of activated charcoal. A clean, woodsy everyday bar.</p>
+    <ul class="meta"><li>Essential oil</li><li>Cured 6 weeks</li><li>Palm-free</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A hand-cut bar of cold-process soap with an activated-charcoal swirl.</span></li>
+        <li><b>Made from</b><span>Olive oil, coconut oil, shea butter, castor oil, water, sodium hydroxide (none remains after saponification), activated charcoal, cedarwood essential oil.</span></li>
+        <li><b>Size</b><span>About 4.5 oz. Bars are hand-cut, so weight varies slightly.</span></li>
+        <li><b>Use and care</b><span>Keep it on a draining soap dish. Charcoal can leave light grey suds; they rinse clean.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">Full ingredient list on the wrapper. Stop using it if irritation occurs. Not tested on animals.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="cedar-charcoal-soap" href="#">Buy for $9</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Cedar and Charcoal Bar" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="sets" id="rest-set" data-reveal>
+  <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span></div><figcaption>Photo to add: the open gift box with every item visible, plus the closed box with ribbon</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Rest and Renewal Set</h3><span class="price tnum">$52</span></div>
+    <span class="tag">Ritual gift set</span>
+    <p class="summary">Rest and Renewal tin, Amethyst bracelet, an intention card, a care card, and a pouch. Ready to give.</p>
+    <ul class="meta"><li>Saves $6</li><li>Gift-ready</li><li>Optional note</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A boxed set: one Rest and Renewal 4 oz candle tin, one Amethyst and Sterling bracelet, an intention card, a care card, and a cotton pouch, in a kraft gift box with a sage ribbon.</span></li>
+        <li><b>Made from</b><span>See the individual listings for full materials. Box is recycled kraft; ribbon is cotton.</span></li>
+        <li><b>Size</b><span>Box measures 7 by 5 by 3 in. Choose bracelet size at checkout.</span></li>
+        <li><b>Use and care</b><span>Candle and bracelet care cards are included in the box.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="rest-set" href="#">Buy for $52</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Rest and Renewal Set" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="sets" id="fresh-start-set" data-reveal>
+  <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span></div><figcaption>Photo to add: the open Fresh Start box from above</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Fresh Start Set</h3><span class="price tnum">$58</span></div>
+    <span class="tag">Ritual gift set</span>
+    <p class="summary">Still Morning candle, Rose Quartz bracelet, Oat and Honey bar, and an intention card. For new chapters.</p>
+    <ul class="meta"><li>Saves $8</li><li>Gift-ready</li><li>Optional note</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A boxed set: one Still Morning 8 oz candle, one Rose Quartz bracelet, one Oat and Honey soap bar, an intention card, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>See the individual listings for full materials. Box is recycled kraft; ribbon is cotton.</span></li>
+        <li><b>Size</b><span>Box measures 9 by 6 by 4 in. Choose bracelet size at checkout.</span></li>
+        <li><b>Use and care</b><span>Care cards for every item are included in the box.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="fresh-start-set" href="#">Buy for $58</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Fresh Start Set" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+<article class="product" data-collection="sets" id="gratitude-set" data-reveal>
+  <figure class=""><div class="photo tone-4"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span></div><figcaption>Photo to add: the Gratitude box with the card and a handwritten message</figcaption></figure>
+  <div class="body">
+    <div class="top"><h3>Gratitude Set</h3><span class="price tnum">$48</span></div>
+    <span class="tag">Ritual gift set</span>
+    <p class="summary">Evening Hearth candle, Black Tourmaline bracelet, and a hand-lettered gratitude card. A thank-you that stays.</p>
+    <ul class="meta"><li>Saves $6</li><li>Gift-ready</li><li>Optional note</li></ul>
+    <details>
+      <summary><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></span> Full details, the six questions</summary>
+      <ul class="qa">
+        <li><b>What it is</b><span>A boxed set: one Evening Hearth 8 oz candle, one Black Tourmaline bracelet, a gratitude card with space for your own message, a care card, and a cotton pouch.</span></li>
+        <li><b>Made from</b><span>See the individual listings for full materials. Box is recycled kraft; ribbon is cotton.</span></li>
+        <li><b>Size</b><span>Box measures 7 by 5 by 3 in. Choose bracelet size at checkout.</span></li>
+        <li><b>Use and care</b><span>Care cards for every item are included in the box.</span></li>
+        <li><b>Ships</b><span>Ships in <span data-processing>2-4 business days</span> with tracking. Gift sets ship in a padded box.</span></li>
+        <li><b>If there's a problem</b><span>Arrived damaged or not as described? Message us within 14 days and we replace, repair, or refund. Wrong bracelet size? We resize free.</span></li>
+      </ul>
+    </details>
+    <p class="disclaimer">A personal reminder and a beautiful object. Not a medical product; gemstone meanings are traditional, not promises.</p>
+    <div class="actions">
+      <a class="btn btn-primary btn-sm" data-shop-link="gratitude-set" href="#">Buy for $48</a>
+      <a class="btn btn-ghost btn-sm" data-contact-link="Question about Gratitude Set" href="#">Ask a question</a>
+    </div>
+  </div>
+</article>
+  </div>
+  <div class="callout" style="margin-top:2.5rem">
+    <p><strong>Custom orders and gifts.</strong> Need a different wrist size, a specific stone, a scent for a wedding, or a handwritten note in the box? <a data-contact-link="Custom order request" href="#">Ask a question</a> before ordering. Custom pieces add about a week, and we tell you the exact ship date before you pay.</p>
+  </div>
+</section>
+</div><div class="page" data-page="learn">
+<section class="page-hero">
+  <div class="wrap">
+    <h1>How to enjoy these things well.</h1>
+    <p class="lede">Care and safety for everything we make, and a plain-language glossary so words like natural, stabilized, and lab-created mean something. This is the same information printed on our care cards.</p>
+    <nav class="toc" aria-label="On this page">
+      <a href="#learn/candle-care">Candle care and safety</a><a href="#learn/gemstones">Gemstone honesty guide</a><a href="#learn/jewelry-care">Jewelry and bead care</a><a href="#learn/soap-care">Soap care</a><a href="#learn/material-monday">Material Monday</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section" id="candle-care">
+  <div class="wrap split">
+    <div>
+      <h2>The first burn decides everything.</h2>
+      <p>Wax has memory. Blow a candle out before the melted pool reaches the edge of the jar and it will tunnel down the middle for the rest of its life. Give the first burn two to four hours.</p>
+      <ul class="check">
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><span><strong>Trim the wick to a quarter inch</strong> before every burn. A long wick makes a tall flame, black smoke, and a hot jar.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><span><strong>Burn 2 to 4 hours at a time.</strong> Long enough for a full melt pool, not so long that the glass overheats.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><span><strong>Stop at half an inch of wax.</strong> Below that, the flame heats the glass base directly.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><span><strong>Keep it on a heat-safe surface,</strong> away from drafts, curtains, and anything that can catch.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.79,51.48a221.25,221.25,0,0,0-41.67-34.34,8,8,0,0,0-8.24,0A221.25,221.25,0,0,0,82.21,51.48C54.59,80.48,40,112.47,40,144a88,88,0,0,0,176,0C216,112.47,201.41,80.48,173.79,51.48ZM96,184c0-27.67,22.53-47.28,32-54.3,9.48,7,32,26.63,32,54.3a32,32,0,0,1-64,0Zm77.27,15.93A47.8,47.8,0,0,0,176,184c0-44-42.09-69.79-43.88-70.86a8,8,0,0,0-8.24,0C122.09,114.21,80,140,80,184a47.8,47.8,0,0,0,2.73,15.93A71.88,71.88,0,0,1,56,144c0-34.41,20.4-63.15,37.52-81.19A216.21,216.21,0,0,1,128,33.54a215.77,215.77,0,0,1,34.48,29.27C193.49,95.5,200,125,200,144A71.88,71.88,0,0,1,173.27,199.93Z"/></svg></span><span><strong>Rough top after the first burn?</strong> Normal with natural waxes. It doesn't affect the next burn.</span></li>
+      </ul>
+    </div>
+    <div class="safety" data-reveal>
+      <h3><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></svg></span> The three warnings on every label</h3>
+      <p class="muted small">These follow the candle fire-safety labeling standard, ASTM F2058, which the U.S. Consumer Product Safety Commission and the National Candle Association point makers to.</p>
+      <ul>
+        <li><strong>Burn within sight.</strong> Never leave a burning candle unattended.</li>
+        <li><strong>Keep away from things that catch fire.</strong></li>
+        <li><strong>Keep away from children and pets.</strong></li>
+      </ul>
+      <p class="small" style="margin:.8rem 0 0">If a candle ever worries you (a flame taller than an inch and a half, heavy soot, a jar too hot to touch), put it out and <a data-contact-link="Candle safety concern" href="#">ask a question</a>. We would rather replace it than have you burn it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="gemstones">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What “natural” actually means, and what we tell you.</h2>
+      <p class="lede">The Federal Trade Commission's Jewelry Guides require sellers to disclose gemstone treatments that aren't permanent, need special care, or affect value. We state the treatment status of every stone, every time.</p>
+    </div>
+    <dl class="glossary">
+      <div><dt>Natural, untreated</dt><dd>Mined, cut, and polished. Nothing else done to it. Most of our quartz and tourmaline.</dd></div>
+      <div><dt>Heated</dt><dd>Warmed to improve or change color. Common and stable in amethyst and citrine; most citrine on the market is heated amethyst. We say so if ours is.</dd></div>
+      <div><dt>Dyed</dt><dd>Color added. Common in howlite sold as turquoise, in agate, and in cheap jade. Dye can fade or rub off. We never sell dyed stones as anything but dyed.</dd></div>
+      <div><dt>Stabilized</dt><dd>Soft stone, often turquoise, set with resin so it can be cut and worn. Legitimate when disclosed.</dd></div>
+      <div><dt>Coated</dt><dd>A surface film, like the rainbow on aura quartz. Beautiful, not natural, and it can scratch off.</dd></div>
+      <div><dt>Lab-created</dt><dd>Same chemistry as the mined stone, grown in a lab. Real material, not mined. Always labeled.</dd></div>
+      <div><dt>Imitation</dt><dd>Glass, resin, or a different stone made to look like another. We don't sell imitations as gemstones.</dd></div>
+      <div><dt>Cultured (pearls)</dt><dd>Grown in a farmed mollusk. Nearly all pearls sold today are cultured. White freshwater pearls are routinely bleached and polished; we say so.</dd></div>
+    </dl>
+    <div class="callout" style="margin-top:2rem">
+      <p><strong>How we talk about meaning.</strong> Stones have carried meaning in many traditions for a long time, and that's a lovely reason to wear one. We won't promise a bracelet will change your health, money, relationships, or mind; health claims need evidence under FTC rules, and nobody has it for a bracelet. So you'll see “traditionally associated with,” “a reminder of,” and “for a personal ritual.” An invitation, not a guarantee.</p>
+      <p><strong>About certificates of authenticity.</strong> A printed certificate proves nothing for an everyday stone like rose quartz, and collectors know it. What helps: a clear photo of the real beads, a named source, an honest treatment disclosure, and a maker who answers questions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="jewelry-care">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Make a bracelet last for years, not months.</h2>
+    </div>
+    <div class="care">
+      <div data-reveal><div><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z"/></svg></span><h3>Roll it on like a sock</h3><p>Roll a stretch bracelet over your hand. Pulling it open with two fingers is how elastic dies. If it's too tight to roll, it's the wrong size, and we'll swap it.</p></div><figure class=""><div class="photo tone-2" style="aspect-ratio:4/3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z"/></svg></span></div><figcaption>Photo to add: hands rolling a bracelet over the knuckles</figcaption></figure></div>
+      <div data-reveal><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><h3>Water, sweat, and perfume</h3><p>Take jewelry off for swimming, showering, workouts, and sleeping. Put it on after lotion and perfume. Chlorine dulls stones and weakens cord; perfume clouds pearls permanently.</p></div>
+      <div data-reveal><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><h3>Cleaning and storage</h3><p>Wipe with a soft dry cloth. Sterling tarnishes naturally; a polishing cloth brings it back in seconds. Store pieces separately in their pouch so stones don't scratch each other.</p></div>
+    </div>
+    <div class="callout"><p><strong>Cord snapped? Bead loose?</strong> Every bracelet is double-strung and pull-tested, but elastic is a wear item. We restring any bracelet we made for free in the first year, and for the cost of postage after that. <a href="#policies/repairs">Repair policy</a>.</p></div>
+  </div>
+</section>
+
+<section class="section alt" id="soap-care">
+  <div class="wrap split">
+    <figure class=""><div class="photo tone-3"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span></div><figcaption>Photo to add: a bar on a slatted wooden soap dish, dry</figcaption></figure>
+    <div>
+      <h2>A bar that dries between uses lasts twice as long.</h2>
+      <ul class="check">
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><span><strong>Use a draining dish.</strong> A bar sitting in water turns to mush by Tuesday.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><span><strong>Cut a large bar in half</strong> and keep the other half wrapped and dry.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><span><strong>Essential-oil scents soften with time.</strong> Use within a year for full scent; the soap stays good much longer.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><span><strong>Every ingredient is on the wrapper,</strong> listed by weight, including the sodium hydroxide used to make it. None remains in a cured bar.</span></li>
+        <li><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></svg></span><span><strong>Patch-test</strong> if you have sensitive skin, and stop if anything irritates.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="material-monday">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Material Monday.</h2>
+      <p class="lede">One material, explained plainly, every week. Posted in the Circle first and collected here.</p>
+    </div>
+    <div class="notes">
+      <article data-reveal><div class="kind">Wax</div><h3>Why coconut-soy, not paraffin or pure soy?</h3><p>Pure soy frosts and sets with rough tops; paraffin throws scent hard but soots more easily in a small room. A coconut-soy blend burns cleanly, holds fragrance, and stays creamy in the jar. It also costs more, which is part of why the candle does.</p></article>
+      <article data-reveal><div class="kind">Stone</div><h3>Rose quartz is pink because of titanium.</h3><p>The soft pink comes from microscopic titanium-bearing fibers, which is why it's rarely transparent and never uniform. Very pale beads are still rose quartz. Hot-pink, perfectly even beads usually aren't.</p></article>
+      <article data-reveal><div class="kind">Metal</div><h3>Gold-filled is not gold-plated.</h3><p>Gold-filled has a thick layer of real gold bonded to brass, about a hundred times thicker than plating, and lasts years of daily wear. Plating can fade in months. We use gold-filled for clasps and say so.</p></article>
+    </div>
+    <p style="margin-top:2rem"><a class="btn btn-primary" href="#community">Join the Circle</a></p>
+  </div>
+</section>
+</div><div class="page" data-page="community">
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Community</span>
+    <h1>The Handmade Ritual Circle</h1>
+    <p class="lede">A private Facebook Group and a short monthly letter for people who want to learn to make, care for, and give handmade things well. A classroom and a kitchen table, not a sales channel. Members hear about new pieces first, but that's the smallest part of it.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" data-group-link href="#">Join the Circle</a>
+      <a class="btn btn-ghost" href="#community/letter">Get the letter</a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A weekly rhythm you can count on.</h2>
+    </div>
+    <div class="rhythm">
+      <div><b>Monday</b><span><strong>Material Monday.</strong> One stone, bead, wax, fragrance note, metal, or care concept, explained in plain language.</span></div>
+      <div><b>Wednesday</b><span><strong>Behind the scenes.</strong> A short making video: pouring, stringing, cutting soap, packing orders, and the occasional failed burn test.</span></div>
+      <div><b>Friday</b><span><strong>Member spotlight.</strong> Your photos, a styling idea, or a simple candle ritual for the end of the week.</span></div>
+      <div><b>Monthly</b><span><strong>Live beginner workshop.</strong> Make a bracelet with us, learn candle care, pick a gift, or ask a maker anything. Recorded for members who can't make it live.</span></div>
+      <div><b>Quarterly</b><span><strong>Design vote.</strong> Members choose the next colorway, stone combination, scent, or gift set. Voters get first access when it launches.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What the Circle is, and isn't.</h2>
+    </div>
+    <div class="rules">
+      <div data-reveal><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"/></svg></span><h3>Teaching first</h3><p>Most posts teach something. If a week goes by with more selling than teaching, we've drifted, and you're allowed to say so. The group exists so that people leave knowing more than when they arrived: how a candle should burn, what a treated stone is, how to tell a fair price from a lazy one.</p></div>
+      <div data-reveal><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></span><h3>Honest questions welcome</h3><p>“Is this stone real?” “Why did my candle tunnel?” “Is this price fair?” Ask. Nobody is talked down to for not knowing yet.</p></div>
+      <div data-reveal><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg></span><h3>No miracle claims</h3><p>We talk about meaning and tradition warmly. Claims that a stone or candle heals, cures, or attracts money aren't allowed. Kindness and evidence, both.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section block" id="letter">
+  <div class="wrap block-grid">
+    <div>
+      <h2>One or two emails a month. That's it.</h2>
+      <p class="lede">New pieces before anyone else, the Material Monday roundup, seasonal gift ideas, restock notices, and the workshop link. No daily launches. No fake urgency.</p>
+      <p>Join and we send the free guide, <em>How to Care for Gemstone Jewelry and Burn Candles Safely</em>, the same information we print on our care cards, in one place.</p>
+      <p class="muted small">Prefer to just follow along? We post on <a data-social-link href="#">Instagram</a>, our one visual channel, and nowhere else.</p>
+    </div>
+    <div class="form">
+      <h3 style="margin-top:0">Join the letter, get the guide</h3>
+      <form data-email-form novalidate>
+        <div class="field"><label for="c-name">First name</label><input id="c-name" name="FIRSTNAME" type="text" autocomplete="given-name" /></div>
+        <div class="field"><label for="c-email">Email</label><input id="c-email" name="EMAIL" type="email" autocomplete="email" inputmode="email" /></div>
+        <div class="field"><label for="c-interest">What are you most interested in? <span style="font-weight:400">(optional)</span></label>
+          <select id="c-interest" name="INTEREST"><option value="">Choose one</option><option>Making my own bracelets</option><option>Candle care and safety</option><option>Gifts and ritual sets</option><option>Soap and bath</option><option>All of it</option></select></div>
+        <button class="btn btn-primary" type="submit">Send me the guide</button>
+        <p class="form-msg" role="alert" aria-live="polite"></p>
+        <p class="fine">We never sell or share your email. Unsubscribe in one click.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Come smell the candles.</h2>
+      <p class="lede">A few local markets a season, where you can try on a bracelet, smell every scent, and tell us what almost stopped you from ordering online. That one question has improved this shop more than anything else.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Market</th><th>Where</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>To be announced</td><td>Your first local market</td><td>Town, State</td><td>Replace this row with a real date. Bring a sign-up sheet for the letter.</td></tr>
+          <tr><td>To be announced</td><td>Holiday makers' market</td><td>Town, State</td><td>Gift sets, scent voting, bracelet sizing on the spot.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</div><div class="page" data-page="about">
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Made by one pair of hands, slowly on purpose.</h1>
+    <p class="lede">Ember and Stone started at a kitchen table with a bag of rose quartz beads and a candle that tunneled. Fixing that candle took six weeks and a notebook. That notebook is still how everything here gets made.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <figure class=""><div class="photo tone-2"><span class="ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z"/></svg></span></div><figcaption>Photo to add: you, at the workbench, mid-task, not posed</figcaption></figure>
+    <div>
+      <h2>Hello. I'm the person who makes these.</h2>
+      <p class="muted"><em>Replace this with your real story, in your own voice, next to a real photo. Customers want to know who made the piece, why it exists, and how. It's the single biggest advantage a small maker has over a warehouse.</em></p>
+      <p>I started making bracelets for friends going through hard seasons, a reminder on the wrist that someone was thinking of them. Candles came next, because a gift wanted a second half. Soap came because I wanted a whole box you could give without adding anything.</p>
+      <p>I make everything myself. When something is out of stock, it's because I haven't made it yet, not because a warehouse is empty.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The unglamorous parts are the important parts.</h2>
+    </div>
+    <div class="steps">
+      <div data-reveal><h3>Candles</h3><p>Every new wax, fragrance, wick, and vessel combination gets its own testing log: fragrance percentage, cure time, flame height, melt pool, soot, jar temperature, and the last inch of the burn. Nothing is sold, or given away, until the result is safe and repeats three times. Wax is a coconut-soy blend, wicks are cotton and sized per jar, fragrance is always under the maximum safe load.</p></div>
+      <div data-reveal><h3>Jewelry and beads</h3><p>Beads come from suppliers who state the stone and any treatment in writing, and we pass that on. Bracelets are double-strung on fresh elastic and pull-tested. Necklaces are hand-knotted. Glass beads are made at the torch and kiln-annealed so they don't crack. Metals are sterling silver, 14k gold-filled, and raw brass. Never plated sold as gold.</p></div>
+      <div data-reveal><h3>Soap</h3><p>Cold-process, palm-free recipes, poured in small loaves and hand-cut. Bars cure for six weeks on racks before wrapping so they're hard, mild, and long-lasting. Every wrapper lists every ingredient by weight. Scented with essential oils only; an unscented bar is always available.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ten things you can hold us to.</h2>
+    </div>
+    <ol class="promises">
+      <li>Quality that matches the price, or your money back.</li>
+      <li>Photos of the actual item, unfiltered, with something for scale.</li>
+      <li>Every listing answers the six questions before you have to ask.</li>
+      <li>Every stone's treatment status stated plainly.</li>
+      <li>Every candle burn-tested in its own jar before sale.</li>
+      <li>Replies within one business day, usually faster.</li>
+      <li>An honest processing time, and a message before we miss it.</li>
+      <li>A written policy for damage, sizing, repairs, and late orders.</li>
+      <li>No health, wealth, or healing claims. Ever.</li>
+      <li>More teaching than selling, in the group and in the letter.</li>
+    </ol>
+    <div class="btn-row" style="margin-top:2rem">
+      <a class="btn btn-primary" href="#shop">Shop the collection</a>
+      <a class="btn btn-ghost" href="#policies">Read the policies</a>
+    </div>
+  </div>
+</section>
+</div><div class="page" data-page="policies">
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Plain-language policies.</h1>
+    <p class="lede">The most frustrating thing about buying handmade is not knowing what happens when something goes wrong. Here is exactly what happens.</p>
+    <nav class="toc" aria-label="On this page">
+      <a href="#policies/shipping">Shipping</a><a href="#policies/returns">Returns</a><a href="#policies/repairs">Repairs and resizing</a><a href="#policies/damage">Damaged or late</a><a href="#policies/custom">Custom orders</a><a href="#policies/candle-safety">Candle safety</a><a href="#policies/claims">Disclosures</a><a href="#policies/privacy">Privacy</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="wrap policy">
+    <h2 id="shipping">Shipping</h2>
+    <ul>
+      <li><strong>Processing time:</strong> <span data-processing>2-4 business days</span> for in-stock items, updated in the announcement bar whenever it changes. Gift sets and custom pieces add about a week; we tell you the exact date before you pay.</li>
+      <li><strong>Tracking</strong> is emailed for every order.</li>
+      <li><strong>Candles</strong> ship in a padded box and are held during extreme heat so they don't arrive melted. If a heat hold applies to your order, you get an email the same day.</li>
+      <li><strong>International:</strong> currently U.S. only. Ask us if you're elsewhere; we can usually work something out.</li>
+    </ul>
+
+    <h2 id="returns">Returns and exchanges</h2>
+    <ul>
+      <li>Unused jewelry, unburned candles, and unopened soap can be returned within <strong>30 days</strong> for a refund or exchange. Return postage is on us if we made a mistake, and on you if you changed your mind.</li>
+      <li>Bracelet doesn't fit? Skip the return. See <a href="#policies/repairs">resizing</a>; it's free.</li>
+      <li>For hygiene reasons, opened soap isn't returnable, but if you dislike it, tell us why and we'll make it right anyway.</li>
+    </ul>
+
+    <h2 id="repairs">Repairs and resizing</h2>
+    <ul>
+      <li><strong>Free resizing</strong> on any bracelet, any time in the first 60 days. After that, for the cost of postage.</li>
+      <li><strong>Free restringing</strong> if a cord breaks in the first year. Elastic is a wear item; after a year, we restring for the cost of postage.</li>
+      <li><strong>Necklace clasps and knots</strong> repaired free for life on anything we made.</li>
+      <li><strong>Candle defects</strong> (tunneling on a correctly burned first burn, a wick that drowns or won't stay lit, a jar that cracks) are replaced with no return required. Send a photo.</li>
+    </ul>
+
+    <h2 id="damage">Damaged in transit, or late</h2>
+    <ul>
+      <li>Arrived broken? Email a photo within <strong>14 days</strong> and we ship a replacement immediately. You don't need to send the broken one back.</li>
+      <li>If your order will be late, you hear from us <em>before</em> the ship date, not after. A delay is forgivable; silence isn't, and we know it.</li>
+      <li>Tracking hasn't moved in 10 days? Tell us and we open a carrier claim and reship.</li>
+    </ul>
+
+    <h2 id="custom">Custom orders</h2>
+    <ul>
+      <li>We take a small number of custom pieces each month: a stone combination, a scent for an event, a bulk order of gift sets.</li>
+      <li>You get a written description, a price, and a ship date before paying anything. Custom work is non-refundable once started, but we fix anything that doesn't match the description.</li>
+    </ul>
+
+    <h2 id="candle-safety">Candle safety</h2>
+    <p>Every candle is tested in its own vessel with its own wick and fragrance load before it is sold. Every label carries the three core warnings (burn within sight, keep away from things that catch fire, keep away from children and pets) plus wick and burn-time instructions, following the ASTM F2058 fire-safety labeling standard. Full care guidance is on the <a href="#learn/candle-care">Learn page</a>.</p>
+    <p>If a candle ever behaves unsafely (a flame over an inch and a half, heavy soot, a jar too hot to hold), extinguish it and contact us. We replace it and log the report.</p>
+
+    <h2 id="claims">Gemstone and product-claims disclosure</h2>
+    <ul>
+      <li>Every stone we sell is described with its treatment status: natural and untreated, heated, dyed, stabilized, coated, lab-created, or cultured. We follow the FTC Jewelry Guides on disclosure and state it even when not required.</li>
+      <li>We never sell imitation stones described as gemstones, or plated metal described as gold.</li>
+      <li>Our jewelry, candles, and soap are for personal enjoyment, ritual, decor, and gifting. They are <strong>not medical products</strong>. We make no claim that they diagnose, treat, cure, or prevent any condition, or that they change health, wealth, relationships, or mental-health outcomes. Any meanings we mention are traditional associations, offered as an invitation for reflection.</li>
+      <li>Soap ingredient lists follow cosmetic labeling requirements and are printed on every wrapper.</li>
+    </ul>
+
+    <h2 id="privacy">Privacy</h2>
+    <p class="muted"><em>Placeholder: have a real privacy policy generated or reviewed before running any ads. Meta and Google require a linked policy, and this site collects names and email addresses.</em></p>
+    <ul>
+      <li>We collect your name and email only when you join the letter, and your order details only when you buy.</li>
+      <li>We never sell or share your email. You can unsubscribe with one click, and we delete your data on request.</li>
+      <li>Checkout happens on our shop platform, whose privacy policy also applies to purchases.</li>
+    </ul>
+    <p style="margin-top:2.5rem">Questions about any of this? <a data-contact-link="Question about your policies" href="#">Ask a question</a>. We answer within one business day.</p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home">Ember &amp; Stone</a>
+        <p style="margin-top:.8rem">Small-batch candles, gemstone jewelry, handmade beads, and cold-process soap. Made by hand, tested before they ship, described honestly.</p>
+        <p><a data-contact-link="Hello from your website" href="#"><span data-contact-email>hello@example.com</span></a></p>
+      </div>
+      <div>
+        <h2>Shop</h2>
+        <ul>
+          <li><a href="#shop/candles">Candles</a></li>
+          <li><a href="#shop/jewelry">Jewelry and beads</a></li>
+          <li><a href="#shop/soap">Soap and bath</a></li>
+          <li><a href="#shop/sets">Ritual gift sets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="#learn/candle-care">Candle care and safety</a></li>
+          <li><a href="#learn/gemstones">Gemstone honesty guide</a></li>
+          <li><a href="#learn/jewelry-care">Jewelry and bead care</a></li>
+          <li><a href="#learn/soap-care">Soap care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Studio</h2>
+        <ul>
+          <li><a href="#about">Our story</a></li>
+          <li><a href="#community">The Handmade Ritual Circle</a></li>
+          <li><a href="#policies">Shipping, returns and repairs</a></li>
+          <li><a href="#policies/privacy">Privacy</a></li>
+          <li><a data-social-link href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Ember &amp; Stone Studio. Handmade in small batches.</span>
+      <span>For personal ritual, gifting, and enjoyment. Not medical products; no health claims.</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+<script>
+document.body.setAttribute("data-spa", "");
+/* ============================================================
+   EMBER & STONE STUDIO - shared behaviour
+   Edit the CONFIG block; nothing else needs to change.
+   ============================================================ */
+const CONFIG = {
+  // Where every "Buy" button sends people. Etsy or Shopify handles checkout
+  // and reviews; this site handles trust, education, and community.
+  shopUrl: "https://www.etsy.com/shop/YOUR-SHOP-NAME",
+  // Brevo (or any email tool) form POST URL. Leave blank for demo mode.
+  emailFormAction: "",
+  // Private Facebook Group link for The Handmade Ritual Circle.
+  groupUrl: "https://www.facebook.com/groups/YOUR-GROUP",
+  // Your one visual channel. Instagram or TikTok, not both.
+  socialUrl: "https://www.instagram.com/YOUR-HANDLE",
+  socialLabel: "Instagram",
+  // Where customer questions go. Reply within a business day; the site promises it.
+  contactEmail: "hello@example.com",
+  // Honest processing time, shown in the announcement bar and every listing.
+  processingTime: "2-4 business days",
+};
+
+(function () {
+  const spa = document.body.hasAttribute("data-spa");
+
+  // ---- Single-file preview: hash routing (#shop, #learn/candle-care) ----
+  function route() {
+    if (!spa) return;
+    const raw = location.hash.replace(/^#/, "");
+    const [pg, sub] = raw.split("/");
+    const name = pg || "home";
+    const pages = document.querySelectorAll(".page");
+    let found = false;
+    pages.forEach((p) => { const on = p.dataset.page === name; p.classList.toggle("active", on); if (on) found = true; });
+    if (!found) { pages.forEach((p) => p.classList.toggle("active", p.dataset.page === "home")); }
+    document.querySelectorAll(".nav-links a[data-page]").forEach((a) => {
+      if (a.dataset.page === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.querySelector(".nav-links")?.classList.remove("open");
+    if (sub) {
+      const el = document.getElementById(sub);
+      if (el && !el.closest(".filter-bar")) { requestAnimationFrame(() => el.scrollIntoView({ block: "start" })); return; }
+    }
+    window.scrollTo({ top: 0 });
+  }
+
+  // ---- Fill CONFIG-driven links ----
+  document.querySelectorAll("[data-shop-link]").forEach((a) => {
+    const item = a.getAttribute("data-shop-link");
+    a.href = item ? `${CONFIG.shopUrl}?ref=site&item=${encodeURIComponent(item)}` : CONFIG.shopUrl;
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  document.querySelectorAll("[data-group-link]").forEach((a) => { a.href = CONFIG.groupUrl; a.target = "_blank"; a.rel = "noopener"; });
+  document.querySelectorAll("[data-social-link]").forEach((a) => { a.href = CONFIG.socialUrl; a.target = "_blank"; a.rel = "noopener"; a.textContent = CONFIG.socialLabel; });
+  document.querySelectorAll("[data-contact-link]").forEach((a) => {
+    const subject = a.getAttribute("data-contact-link") || "Question about an item";
+    a.href = `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}`;
+  });
+  document.querySelectorAll("[data-contact-email]").forEach((el) => { el.textContent = CONFIG.contactEmail; });
+  document.querySelectorAll("[data-processing]").forEach((el) => { el.textContent = CONFIG.processingTime; });
+
+  // ---- Mobile nav ----
+  const toggle = document.querySelector(".nav-toggle");
+  const links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+
+  // ---- Shop filters ----
+  const filters = document.querySelectorAll(".filter-bar button");
+  const products = document.querySelectorAll("[data-collection]");
+  function currentSub() {
+    const raw = location.hash.replace(/^#/, "");
+    return spa ? (raw.split("/")[1] || "") : raw;
+  }
+  function applyFilter(key) {
+    filters.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === key)));
+    products.forEach((p) => { p.hidden = key !== "all" && p.dataset.collection !== key; });
+    const count = [...products].filter((p) => !p.hidden).length;
+    const live = document.getElementById("filter-status");
+    if (live) live.textContent = `${count} item${count === 1 ? "" : "s"} shown`;
+  }
+  if (filters.length && products.length) {
+    filters.forEach((b) => b.addEventListener("click", () => {
+      applyFilter(b.dataset.filter);
+      history.replaceState(null, "", spa ? `#shop/${b.dataset.filter}` : `#${b.dataset.filter}`);
+    }));
+    const syncFilter = () => {
+      const key = currentSub();
+      applyFilter([...filters].some((b) => b.dataset.filter === key) ? key : "all");
+    };
+    syncFilter();
+    window.addEventListener("hashchange", syncFilter);
+  }
+
+  // ---- Email / community forms ----
+  document.querySelectorAll("form[data-email-form]").forEach((form) => {
+    const msg = form.querySelector(".form-msg");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = form.querySelector('input[type="email"]');
+      const name = form.querySelector('input[name="FIRSTNAME"]');
+      let ok = true;
+      [email, name].forEach((f) => { if (f) f.removeAttribute("aria-invalid"); });
+      if (name && !name.value.trim()) { name.setAttribute("aria-invalid", "true"); ok = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { if (email) email.setAttribute("aria-invalid", "true"); ok = false; }
+      if (!ok) { msg.className = "form-msg error"; msg.textContent = "Add your first name and a valid email address to continue."; return; }
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Sending";
+      try {
+        if (CONFIG.emailFormAction) {
+          await fetch(CONFIG.emailFormAction, { method: "POST", mode: "no-cors", body: new FormData(form) });
+        }
+        msg.className = "form-msg ok";
+        msg.textContent = form.dataset.successText || "You're on the list. The care guide is on its way to your inbox.";
+        form.reset();
+      } catch (err) {
+        msg.className = "form-msg error";
+        msg.textContent = `That didn't send. Email ${CONFIG.contactEmail} and we'll add you by hand.`;
+      } finally { btn.disabled = false; btn.textContent = label; }
+    });
+  });
+
+  // ---- Scroll reveal: only elements below the fold at load are ever hidden ----
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+    const arm = () => {
+      document.querySelectorAll("[data-reveal]:not(.will-reveal):not(.in)").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top > window.innerHeight) { el.classList.add("will-reveal"); io.observe(el); }
+      });
+    };
+    arm();
+    if (spa) window.addEventListener("hashchange", () => setTimeout(arm, 50));
+  }
+
+  // ---- Footer year ----
+  document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  if (spa) { route(); window.addEventListener("hashchange", route); }
+})();
+
+</script>
+
+</body>
+</html>
