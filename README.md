@@ -30,3 +30,7 @@ Add a **privacy policy page** and link it from the footer. The form collects nam
 
 - **No price, no cohort pitch.** This page sells one thing only: registering for the free training. The $497 offer stack belongs in the webinar itself.
 - **No replay promise.** "A replay is not guaranteed" is intentional show-up psychology — don't soften it.
+
+## Also in this repo
+
+- `handmade-ritual/` — a separate six-page static site for a handmade candles, gemstone jewelry, beads, and soap brand (Ember & Stone Studio). See `handmade-ritual/README.md`.
