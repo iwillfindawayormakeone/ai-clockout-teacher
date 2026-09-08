@@ -16,9 +16,11 @@ Built against the anti-slop frontend checklist: no em-dashes, at most one eyebro
 
 Type: Bricolage Grotesque (display) and Geist (body), both from Google Fonts. Shape rule: buttons are pills, containers are 14px, inputs are 8px.
 
-## Photos to add
+## Photos
 
-There is no photography yet; every image is a tonal slot with a caption starting "Photo to add:". The captions say exactly what to shoot. In priority order:
+`img/` holds 20 AI-generated studio renderings (made with vidIQ's image generator, 22 credits each) so the preview looks finished: a hero, one square per product, the workbench shot, and two care-guide shots. The collection tiles reuse product photos. They are placeholders in the honest sense: before anything goes on sale, each product image must be a photograph of the actual item, because "product differs from photos" is one of the top complaints in the research. To swap one, replace the file in `img/` with the same name (900 by 900 for products, 900 by 1125 for the hero, 1200 by 900 for the rest) and rebuild or edit the page.
+
+The shot list, in priority order:
 
 1. Home hero: a lit candle, one bracelet, and a bar of soap together on linen, daylight, 4:5.
 2. Four collection tiles: candles, jewelry, soap, gift sets (4:3 and 3:4).
@@ -26,7 +28,6 @@ There is no photography yet; every image is a tonal slot with a caption starting
 4. About page: you at the workbench, mid-task.
 5. Learn page: a bar on a soap dish; hands rolling a bracelet on.
 
-To place a photo, replace the `<div class="photo ...">` with `<img src="img/name.jpg" alt="...">` and delete the "Photo to add" caption. Generated images from an image tool are fine for a preview; real photos of the real items are required before selling, because "product differs from photos" is one of the top complaints in the research.
 
 It is built directly from the research on what makes handmade spiritual-product shops succeed or fail:
 
@@ -64,7 +65,7 @@ Everything configurable is in the `CONFIG` block at the top of `site.js`:
 
 Then, in the HTML:
 
-6. **Photos.** See "Photos to add" above. This is the single most important swap.
+6. **Photos.** Replace the renderings in `img/` with photographs of the real items. This is the single most important swap.
 7. **Your story** on `about.html` , the placeholder paragraphs are marked in italics.
 8. **Reviews** on `index.html` , the three quotes are labelled "Sample review". Replace with real, permission-granted ones.
 9. **Markets table** on `community.html`.
