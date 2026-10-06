@@ -2,8 +2,8 @@
   "name": "Find a Way or Make One",
   "legalName": "Find a Way or Make One, LLC",
   "owner": "JD",
-  "tagline": "I teach people how to do hard things by doing them first myself.",
-  "description": "JD is a music teacher and life coach who does the hard thing first, then teaches it. Coaching, learning how to learn, and honest notes on things he has tried.",
+  "tagline": "I teach people how to teach.",
+  "description": "JD teaches people how to teach. Curriculum for schools, clinics and workshops, coaching, and honest notes on everything he tries so he can teach it better.",
   "baseUrl": "https://findawayormakeone.vercel.app",
   "associateTag": "REPLACE-WITH-YOUR-TAG-20",
   "storefrontUrl": "",
@@ -16,6 +16,6 @@
     "Recording & video",
     "Desk & everyday"
   ],
-  "seoTitle": "Find a Way or Make One | JD, teacher and life coach",
+  "seoTitle": "Find a Way or Make One | JD teaches people how to teach",
   "googleSiteVerification": ""
 }

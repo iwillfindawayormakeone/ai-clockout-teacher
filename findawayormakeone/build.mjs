@@ -83,7 +83,7 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
     <a class="wordmark" href="/"><span class="mark" aria-hidden="true">F</span>${esc(site.name)}</a>
     <div class="nav-links">
       <a href="/picks/" ${current === "picks" ? 'aria-current="page"' : ""}>Things I've tried</a>
-      <a href="/#coaching" class="hide-sm">Coaching</a>
+      <a href="/#work" class="hide-sm">Teaching</a>
       ${storefront}
       <a href="/disclosure/" ${current === "disclosure" ? 'aria-current="page"' : ""}>Disclosure</a>
     </div>
@@ -100,7 +100,7 @@ ${body}
       <div>
         <div class="links">
           <a href="/picks/">Things I've tried</a>
-          <a href="/#coaching">Coaching</a>
+          <a href="/#work">Teaching and coaching</a>
           <a href="/#how">How I work</a>
           <a href="/disclosure/">Affiliate disclosure</a>
           ${site.storefrontUrl ? `<a href="${esc(site.storefrontUrl)}" target="_blank" rel="noopener">Amazon storefront</a>` : ""}
@@ -145,10 +145,10 @@ function home() {
   <div class="wrap hero-grid">
     <div>
       <h1 class="rise" style="max-width:12ch">Find a way <em>or make one.</em></h1>
-      <p class="lede rise d1">I teach people how to do hard things by doing them first myself. Teacher, musician, life coach, and the one-person LLC behind this site.</p>
+      <p class="lede rise d1">I teach people how to teach. Everything I try, I try so I can teach it better, and I study how I learn it on the way.</p>
       <div class="ctas rise d2">
         <a class="btn" href="/picks/">Things I've tried <span class="ico" aria-hidden="true">&rarr;</span></a>
-        <a class="btn ghost" href="#coaching">Coaching <span class="ico" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="#work">Teaching and coaching <span class="ico" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
     <div class="stack rise d2" aria-label="Latest things I've tried">${stack}</div>
@@ -163,21 +163,21 @@ function home() {
       </div>
       <div class="reveal about">
         <h2>The rule I run everything by</h2>
-        <p>Before I teach something, I go do it. Learn the instrument. Build the website. Read the whole book, not the summary. Buy the thing and use it for a month. Then I teach it while the scrapes are still fresh, so you get the real version instead of the brochure.</p>
-        <p>${esc(site.legalName)} is one person: me, JD. I teach music in a public school, I coach people one on one, and I keep notes on everything I try so the next person does not have to start from zero.</p>
+        <p>Before I teach something, I go do it. Learn the instrument. Build the website. Read the whole book, not the summary. Buy the thing and use it for a month. While I do it, I watch how I learn it: where I got stuck, what finally made it click, what I would skip next time. That is the real material. Then I teach it while the scrapes are still fresh.</p>
+        <p>${esc(site.legalName)} is one person: me, JD. I teach music in a public school. I have written curriculum for schools, and I have been paid to coach, run clinics, and lead workshops. The subject changes. The craft of teaching it is the point.</p>
         <p>The name is the whole philosophy. If the path is there, find it. If it is not, make one.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="coaching">
+<section id="work">
   <div class="wrap">
     <div class="section-head reveal"><h2>What I do</h2></div>
     <div class="steps reveal">
-      <div><h3>Life coaching</h3><p>One on one, for people who know what they want and keep not doing it. We find the way that fits your actual life, or we build one. ${site.contactEmail ? `Reach me at <a href="mailto:${esc(site.contactEmail)}" style="text-decoration:underline">${esc(site.contactEmail)}</a>.` : "Details and how to book are coming soon."}</p></div>
-      <div><h3>Teaching how to learn</h3><p>Music is the subject. Learning how to learn is what I am really teaching: practice that sticks, habits that survive a bad week, and how to get unstuck without quitting.</p></div>
-      <div><h3>Things I've tried</h3><p>Products I bought with my own money and used, with honest notes on who should buy them and who should skip them. Some links pay me a small commission. Every one says so. <a href="/picks/" style="text-decoration:underline">See the list</a>.</p></div>
+      <div><h3>Teaching teachers</h3><p>Curriculum for schools, clinics, workshops, and professional development. Pedagogy is the center of everything here: not just what to teach, but how a person actually learns it, and how to tell when they have. ${site.contactEmail ? `Reach me at <a href="mailto:${esc(site.contactEmail)}" style="text-decoration:underline">${esc(site.contactEmail)}</a>.` : "Booking details are coming soon."}</p></div>
+      <div><h3>Coaching</h3><p>One on one, for people who know what they want and keep not doing it. We find the way that fits your actual life, or we make one. Same method as the classroom: short lessons, real reps, honest feedback.</p></div>
+      <div><h3>Things I've tried</h3><p>Products I bought and used while learning something I meant to teach, with honest notes on who should buy them and who should skip them. Some links pay me a small commission. Every one says so. <a href="/picks/" style="text-decoration:underline">See the list</a>.</p></div>
     </div>
   </div>
 </section>
@@ -195,7 +195,7 @@ function home() {
   return layout({ title: "", fullTitle: site.seoTitle || site.name, desc: site.description, canonical: abs("/"), body, ogImage: picks[0]?.images[0]?.src, current: "home",
     jsonld: [
       { "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: abs("/"), potentialAction: { "@type": "SearchAction", target: `${abs("/picks/")}?q={search_term_string}`, "query-input": "required name=search_term_string" } },
-      { "@context": "https://schema.org", "@type": "Person", name: site.owner, url: abs("/"), jobTitle: "Teacher and life coach", worksFor: { "@type": "Organization", name: site.legalName, url: abs("/") } }
+      { "@context": "https://schema.org", "@type": "Person", name: site.owner, url: abs("/"), jobTitle: "Music teacher, curriculum writer, and coach", knowsAbout: ["Pedagogy", "Music education", "Curriculum design", "Learning how to learn"], worksFor: { "@type": "Organization", name: site.legalName, url: abs("/") } }
     ] });
 }
 
