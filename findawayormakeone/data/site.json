@@ -1,0 +1,19 @@
+{
+  "name": "Find a Way or Make One",
+  "legalName": "Find a Way or Make One, LLC",
+  "owner": "JD",
+  "tagline": "Stuff I actually use, and would tell a friend to buy.",
+  "description": "Honest picks from a music teacher and lifelong learner. Every product here has been on JD's desk or in his classroom first. Affiliate links, clearly labeled.",
+  "baseUrl": "https://findawayormakeone.vercel.app",
+  "associateTag": "REPLACE-WITH-YOUR-TAG-20",
+  "storefrontUrl": "",
+  "contactEmail": "",
+  "categories": [
+    "Kids & homework",
+    "Piano & keyboard",
+    "Learning how to learn",
+    "Teaching & classroom",
+    "Recording & video",
+    "Desk & everyday"
+  ]
+}
