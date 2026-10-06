@@ -16,6 +16,9 @@ const out = path.join(root, "site");
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 fs.cpSync(path.join(root, "public"), out, { recursive: true });
+const css = fs.readFileSync(path.join(root, "public/styles.css"), "utf8")
+  .replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").replace(/\s*([{}:;,>])\s*/g, "$1").replace(/;}/g, "}").trim();
+const hasPortrait = fs.existsSync(path.join(root, "public/img/jd.jpg"));
 
 const write = (rel, html) => {
   const file = path.join(out, rel);
@@ -28,6 +31,13 @@ const buyUrl = (p) => (p.url ? p.url : `https://www.amazon.com/dp/${p.asin}/?tag
 const month = (d) => new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", year: "numeric" });
 const pickPath = (p) => `/picks/${p.slug}/`;
 const hay = (p) => [p.title, p.short, p.category, ...(p.tags || [])].join(" ");
+const slugify = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const catPath = (c) => `/category/${slugify(c)}/`;
+// Search snippet: the one-liner plus what the page delivers, kept near 155 characters.
+const pickDesc = (p) => {
+  const tail = " Why I bought it, what to know before you buy, and who should skip it.";
+  return p.short.length + tail.length <= 160 ? p.short + tail : p.short;
+};
 
 const DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases.";
 const AFF_LINE = "Affiliate link. If you buy through it, I earn a small commission and you pay the same price.";
@@ -35,8 +45,8 @@ const AFF_LINE = "Affiliate link. If you buy through it, I earn a small commissi
 const favicon = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1f5a3e"/><text x="32" y="44" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="34" fill="#f4f5f0">F</text></svg>`)}`;
 
 /* ---------- layout ---------- */
-function layout({ title, desc, canonical, body, ogImage, jsonld = [], current = "", bodyClass = "", noindex = false }) {
-  const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${site.tagline}`;
+function layout({ title, desc, canonical, body, ogImage, jsonld = [], current = "", bodyClass = "", noindex = false, fullTitle, ogType = "website", published }) {
+  fullTitle = fullTitle || (title ? `${title} | ${site.name}` : site.name);
   const storefront = site.storefrontUrl ? `<a href="${esc(site.storefrontUrl)}" target="_blank" rel="noopener" class="hide-sm">Amazon storefront</a>` : "";
   return `<!DOCTYPE html>
 <html lang="en">
@@ -46,8 +56,11 @@ function layout({ title, desc, canonical, body, ogImage, jsonld = [], current = 
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${esc(canonical)}">
-${noindex ? '<meta name="robots" content="noindex">' : ""}
-<meta property="og:type" content="website">
+<meta name="robots" content="${noindex ? "noindex" : "index, follow, max-image-preview:large"}">
+${site.googleSiteVerification ? `<meta name="google-site-verification" content="${esc(site.googleSiteVerification)}">` : ""}
+<meta property="og:type" content="${ogType}">
+${published ? `<meta property="article:published_time" content="${published}">` : ""}
+<meta name="author" content="${esc(site.owner)}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:title" content="${esc(title || site.name)}">
 <meta property="og:description" content="${esc(desc)}">
@@ -60,7 +73,7 @@ ${ogImage ? `<meta property="og:image" content="${esc(abs(ogImage))}">\n<meta na
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/styles.css">
+<style>${css}</style>
 <script src="/app.js" defer></script>
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n")}
 </head>
@@ -102,13 +115,13 @@ ${body}
 }
 
 /* ---------- components ---------- */
-function card(p, i, { reveal = true } = {}) {
+function card(p, i, { reveal = true, h = "h3" } = {}) {
   const size = i === 0 ? "lg" : i === 1 ? "md" : "";
   const img = p.images[0];
   return `<a class="card ${size} ${reveal ? "reveal" : ""}" href="${pickPath(p)}" data-category="${esc(p.category)}" data-hay="${esc(hay(p))}">
   <div class="frame"><img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="${i < 2 ? "eager" : "lazy"}" width="1200" height="900"></div>
   <div class="meta"><span class="pill">${esc(p.category)}</span>${p.sample ? '<span class="pill sample">Example pick</span>' : ""}</div>
-  <h3>${esc(p.title)}</h3>
+  <${h}>${esc(p.title)}</${h}>
   <p>${esc(p.short)}</p>
   <span class="more">Read why &rarr;</span>
 </a>`;
@@ -125,7 +138,7 @@ function searchForm(action = "/") {
 /* ---------- home ---------- */
 function home() {
   const stack = picks.slice(0, 3).map((p) => `<a href="${pickPath(p)}" aria-label="${esc(p.title)}"><img src="${esc(p.images[0].src)}" alt="" width="800" height="600" loading="eager"></a>`).join("");
-  const chips = site.categories.map((c) => `<a href="/?cat=${encodeURIComponent(c)}" data-cat="${esc(c)}">${esc(c)}</a>`).join("");
+  const chips = site.categories.map((c) => `<a href="${catPath(c)}" data-cat="${esc(c)}">${esc(c)}</a>`).join("");
   const body = `
 <header class="hero">
   <div class="wrap hero-grid">
@@ -167,7 +180,7 @@ function home() {
 <section id="about" class="about">
   <div class="wrap about-grid">
     <div class="portrait reveal">
-      <div class="ph" data-portrait data-src="/img/jd.jpg" data-alt="JD, the person behind Find a Way or Make One">Drop <b>&nbsp;img/jd.jpg&nbsp;</b> in the folder and this becomes your photo.</div>
+      ${hasPortrait ? '<img src="/img/jd.jpg" alt="JD, the person behind Find a Way or Make One" width="600" height="750" loading="lazy">' : '<div class="ph">Drop <b>&nbsp;img/jd.jpg&nbsp;</b> in the folder and this becomes your photo.</div>'}
     </div>
     <div class="reveal">
       <h2>Hi, I'm JD.</h2>
@@ -177,8 +190,11 @@ function home() {
     </div>
   </div>
 </section>`;
-  return layout({ title: "", desc: site.description, canonical: abs("/"), body, ogImage: picks[0]?.images[0]?.src, current: "picks",
-    jsonld: [{ "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: abs("/"), potentialAction: { "@type": "SearchAction", target: `${abs("/")}?q={search_term_string}`, "query-input": "required name=search_term_string" } }] });
+  return layout({ title: "", fullTitle: site.seoTitle || site.name, desc: site.description, canonical: abs("/"), body, ogImage: picks[0]?.images[0]?.src, current: "picks",
+    jsonld: [
+      { "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: abs("/"), potentialAction: { "@type": "SearchAction", target: `${abs("/")}?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+      { "@context": "https://schema.org", "@type": "Person", name: site.owner, url: abs("/#about"), jobTitle: "Music teacher", worksFor: { "@type": "Organization", name: site.legalName } }
+    ] });
 }
 
 /* ---------- pick page ---------- */
@@ -191,7 +207,7 @@ function pickPage(p) {
 <header class="pick-head">
   <div class="wrap">
     <div class="crumb"><a href="/#picks">&larr; All picks</a></div>
-    <div class="meta"><span class="pill">${esc(p.category)}</span><span class="pill muted">Added ${month(p.date)}</span>${p.sample ? '<span class="pill sample">Example pick: placeholder photos and notes</span>' : ""}</div>
+    <div class="meta"><a class="pill" href="${catPath(p.category)}">${esc(p.category)}</a><span class="pill muted">Added ${month(p.date)}</span>${p.sample ? '<span class="pill sample">Example pick: placeholder photos and notes</span>' : ""}</div>
     <h1>${esc(p.title)}</h1>
     <p class="short">${esc(p.short)}</p>
   </div>
@@ -234,9 +250,10 @@ function pickPage(p) {
       review: { "@type": "Review", author: { "@type": "Person", name: site.owner }, datePublished: p.date, reviewBody: p.quickTake.join(" "), reviewRating: { "@type": "Rating", ratingValue: p.rating, bestRating: 5 } } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Picks", item: abs("/#picks") },
-      { "@type": "ListItem", position: 2, name: p.title, item: url } ] }
+      { "@type": "ListItem", position: 2, name: p.category, item: abs(catPath(p.category)) },
+      { "@type": "ListItem", position: 3, name: p.title, item: url } ] }
   ];
-  return layout({ title: p.title, desc: p.short, canonical: url, body, ogImage: p.images[0].src, jsonld, bodyClass: "has-buybar", noindex: !!p.sample });
+  return layout({ title: p.seoTitle || p.title, desc: p.seoDescription || pickDesc(p), canonical: url, body, ogImage: p.images[0].src, jsonld, bodyClass: "has-buybar", noindex: !!p.sample, ogType: "article", published: p.date });
 }
 
 /* ---------- disclosure ---------- */
@@ -262,6 +279,29 @@ function disclosure() {
   return layout({ title: "Affiliate disclosure", desc: "How Find a Way or Make One makes money, and what that does and does not change about the picks.", canonical: abs("/disclosure/"), body, current: "disclosure" });
 }
 
+/* ---------- category pages ---------- */
+function categoryPage(c) {
+  const list = picks.filter((p) => p.category === c);
+  const url = abs(catPath(c));
+  const body = `
+<header class="pick-head">
+  <div class="wrap">
+    <div class="crumb"><a href="/#picks">&larr; All picks</a></div>
+    <h1>${esc(c)}</h1>
+    <p class="short">${list.length === 1 ? "One pick" : list.length + " picks"} in this category. Everything here was bought and used first; each page says who should skip it.</p>
+  </div>
+</header>
+<section id="picks" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid" data-picks>${list.map((p, i) => card(p, i, { reveal: false, h: "h2" })).join("")}</div>
+    <div class="empty" data-empty><b>Nothing here yet.</b>New picks get added as I find them.</div>
+  </div>
+</section>`;
+  const real = list.some((p) => !p.sample);
+  return layout({ noindex: !real, title: `${c} picks`, desc: `${c}: honest Amazon picks from a music teacher, with who should buy each one and who should skip it.`, canonical: url, body, ogImage: list[0]?.images[0]?.src, current: "picks",
+    jsonld: [{ "@context": "https://schema.org", "@type": "CollectionPage", name: `${c} picks`, url, isPartOf: { "@type": "WebSite", name: site.name, url: abs("/") } }] });
+}
+
 function notFound() {
   const body = `<main class="page"><div class="wrap prose"><h1>That page is not here.</h1><p>The pick may have moved or never existed. <a href="/#picks" style="text-decoration:underline">See all picks</a>.</p></div></main>`;
   return layout({ title: "Page not found", desc: "Page not found.", canonical: abs("/404"), body, noindex: true });
@@ -272,8 +312,9 @@ write("index.html", home());
 write("disclosure/index.html", disclosure());
 write("404.html", notFound());
 for (const p of picks) write(`picks/${p.slug}/index.html`, pickPage(p));
+for (const c of site.categories) write(`category/${slugify(c)}/index.html`, categoryPage(c));
 write("search.json", JSON.stringify(picks.map((p) => ({ slug: p.slug, title: p.title, short: p.short, category: p.category, tags: p.tags, url: pickPath(p), image: p.images[0].src }))));
-const urls = [abs("/"), abs("/disclosure/"), ...picks.filter((p) => !p.sample).map((p) => abs(pickPath(p)))];
+const urls = [abs("/"), abs("/disclosure/"), ...site.categories.filter((c) => picks.some((p) => p.category === c && !p.sample)).map((c) => abs(catPath(c))), ...picks.filter((p) => !p.sample).map((p) => abs(pickPath(p)))];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${esc(u)}</loc></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${abs("/sitemap.xml")}\n`);
 

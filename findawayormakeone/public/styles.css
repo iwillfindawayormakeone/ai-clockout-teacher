@@ -9,7 +9,7 @@
   --surface: #fbfbf8;
   --ink: #17211b;
   --ink-2: #4e5a53;
-  --ink-3: #7a857e;
+  --ink-3: #5c6761;
   --line: rgba(23, 33, 27, 0.10);
   --accent: #1f5a3e;
   --accent-2: #2a7452;
@@ -192,8 +192,8 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 .card:hover .frame { transform: translateY(-4px); box-shadow: var(--shadow); }
 .card:hover .frame img { transform: scale(1.025); }
 .card .meta { display: flex; gap: 8px; align-items: center; margin: 16px 0 8px; flex-wrap: wrap; }
-.card h3 { font-size: 1.22rem; margin-bottom: 6px; }
-.card.lg h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
+.card h3, .card h2 { font-size: 1.22rem; margin-bottom: 6px; }
+.card.lg h3, .card.lg h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
 .card p { font-size: 0.96rem; }
 .card .more { margin-top: auto; padding-top: 12px; font-weight: 700; font-size: 0.9rem; color: var(--accent); }
 @media (prefers-color-scheme: dark) { .card .more { color: var(--accent-2); } }

@@ -102,19 +102,6 @@
     }
   }
 
-  // ---- optional photo auto-upgrade: if img/jd.jpg exists, swap the portrait placeholder ----
-  var ph = document.querySelector("[data-portrait]");
-  if (ph) {
-    var test = new Image();
-    test.onload = function () {
-      var img = document.createElement("img");
-      img.src = test.src; img.alt = ph.getAttribute("data-alt") || "";
-      img.width = 600; img.height = 750;
-      ph.replaceWith(img);
-    };
-    test.src = ph.getAttribute("data-src");
-  }
-
   var y = document.querySelector("[data-year]");
   if (y) y.textContent = new Date().getFullYear();
 })();
