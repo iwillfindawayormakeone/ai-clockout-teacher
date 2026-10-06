@@ -30,7 +30,7 @@ const abs = (u) => (/^https?:\/\//.test(u) ? u : site.baseUrl.replace(/\/$/, "")
 const buyUrl = (p) => (p.url ? p.url : `https://www.amazon.com/dp/${p.asin}/?tag=${site.associateTag}`);
 const month = (d) => new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", year: "numeric" });
 const pickPath = (p) => `/picks/${p.slug}/`;
-const hay = (p) => [p.title, p.short, p.category, ...(p.tags || [])].join(" ");
+const hay = (p) => [p.title, p.product, p.short, p.category, ...(p.tags || [])].join(" ");
 const slugify = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const catPath = (c) => `/category/${slugify(c)}/`;
 // Search snippet: the one-liner plus what the page delivers, kept near 155 characters.
@@ -82,8 +82,8 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
   <div class="wrap">
     <a class="wordmark" href="/"><span class="mark" aria-hidden="true">F</span>${esc(site.name)}</a>
     <div class="nav-links">
-      <a href="/#picks" ${current === "picks" ? 'aria-current="page"' : ""}>Picks</a>
-      <a href="/#how" class="hide-sm">How I pick</a>
+      <a href="/picks/" ${current === "picks" ? 'aria-current="page"' : ""}>Things I've tried</a>
+      <a href="/#coaching" class="hide-sm">Coaching</a>
       ${storefront}
       <a href="/disclosure/" ${current === "disclosure" ? 'aria-current="page"' : ""}>Disclosure</a>
     </div>
@@ -99,9 +99,9 @@ ${body}
       </div>
       <div>
         <div class="links">
-          <a href="/#picks">All picks</a>
-          <a href="/#how">How I pick</a>
-          <a href="/#about">About JD</a>
+          <a href="/picks/">Things I've tried</a>
+          <a href="/#coaching">Coaching</a>
+          <a href="/#how">How I work</a>
           <a href="/disclosure/">Affiliate disclosure</a>
           ${site.storefrontUrl ? `<a href="${esc(site.storefrontUrl)}" target="_blank" rel="noopener">Amazon storefront</a>` : ""}
         </div>
@@ -122,6 +122,7 @@ function card(p, i, { reveal = true, h = "h3" } = {}) {
   <div class="frame"><img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="${i < 2 ? "eager" : "lazy"}" width="1200" height="900"></div>
   <div class="meta"><span class="pill">${esc(p.category)}</span>${p.sample ? '<span class="pill sample">Example pick</span>' : ""}</div>
   <${h}>${esc(p.title)}</${h}>
+  ${p.product ? `<p class="product">${esc(p.product)}</p>` : ""}
   <p>${esc(p.short)}</p>
   <span class="more">Read why &rarr;</span>
 </a>`;
@@ -135,37 +136,96 @@ function searchForm(action = "/") {
 </form>`;
 }
 
-/* ---------- home ---------- */
+/* ---------- home: the LLC's mission ---------- */
 function home() {
-  const stack = picks.slice(0, 3).map((p) => `<a href="${pickPath(p)}" aria-label="${esc(p.title)}"><img src="${esc(p.images[0].src)}" alt="" width="800" height="600" loading="eager"></a>`).join("");
-  const chips = site.categories.map((c) => `<a href="${catPath(c)}" data-cat="${esc(c)}">${esc(c)}</a>`).join("");
+  const latest = picks.slice(0, 3);
+  const stack = latest.map((p) => `<a href="${pickPath(p)}" aria-label="${esc(p.title)}"><img src="${esc(p.images[0].src)}" alt="" width="800" height="600" loading="eager"></a>`).join("");
   const body = `
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1 class="rise">Stuff I actually use, and would tell a <em>friend</em> to buy.</h1>
-      <p class="lede rise d1">Teacher, musician, lifelong learner. Every pick here has been on my desk or in my classroom first.</p>
-      <div class="rise d2">${searchForm("/")}</div>
-      <div class="chips rise d3">${chips}</div>
+      <h1 class="rise" style="max-width:12ch">Find a way <em>or make one.</em></h1>
+      <p class="lede rise d1">I teach people how to do hard things by doing them first myself. Teacher, musician, life coach, and the one-person LLC behind this site.</p>
+      <div class="ctas rise d2">
+        <a class="btn" href="/picks/">Things I've tried <span class="ico" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="#coaching">Coaching <span class="ico" aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
-    <div class="stack rise d2" aria-label="Latest picks">${stack}</div>
+    <div class="stack rise d2" aria-label="Latest things I've tried">${stack}</div>
   </div>
 </header>
 
-<section id="picks">
+<section id="how" class="band">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait reveal">
+        ${hasPortrait ? '<img src="/img/jd.jpg" alt="JD, the person behind Find a Way or Make One" width="600" height="750" loading="lazy">' : '<div class="ph">Drop <b>&nbsp;img/jd.jpg&nbsp;</b> in the folder and this becomes your photo.</div>'}
+      </div>
+      <div class="reveal about">
+        <h2>The rule I run everything by</h2>
+        <p>Before I teach something, I go do it. Learn the instrument. Build the website. Read the whole book, not the summary. Buy the thing and use it for a month. Then I teach it while the scrapes are still fresh, so you get the real version instead of the brochure.</p>
+        <p>${esc(site.legalName)} is one person: me, JD. I teach music in a public school, I coach people one on one, and I keep notes on everything I try so the next person does not have to start from zero.</p>
+        <p>The name is the whole philosophy. If the path is there, find it. If it is not, make one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="coaching">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>What I do</h2></div>
+    <div class="steps reveal">
+      <div><h3>Life coaching</h3><p>One on one, for people who know what they want and keep not doing it. We find the way that fits your actual life, or we build one. ${site.contactEmail ? `Reach me at <a href="mailto:${esc(site.contactEmail)}" style="text-decoration:underline">${esc(site.contactEmail)}</a>.` : "Details and how to book are coming soon."}</p></div>
+      <div><h3>Teaching how to learn</h3><p>Music is the subject. Learning how to learn is what I am really teaching: practice that sticks, habits that survive a bad week, and how to get unstuck without quitting.</p></div>
+      <div><h3>Things I've tried</h3><p>Products I bought with my own money and used, with honest notes on who should buy them and who should skip them. Some links pay me a small commission. Every one says so. <a href="/picks/" style="text-decoration:underline">See the list</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="latest" class="band">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>The picks</h2>
-      <p>Newest first. Click any one for the honest version: why I bought it, what happened, and who should skip it. <span data-count>${picks.length} picks</span>.</p>
+      <h2>Latest things I've tried</h2>
+      <p>Newest first. Each one says why I bought it, what happened, and who should skip it.</p>
+    </div>
+    <div class="grid">${latest.map((p, i) => card(p, i + 2)).join("\n")}</div>
+    <p class="reveal" style="margin-top:28px"><a class="btn ghost" href="/picks/">All things I've tried <span class="ico" aria-hidden="true">&rarr;</span></a></p>
+  </div>
+</section>`;
+  return layout({ title: "", fullTitle: site.seoTitle || site.name, desc: site.description, canonical: abs("/"), body, ogImage: picks[0]?.images[0]?.src, current: "home",
+    jsonld: [
+      { "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: abs("/"), potentialAction: { "@type": "SearchAction", target: `${abs("/picks/")}?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+      { "@context": "https://schema.org", "@type": "Person", name: site.owner, url: abs("/"), jobTitle: "Teacher and life coach", worksFor: { "@type": "Organization", name: site.legalName, url: abs("/") } }
+    ] });
+}
+
+/* ---------- picks: searchable list of everything tried ---------- */
+function picksPage() {
+  const chips = site.categories.map((c) => `<a href="${catPath(c)}" data-cat="${esc(c)}">${esc(c)}</a>`).join("");
+  const body = `
+<header class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/">&larr; Home</a></div>
+    <h1 class="rise">Things I've tried, and would tell a <em>friend</em> about.</h1>
+    <p class="lede rise d1">Every product here has been on my desk, in my classroom, or in my house first. Search it, or browse by category.</p>
+    <div class="rise d2">${searchForm("/picks/")}</div>
+    <div class="chips rise d3">${chips}</div>
+  </div>
+</header>
+
+<section id="picks" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p><span data-count>${picks.length} picks</span>, newest first. Click any one for the honest version: why I bought it, what happened, and who should skip it.</p>
     </div>
     <div class="grid" data-picks>
-      ${picks.map((p, i) => card(p, i)).join("\n")}
+      ${picks.map((p, i) => card(p, i, { h: "h2" })).join("\n")}
     </div>
     <div class="empty" data-empty><b>Nothing matches that yet.</b>Try a shorter word, or clear the category. New picks get added as I find them.</div>
   </div>
 </section>
 
-<section id="how" class="band">
+<section class="band">
   <div class="wrap">
     <div class="section-head reveal"><h2>How a thing ends up on this list</h2></div>
     <div class="steps reveal">
@@ -175,26 +235,9 @@ function home() {
     </div>
     <p class="disclosure-note reveal"><b>Plain-English disclosure:</b> ${DISCLOSURE} The full version is on the <a href="/disclosure/" style="text-decoration:underline">disclosure page</a>.</p>
   </div>
-</section>
-
-<section id="about" class="about">
-  <div class="wrap about-grid">
-    <div class="portrait reveal">
-      ${hasPortrait ? '<img src="/img/jd.jpg" alt="JD, the person behind Find a Way or Make One" width="600" height="750" loading="lazy">' : '<div class="ph">Drop <b>&nbsp;img/jd.jpg&nbsp;</b> in the folder and this becomes your photo.</div>'}
-    </div>
-    <div class="reveal">
-      <h2>Hi, I'm JD.</h2>
-      <p>I teach music in a public school, run a couple of small online businesses for teachers and musicians, and I am a little obsessed with learning how to learn.</p>
-      <p>"Find a way or make one" is the rule I run my classroom by. When the school does not send the workbook home, you find one. When the pedal keeps sliding, you find one that does not. This site is where those answers go once they have passed the test: I bought it, I used it, I would buy it again.</p>
-      <p>If you want to know whether something is right for your situation, read the "who it is for" part of each pick. I try to be as honest about who should skip it as who should buy it.</p>
-    </div>
-  </div>
 </section>`;
-  return layout({ title: "", fullTitle: site.seoTitle || site.name, desc: site.description, canonical: abs("/"), body, ogImage: picks[0]?.images[0]?.src, current: "picks",
-    jsonld: [
-      { "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: abs("/"), potentialAction: { "@type": "SearchAction", target: `${abs("/")}?q={search_term_string}`, "query-input": "required name=search_term_string" } },
-      { "@context": "https://schema.org", "@type": "Person", name: site.owner, url: abs("/#about"), jobTitle: "Music teacher", worksFor: { "@type": "Organization", name: site.legalName } }
-    ] });
+  return layout({ title: "Things I've tried", desc: "Honest Amazon picks from a music teacher and life coach: what I bought, what happened, and who should skip it. Searchable, newest first.", canonical: abs("/picks/"), body, ogImage: picks[0]?.images[0]?.src, current: "picks",
+    jsonld: [{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Things I've tried", url: abs("/picks/"), isPartOf: { "@type": "WebSite", name: site.name, url: abs("/") } }] });
 }
 
 /* ---------- pick page ---------- */
@@ -206,9 +249,10 @@ function pickPage(p) {
   const body = `
 <header class="pick-head">
   <div class="wrap">
-    <div class="crumb"><a href="/#picks">&larr; All picks</a></div>
+    <div class="crumb"><a href="/picks/">&larr; Things I've tried</a></div>
     <div class="meta"><a class="pill" href="${catPath(p.category)}">${esc(p.category)}</a><span class="pill muted">Added ${month(p.date)}</span>${p.sample ? '<span class="pill sample">Example pick: placeholder photos and notes</span>' : ""}</div>
     <h1>${esc(p.title)}</h1>
+    ${p.product ? `<p class="product-line">The product: <b>${esc(p.product)}</b></p>` : ""}
     <p class="short">${esc(p.short)}</p>
   </div>
 </header>
@@ -246,14 +290,16 @@ function pickPage(p) {
 </section>
 <div class="buybar"><a class="btn" href="${esc(buyUrl(p))}" target="_blank" rel="noopener sponsored">See it on Amazon <span class="ico" aria-hidden="true">&#8599;</span></a></div>`;
   const jsonld = [
-    { "@context": "https://schema.org", "@type": "Product", name: p.title, image: p.images.map((i) => abs(i.src)), description: p.short, category: p.category,
+    { "@context": "https://schema.org", "@type": "Product", name: p.product || p.title, image: p.images.map((i) => abs(i.src)), description: p.short, category: p.category,
       review: { "@type": "Review", author: { "@type": "Person", name: site.owner }, datePublished: p.date, reviewBody: p.quickTake.join(" "), reviewRating: { "@type": "Rating", ratingValue: p.rating, bestRating: 5 } } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Picks", item: abs("/#picks") },
+      { "@type": "ListItem", position: 1, name: "Things I've tried", item: abs("/picks/") },
       { "@type": "ListItem", position: 2, name: p.category, item: abs(catPath(p.category)) },
       { "@type": "ListItem", position: 3, name: p.title, item: url } ] }
   ];
-  return layout({ title: p.seoTitle || p.title, desc: p.seoDescription || pickDesc(p), canonical: url, body, ogImage: p.images[0].src, jsonld, bodyClass: "has-buybar", noindex: !!p.sample, ogType: "article", published: p.date });
+  const combo = p.product && p.product !== p.title ? `${p.title}: ${p.product}` : p.title;
+  const fullTitle = p.seoTitle || (combo.length <= 38 ? `${combo} | ${site.name}` : combo);
+  return layout({ title: p.title, fullTitle, desc: p.seoDescription || pickDesc(p), canonical: url, body, ogImage: p.images[0].src, jsonld, bodyClass: "has-buybar", noindex: !!p.sample, ogType: "article", published: p.date });
 }
 
 /* ---------- disclosure ---------- */
@@ -286,7 +332,7 @@ function categoryPage(c) {
   const body = `
 <header class="pick-head">
   <div class="wrap">
-    <div class="crumb"><a href="/#picks">&larr; All picks</a></div>
+    <div class="crumb"><a href="/picks/">&larr; Things I've tried</a></div>
     <h1>${esc(c)}</h1>
     <p class="short">${list.length === 1 ? "One pick" : list.length + " picks"} in this category. Everything here was bought and used first; each page says who should skip it.</p>
   </div>
@@ -310,11 +356,12 @@ function notFound() {
 /* ---------- write everything ---------- */
 write("index.html", home());
 write("disclosure/index.html", disclosure());
+write("picks/index.html", picksPage());
 write("404.html", notFound());
 for (const p of picks) write(`picks/${p.slug}/index.html`, pickPage(p));
 for (const c of site.categories) write(`category/${slugify(c)}/index.html`, categoryPage(c));
 write("search.json", JSON.stringify(picks.map((p) => ({ slug: p.slug, title: p.title, short: p.short, category: p.category, tags: p.tags, url: pickPath(p), image: p.images[0].src }))));
-const urls = [abs("/"), abs("/disclosure/"), ...site.categories.filter((c) => picks.some((p) => p.category === c && !p.sample)).map((c) => abs(catPath(c))), ...picks.filter((p) => !p.sample).map((p) => abs(pickPath(p)))];
+const urls = [abs("/"), abs("/picks/"), abs("/disclosure/"), ...site.categories.filter((c) => picks.some((p) => p.category === c && !p.sample)).map((c) => abs(catPath(c))), ...picks.filter((p) => !p.sample).map((p) => abs(pickPath(p)))];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${esc(u)}</loc></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${abs("/sitemap.xml")}\n`);
 
