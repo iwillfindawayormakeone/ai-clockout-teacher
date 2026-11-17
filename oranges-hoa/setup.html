@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup Notes</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16243A;--soft:#3B4A62;--muted:#586375;--paper:#F8F7F4;--card:#fff;--line:#D5DAE0;--accent:#B5481A;--brand:#1E4E7A;--mist:#EEF1F4}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.wrap{max-width:760px;margin:0 auto;padding:36px max(20px,env(safe-area-inset-right,0px)) 90px max(20px,env(safe-area-inset-left,0px))}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;color:var(--brand);font-weight:700;margin-bottom:18px}
+.k{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+h1{font-size:clamp(2.1rem,6vw,3.2rem);margin-bottom:12px}
+.lead{font-size:1.15rem;color:var(--soft);margin-bottom:30px}
+h2{font-size:1.6rem;margin:38px 0 14px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+.card h3{font-size:1.2rem;margin-bottom:4px}
+.card p{color:var(--soft)}
+.time{display:inline-block;font-size:.85rem;font-weight:700;color:var(--brand);background:var(--mist);border-radius:999px;padding:2px 12px;margin-bottom:8px}
+ul{padding-left:1.2em;color:var(--soft)}
+li{margin:8px 0}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{text-align:left;padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.note{background:var(--mist);border-radius:14px;padding:16px 18px;color:var(--soft)}
+b.sel{user-select:all;-webkit-user-select:all}
+pre{background:#16243A;color:#F3F1EA;border-radius:14px;padding:16px 18px;overflow:auto;font-size:.82rem;line-height:1.5;max-height:420px;white-space:pre}
+ol{padding-left:1.3em;color:var(--soft)}
+.copy{font:inherit;font-weight:700;min-height:44px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="board-guide.html">&larr; Back to the board guide</a><br>
+<span class="k">One-time setup</span>
+<h1>Turning the preview into the live website</h1>
+<p class="lead">This page is for the person who sets the site up once. After these steps the board never touches any of it.</p>
+
+<h2>1. Give the site its own web address</h2>
+<ol>
+<li>The association registers the address in its own name, with the board&rsquo;s email. Not in any one person&rsquo;s name.</li>
+<li>The site&rsquo;s files are plain web pages. They go on a static host, which is free or close to it for a site this size.</li>
+<li>From then on the site can read the association&rsquo;s Google Sheets, which the preview link is not allowed to do.</li>
+</ol>
+
+<h2>2. Switch on email to website</h2>
+<p class="note">How it works: an email the board marks for the website becomes one row in the News &amp; Events sheet. The website reads that sheet. Nothing else is involved, and the association owns every piece.</p>
+<ol>
+<li>Sign in to Google as the board account, the one that receives the HOA email.</li>
+<li>Give that account edit access to the News &amp; Events sheet.</li>
+<li>Go to script.google.com, start a new project, and paste in the script below.</li>
+<li>At the top of the script, check the sheet ID, the forwarding address, and the list of board members allowed to forward.</li>
+<li>Choose the function <b>setup</b> and press Run. Google asks for permission once. Say yes.</li>
+</ol>
+<p>From then on, every ten minutes, the script picks up any email that was dragged onto the <b>Website</b> label or forwarded to the +website address by a listed board member. Emails from anyone else are set aside under &ldquo;Website / Not posted&rdquo; and never reach the site.</p>
+<button class="copy" type="button" id="copy">Copy the script</button>
+<pre id="gs">/**
+ * The Orange&#x27;s HOA: email to website.
+ *
+ * Lives in the board&#x27;s own Google account (the one that receives the HOA email).
+ * Every ten minutes it looks for emails the board marked for the website and adds
+ * each one as a row in the &quot;News &amp; Events&quot; Google Sheet. The website reads that sheet.
+ *
+ * Two ways to mark an email:
+ *   1. In Gmail, drag the email onto the label &quot;Website&quot; (or open it and choose the label).
+ *   2. Forward it to the board address with +website added, for example
+ *      orangeshoa+website@gmail.com. Only senders in ALLOWED are accepted this way.
+ *
+ * One-time setup: paste this file at script.google.com while signed in as the board
+ * account, fill in the three settings below, choose the function &quot;setup&quot; and press Run.
+ */
+const SHEET_ID = &#x27;1ZyhU9vLEZCY6NrIuZXuPKBHNfk0fM5mnTzIwWVYEQkw&#x27;;   // the News &amp; Events sheet (Date, Type, Title, Details)
+const ALIAS = &#x27;orangeshoa+website@gmail.com&#x27;;                       // the forwarding address
+const ALLOWED = [&#x27;orangeshoa@gmail.com&#x27;];                           // board members&#x27; own addresses, lower case
+
+const LABEL = &#x27;Website&#x27;, DONE = &#x27;Website/Posted&#x27;, SKIPPED = &#x27;Website/Not posted&#x27;;
+const MONTHS = [&#x27;jan&#x27;, &#x27;feb&#x27;, &#x27;mar&#x27;, &#x27;apr&#x27;, &#x27;may&#x27;, &#x27;jun&#x27;, &#x27;jul&#x27;, &#x27;aug&#x27;, &#x27;sep&#x27;, &#x27;oct&#x27;, &#x27;nov&#x27;, &#x27;dec&#x27;];
+
+function setup() {
+  [LABEL, DONE, SKIPPED].forEach(function (n) { if (!GmailApp.getUserLabelByName(n)) GmailApp.createLabel(n); });
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === &#x27;run&#x27;) ScriptApp.deleteTrigger(t); });
+  ScriptApp.newTrigger(&#x27;run&#x27;).timeBased().everyMinutes(10).create();
+  run();
+}
+
+function run() {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheets()[0];
+  const label = GmailApp.getUserLabelByName(LABEL), done = GmailApp.getUserLabelByName(DONE), skipped = GmailApp.getUserLabelByName(SKIPPED);
+  const seen = {};
+  // 1. dragged onto the label: trusted, because only the board can open this mailbox
+  label.getThreads(0, 20).forEach(function (th) { seen[th.getId()] = 1; post(sheet, th); th.removeLabel(label).addLabel(done); });
+  // 2. forwarded to the +website address: only from the board members listed in ALLOWED
+  GmailApp.search(&#x27;to:&#x27; + ALIAS + &#x27; -label:&#x27; + DONE.replace(&#x27;/&#x27;, &#x27;-&#x27;) + &#x27; -label:&#x27; + SKIPPED.replace(/[ \/]/g, &#x27;-&#x27;) + &#x27; newer_than:7d&#x27;, 0, 20).forEach(function (th) {
+    if (seen[th.getId()]) return;
+    const msgs = th.getMessages(), from = (msgs[msgs.length - 1].getFrom().match(/[\w.+-]+@[\w.-]+/) || [&#x27;&#x27;])[0].toLowerCase();
+    if (ALLOWED.indexOf(from) &gt; -1) { post(sheet, th); th.addLabel(done); } else { th.addLabel(skipped); }
+  });
+}
+
+function post(sheet, thread) {
+  const msgs = thread.getMessages(), m = msgs[msgs.length - 1];
+  const p = readEmail(&#x27;Subject: &#x27; + m.getSubject() + &#x27;\n\n&#x27; + m.getPlainBody());
+  sheet.appendRow([new Date(), &#x27;News&#x27;, p.title, p.text]);
+  // A date in the subject line (&quot;Board meeting December 9&quot;) also puts it on the calendar.
+  if (p.when) sheet.appendRow([p.when, &#x27;Event&#x27;, p.title, p.text]);
+}
+
+/** Turns a forwarded email into a headline and a short paragraph. Same rules as the website&#x27;s own preview. */
+function readEmail(raw) {
+  let title = &#x27;&#x27;;
+  let lines = String(raw).replace(/\r\n?/g, &#x27;\n&#x27;).split(&#x27;\n&#x27;).map(function (l) { return l.replace(/^&gt;+\s?/, &#x27;&#x27;).trim(); });
+  lines = lines.filter(function (l) {
+    const s = /^Subject:\s*(.+)$/i.exec(l); if (s) { if (!title) title = s[1]; return false; }
+    return !/^(-{3,}.*(forwarded|original) message.*-{3,}|begin forwarded message:|(from|to|cc|bcc|date|sent|reply-to):.*)$/i.test(l);
+  });
+  while (lines.length &amp;&amp; !lines[0]) lines.shift();
+  title = (title || &#x27;A note from the board&#x27;).replace(/^((fwd?|fw|re)\s*:\s*)+/i, &#x27;&#x27;).trim().slice(0, 110);
+  let end = -1;
+  lines.forEach(function (l, i) { if (end &lt; 0 &amp;&amp; i &gt; 0 &amp;&amp; /^(--|sent from my .*|thanks[,!.]?|thank you[,!.]?|best[,.]?|regards[,.]?|sincerely[,.]?)$/i.test(l)) end = i; });
+  if (end &gt; 0) lines = lines.slice(0, end);
+  const text = lines.join(&#x27;\n&#x27;).replace(/^(hi|hello|dear)\b[^\n]{0,40}\n+/i, &#x27;&#x27;).trim().replace(/\s*\n\s*/g, &#x27; &#x27;).slice(0, 700);
+  let when = null;
+  const d = /\b(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec)\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?/i.exec(title);
+  if (d) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const day = new Date(d[3] ? +d[3] : today.getFullYear(), MONTHS.indexOf(d[1].slice(0, 3).toLowerCase()), +d[2]);
+    if (!d[3] &amp;&amp; day &lt; today) day.setFullYear(day.getFullYear() + 1);
+    if (day &gt;= today) when = day;
+  }
+  return { title: title, text: text, when: when };
+}
+</pre>
+
+<h2>3. Later, if the board wants them</h2>
+<ul>
+<li><b>Resident accounts</b> (My home): the database and the sign-in are built and tested with sample homes. Switching them on means loading the real addresses.</li>
+<li><b>Reminders by email or text</b>: needs a sending service. Email is free at this size. Text messages cost a little per message.</li>
+<li><b>A tidier rewrite of long emails</b>: an AI step can shorten a long email into two sentences before it posts. Optional, and it costs a few cents a month.</li>
+</ul>
+
+<h2>What is not verified yet</h2>
+<ul>
+<li>The script has been checked for errors but has not run inside the board&rsquo;s Google account. The first Run is the test.</li>
+<li>The dues amount on the sample home is made up.</li>
+<li>The county pickup day and leaf district should be confirmed with the county&rsquo;s address lookup.</li>
+</ul>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click',function(){ var t=document.getElementById('gs').textContent, b=this;
+  function done(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy the script'; },1800); }
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,function(){ sel(); }); } else sel();
+  function sel(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('gs')); var s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent='Selected. Now press Copy.'; } });
+</script>
+</body>
+</html>

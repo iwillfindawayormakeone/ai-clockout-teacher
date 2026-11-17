@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="evening" data-motion="on" data-design="1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The Orange's Homeowners Association | Silver Spring, MD</title>
+<meta name="description" content="The Orange's Homeowners Association, Inc., Silver Spring, Maryland. Pay dues, find documents, submit a request, and see neighborhood news.">
+<!-- Layout: Front Desk: a home screen that asks what you want, one tap in, one tap home. Looks (Sunset / Linen / Evening) and motion are switches inside the page. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+
+.view{display:none}.view.on{display:block}
+html:not(.gs) .view.on{animation:fadein .35s ease}
+
+
+@media(max-width:560px){body.sub .top .signin{display:none}}
+@media(min-width:761px){.latest .box{grid-template-columns:repeat(3,1fr)}}
+.menu h2.g2{margin-top:34px}
+.cards.do,.cards.know{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.cards.do,.cards.know{grid-template-columns:repeat(2,1fr)}}
+.newhere{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px;background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:18px 22px;text-decoration:none;color:var(--ink)}
+.newhere:hover{border-color:var(--accent)}
+.newhere b{font-family:var(--display);font-weight:600;font-size:1.25rem}
+.newhere span{color:var(--muted);flex:1;min-width:12ch}
+.newhere i{font-style:normal;font-size:1.6rem;color:var(--accent-deep)}
+.askhome{padding:0 0 36px}
+.askhome h2{font-family:'Public Sans',sans-serif;font-weight:600;font-size:1rem;color:var(--muted);text-align:center;margin:0 0 14px}
+.askhome .ask{max-width:760px;margin:0 auto}
+.hello{touch-action:pan-y;cursor:default}
+.grove .shadows{opacity:0;animation:fade .9s ease-out .6s forwards}
+.sunhint{font-size:.95rem!important;color:var(--accent-deep)!important;margin-top:12px!important;transition:opacity .6s}
+.sunhint.gone{opacity:0}
+[data-skin="linen"] .sunhint{display:none}
+/* the picture: seasons, weather, and the picker */
+.hello{overflow:visible}
+.hello .wrap{z-index:4}
+.grove .stars circle:nth-child(4n){animation:twinkle 3.2s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.15}}
+.picslot{margin-top:10px}
+[data-skin="sunset"] .hello[data-tod="night"] .sunhint{color:var(--ink)!important}
+[data-skin="linen"] .picslot,[data-skin="linen"] .wx{display:none}
+.wx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.wx i{position:absolute;top:-14px;display:block}
+.wx.fall i{width:11px;height:6px;border-radius:3px;background:#C9773A;animation:wxleaf 10s linear infinite}
+.wx.fall i:nth-child(odd){background:#E0A458}
+.wx.winter i{width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(120,150,190,.3);animation:wxfall 9s linear infinite}
+.wx.winter i:nth-child(3n){width:4px;height:4px}
+.wx.spring i{width:9px;height:8px;border-radius:60% 40% 60% 40%;background:#F7B7C9;animation:wxleaf 12s linear infinite}
+.wx.spring i:nth-child(odd){background:#fff;box-shadow:0 0 0 1px rgba(240,160,185,.45)}
+.wx.summer i{top:auto;width:5px;height:5px;border-radius:50%;background:#FFE08A;box-shadow:0 0 8px 2px rgba(255,224,138,.6);animation:wxglow 3s ease-in-out infinite alternate}
+.hello:not([data-tod="evening"]):not([data-tod="night"]) .wx.summer{display:none}
+@keyframes wxfall{to{transform:translate(-50px,820px)}}
+@keyframes wxleaf{to{transform:translate(-150px,820px) rotate(320deg)}}
+@keyframes wxglow{from{opacity:.1}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.wx,.grove .stars circle{animation:none;display:none}}
+/* Right now: the three answers people come for, first */
+.rightnow{position:relative;z-index:3;padding:0 0 34px}
+.rightnow .wrap{margin-top:-28px}
+.menu .wrap{margin-top:0}
+.rightnow h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.now{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nowcard{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px 12px;text-decoration:none;color:var(--ink);box-shadow:var(--card-shadow);transition:transform .18s ease,border-color .18s ease}
+.nowcard:hover{border-color:var(--accent);transform:translateY(-3px)}
+.nowcard .lbl{font-size:.9rem;font-weight:700;color:var(--accent-deep);letter-spacing:.06em;text-transform:uppercase}
+.nowcard h3{font-size:1.5rem;line-height:1.15}
+.nowcard p{color:var(--ink-soft);font-size:1rem}
+.nowcard .go{margin-top:auto;padding-top:6px;font-weight:700;color:var(--accent-deep);display:inline-flex;align-items:center;min-height:44px}
+.nowcard .go::after{content:"\00a0\203A"}
+@media(max-width:860px){.now{grid-template-columns:1fr;gap:10px}
+  .nowcard{position:relative;gap:2px;padding:13px 52px 13px 18px}
+  .nowcard h3{font-size:1.3rem}
+  .nowcard p{font-size:.95rem;line-height:1.4}
+  .nowcard .go{position:absolute;right:14px;top:50%;translate:0 -50%;font-size:0;padding:0;margin:0;min-height:0}
+  .nowcard .go::after{font-size:2rem;content:"\203A";color:var(--accent-deep)}}
+@media(max-width:560px){.hello .wrap{padding-top:34px}.hello h1{margin-bottom:10px}.grove{height:170px}.sunhint{margin-top:8px!important}}
+@media(max-width:820px){.grove{margin-top:-26px}}
+@media(min-width:821px){.hello .wrap{padding-top:50px}.grove{margin-top:-104px;height:clamp(270px,26vw,420px)}}
+.grove{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 56px);mask-image:linear-gradient(to bottom,transparent 0,#000 56px)}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="wrap">
+<a class="home-link" href="#/" aria-label="Home"><svg width="40" height="40" viewBox="0 0 60 60" fill="none" aria-hidden="true"><circle cx="30" cy="30" r="27" fill="var(--brand)"/><circle cx="30" cy="30" r="22" fill="var(--paper)"/><g stroke="var(--brand)" stroke-width="3" stroke-linecap="round"><line x1="30" y1="10" x2="30" y2="50"/><line x1="10" y1="30" x2="50" y2="30"/><line x1="16" y1="16" x2="44" y2="44"/><line x1="44" y1="16" x2="16" y2="44"/></g><circle cx="30" cy="30" r="4.5" fill="var(--logo-dot)"/><path d="M33 4 C38 1 44 2 46 6 C41 8 35 8 33 4Z" fill="var(--logo-dot)"/></svg><span><span class="n">Orange&rsquo;s HOA</span><small>Silver Spring, Maryland</small></span></a>
+<a class="back" href="#/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>Home</a>
+<span style="display:flex;gap:10px;align-items:center"><span id="skin-slot"></span><a class="signin" data-signin href="#/me">Sign in</a><a class="pay" href="#/pay">Pay dues</a></span>
+</div>
+</div>
+<main>
+<section class="view on" id="v-home" data-title="">
+<div class="hello">
+<div class="wrap">
+<p class="hi" id="greeting">Good evening, neighbor.</p>
+<h1 data-split>Welcome to The Orange&rsquo;s HOA</h1>
+<p>Our homeowners association in Silver Spring, Maryland. Tap what you need below.</p>
+</div>
+<svg class="grove" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true" id="grove">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8F7F4" stop-opacity="0"/><stop offset="1" style="stop-color:var(--sky)" stop-opacity=".95"/></linearGradient>
+<linearGradient id="hillA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C4A6E"/><stop offset="1" stop-color="#1E4E7A"/></linearGradient>
+<linearGradient id="hillB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E4E7A"/><stop offset="1" stop-color="#12314F"/></linearGradient>
+<filter id="soft" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter>
+<g id="tree"><rect x="-2.5" y="8" width="5" height="16" rx="1.5" fill="#1A2E4A"/><circle cx="0" cy="0" r="14" fill="#2C4A6E"/><circle cx="-8" cy="6" r="9" fill="#2C4A6E"/><circle cx="9" cy="5" r="9" fill="#2C4A6E"/><circle class="fruit" cx="-6" cy="-3" r="2.4" fill="#F08A4B"/><circle class="fruit" cx="5" cy="2" r="2.4" fill="#F08A4B"/><circle class="fruit" cx="1" cy="-8" r="2.4" fill="#F08A4B"/><circle class="fruit" cx="-10" cy="8" r="2.2" fill="#F08A4B"/></g>
+<g id="home"><path d="M-10 0 L0 -9 L10 0 Z" fill="#101D33"/><rect x="-7" y="0" width="14" height="10" fill="#2B4C74"/><rect x="-2" y="4" width="4" height="6" fill="#F2A65A"/><rect x="3" y="-7" width="2.5" height="4" fill="#101D33"/></g>
+<g id="home2"><path d="M-10 0 L0 -9 L10 0 Z" fill="#162B48"/><rect x="-7" y="0" width="14" height="10" fill="#2B4C74"/><rect x="-6" y="3" width="3" height="3" fill="#F2A65A"/><rect x="3" y="3" width="3" height="3" fill="#F2A65A"/></g>
+</defs>
+<rect width="1440" height="420" fill="url(#sky)"/>
+<g class="sun"><circle cx="1120" cy="236" r="72" fill="#F2A65A" opacity=".95"/><circle cx="1120" cy="236" r="104" fill="#F2A65A" opacity=".14"/></g>
+<path d="M0 420 L0 273.7 L24 270.0 L48 266.5 L72 263.3 L96 260.2 L120 257.5 L144 255.0 L168 252.8 L192 250.9 L216 249.2 L240 247.9 L264 246.9 L288 246.1 L312 245.6 L336 245.5 L360 245.5 L384 245.9 L408 246.4 L432 247.2 L456 248.3 L480 249.5 L504 250.8 L528 252.3 L552 254.0 L576 255.7 L600 257.6 L624 259.4 L648 261.4 L672 263.3 L696 265.3 L720 267.2 L744 269.1 L768 270.9 L792 272.7 L816 274.4 L840 276.0 L864 277.4 L888 278.8 L912 280.1 L936 281.2 L960 282.3 L984 283.2 L1008 284.0 L1032 284.6 L1056 285.2 L1080 285.7 L1104 286.1 L1128 286.5 L1152 286.8 L1176 287.0 L1200 287.2 L1224 287.4 L1248 287.7 L1272 287.9 L1296 288.2 L1320 288.5 L1344 288.9 L1368 289.5 L1392 290.1 L1416 290.8 L1440 291.7 L1440 420 Z" fill="url(#hillB)"/>
+<g class="homes">
+<use href="#home" transform="translate(130,242.4) scale(1.7)"/>
+<use href="#home2" transform="translate(190,237.0) scale(1.7)"/>
+<use href="#home" transform="translate(250,233.4) scale(1.7)"/>
+<use href="#home2" transform="translate(310,231.7) scale(1.7)"/>
+<use href="#home" transform="translate(370,231.6) scale(1.7)"/>
+<use href="#home2" transform="translate(430,233.2) scale(1.7)"/>
+<use href="#home" transform="translate(490,236.0) scale(1.7)"/>
+<use href="#home2" transform="translate(550,239.8) scale(1.7)"/>
+<use href="#home" transform="translate(610,244.3) scale(1.7)"/>
+<use href="#home2" transform="translate(890,264.9) scale(1.7)"/>
+<use href="#home" transform="translate(950,267.8) scale(1.7)"/>
+<use href="#home2" transform="translate(1010,270.0) scale(1.7)"/>
+<use href="#home" transform="translate(1070,271.5) scale(1.7)"/>
+<use href="#home2" transform="translate(1130,272.5) scale(1.7)"/>
+<use href="#home" transform="translate(1190,273.1) scale(1.7)"/>
+<use href="#home2" transform="translate(1250,273.7) scale(1.7)"/>
+<use href="#home" transform="translate(1310,274.4) scale(1.7)"/>
+<use href="#home2" transform="translate(1370,275.5) scale(1.7)"/>
+</g>
+<g class="trees">
+<use href="#tree" transform="translate(70,231.5) scale(1.5)"/>
+<use href="#tree" transform="translate(690,232.8) scale(1.5)"/>
+<use href="#tree" transform="translate(760,238.3) scale(1.5)"/>
+<use href="#tree" transform="translate(830,243.3) scale(1.5)"/>
+<use href="#tree" transform="translate(1420,258.9) scale(1.5)"/>
+</g>
+<g transform="translate(0,-26)">
+<path d="M0 420 L0 360.7 L24 361.3 L48 362.0 L72 362.9 L96 363.9 L120 365.0 L144 366.1 L168 367.3 L192 368.4 L216 369.6 L240 370.7 L264 371.8 L288 372.8 L312 373.7 L336 374.5 L360 375.2 L384 375.7 L408 376.1 L432 376.3 L456 376.4 L480 376.3 L504 376.1 L528 375.6 L552 375.0 L576 374.3 L600 373.4 L624 372.4 L648 371.2 L672 370.0 L696 368.6 L720 367.2 L744 365.7 L768 364.2 L792 362.7 L816 361.2 L840 359.7 L864 358.3 L888 357.0 L912 355.8 L936 354.7 L960 353.7 L984 353.0 L1008 352.4 L1032 352.0 L1056 351.9 L1080 352.0 L1104 352.3 L1128 352.9 L1152 353.8 L1176 354.9 L1200 356.3 L1224 357.9 L1248 359.9 L1272 362.1 L1296 364.5 L1320 367.2 L1344 370.0 L1368 373.1 L1392 376.4 L1416 379.9 L1440 383.5 L1440 420 Z" fill="url(#hillA)"/>
+<g class="homes">
+<use href="#home" transform="translate(240,352.7) scale(2.1)"/>
+<use href="#home2" transform="translate(300,355.3) scale(2.1)"/>
+<use href="#home" transform="translate(360,357.2) scale(2.1)"/>
+<use href="#home2" transform="translate(420,358.2) scale(2.1)"/>
+<use href="#home" transform="translate(480,358.3) scale(2.1)"/>
+<use href="#home2" transform="translate(540,357.4) scale(2.1)"/>
+<use href="#home" transform="translate(600,355.4) scale(2.1)"/>
+<use href="#home2" transform="translate(660,352.6) scale(2.1)"/>
+<use href="#home" transform="translate(1120,334.7) scale(2.1)"/>
+<use href="#home2" transform="translate(1180,337.1) scale(2.1)"/>
+<use href="#home" transform="translate(1240,341.2) scale(2.1)"/>
+<use href="#home2" transform="translate(1300,346.9) scale(2.1)"/>
+<use href="#home" transform="translate(1360,354.1) scale(2.1)"/>
+<use href="#home2" transform="translate(1420,362.5) scale(2.1)"/>
+<use href="#home" transform="translate(60,344.5) scale(2.1)"/>
+</g>
+<g class="trees">
+<use href="#tree" transform="translate(130,323.8) scale(1.9)"/>
+<use href="#tree" transform="translate(720,325.6) scale(1.9)"/>
+<use href="#tree" transform="translate(790,321.2) scale(1.9)"/>
+<use href="#tree" transform="translate(860,316.9) scale(1.9)"/>
+<use href="#tree" transform="translate(940,312.9) scale(1.9)"/>
+<use href="#tree" transform="translate(1020,310.6) scale(1.9)"/>
+<use href="#tree" transform="translate(1060,310.3) scale(1.9)"/>
+</g>
+</g>
+</svg>
+</div>
+<div class="rightnow">
+<div class="wrap">
+<h2>Right now</h2>
+<div class="now">
+<a class="nowcard" href="#/county"><span class="lbl">Next trash day</span><div data-fill="trash"><h3>Tuesday</h3><p>Trash, recycling and yard trim. At the curb by 7 a.m.</p></div><span class="go">What goes where</span></a>
+<a class="nowcard" href="#/news"><span class="lbl">Next meeting</span><div data-fill="when"><h3>Wednesday, December 16</h3><p>Annual Meeting of Members, 7:00 to 8:30 p.m. Online, on Google Meet.</p></div><span class="go">Open the calendar</span></a>
+<a class="nowcard" href="#/pay"><span class="lbl">Dues</span><div><h3>Pay by check, no fee</h3><p>Mail to P.O. Box 613, Silver Spring, MD 20918-0613.</p></div><span class="go">How to pay</span></a>
+</div>
+</div>
+</div>
+<div class="menu">
+<div class="wrap">
+<h2>Things to do</h2>
+<div class="cards do">
+<a class="card primary" href="#/pay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+<b>Pay my dues</b><span>How much, where to send it, and the online option.</span>
+</a>
+<a class="card" href="#/contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.2L4 21l1.8-5.4A8 8 0 1 1 21 12z"/></svg>
+<b>Report a problem</b><span>Common areas, billing, anything else.</span>
+</a>
+<a class="card" href="#/requests">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/></svg>
+<b>Change my home&rsquo;s exterior</b><span>Fence, paint, roof, deck. Ask for approval and track it.</span>
+</a>
+<a class="card" href="#/me">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+<b>My home</b><span>Sign in to see your dues, your requests, and your reminders.</span>
+</a>
+</div>
+<h2 class="g2">Things to know</h2>
+<div class="cards know">
+<a class="card" href="#/news">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+<b>Calendar</b><span>Meetings, trash days and holiday changes.</span>
+</a>
+<a class="card" href="#/county">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg>
+<b>Trash days</b><span>Pickup day, holiday changes, who to call.</span>
+</a>
+<a class="card" href="#/neighbors">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.600 12 20 12 20z"/></svg>
+<b>Neighbor news</b><span>Good news and heads-ups. Share yours.</span>
+</a>
+<a class="card" href="#/newsletter">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+<b>Newsletter &amp; tips</b><span>This month&rsquo;s letter and home tips.</span>
+</a>
+<a class="card" href="#/rules">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+<b>Read the rules</b><span>Parking, renting, exterior changes, in plain words.</span>
+</a>
+<a class="card" href="#/documents">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+<b>Find a document</b><span>Bylaws, minutes, budget, forms.</span>
+</a>
+<a class="card" href="#/how">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 20c0-2.2 1.3-4 3-4.5 1.7.5 3 2.3 3 4.5"/></svg>
+<b>The board</b><span>Who does what, meetings, votes, the audit.</span>
+</a>
+<a class="card" href="#/money">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 16V9M10 16V5M14 16v-6M18 16v-3"/></svg>
+<b>Where the money goes</b><span>This year&rsquo;s budget and what&rsquo;s been spent.</span>
+</a>
+</div>
+<a class="newhere" href="#/new"><b>New to the neighborhood?</b><span>Four things to do in your first month</span><i aria-hidden="true">&rsaquo;</i></a>
+</div>
+</div>
+<div class="askhome"><div class="wrap"><h2>Or just ask</h2>
+<div class="ask" id="ask">
+<label for="ask-q">Ask a question, in your own words</label>
+<div class="row"><input id="ask-q" type="search" autocomplete="off" placeholder="Can I park my boat in the driveway?" aria-describedby="ask-hint"></div>
+<p class="hint" id="ask-hint">Try one: <button type="button" data-q="Can I rent out one room?">rent out one room</button> <button type="button" data-q="What happens if my dues are late?">late dues</button> <button type="button" data-q="Do I need permission to build a fence?">build a fence</button><br>Searches every page of this site; nothing leaves your phone.</p>
+<div class="ask-results" id="ask-results" aria-live="polite"></div>
+</div>
+</div></div>
+<div class="latest">
+<div class="wrap">
+<div class="box">
+<div class="cell"><div class="lbl">Latest notice</div><div id="home-news"><h3>New association website is live</h3><p>Welcome to the new home of The Orange&rsquo;s HOA. Dues info, governing documents, and meeting notices all live here now.</p></div><a class="more" href="#/news">All news</a></div>
+<div class="cell"><div class="lbl">From the neighbors (sample)</div><div data-fill="neighbor"><h3>Good news</h3><p>Notes from neighbors, read by the board first.</p></div><a class="more" href="#/neighbors">Neighbor news</a></div>
+<div class="cell"><div class="lbl">This month&rsquo;s newsletter</div><div data-fill="newsletter"><h3>The Orange Peel</h3><p>Home tips for the season.</p></div><a class="more" href="#/newsletter">Read the newsletter</a></div>
+</div>
+</div>
+</div>
+</section>
+<section class="view" id="v-me" data-page="me" data-title="My home">
+<div class="wrap page">
+<h1>My home</h1>
+<p class="lead">Your own dues, requests and reminders on one screen.</p>
+
+<div id="me-out">
+<div class="panel preview">
+<span class="lbl">Preview</span>
+<h2>See what a signed-in neighbor would see</h2>
+<p>Accounts are not switched on yet, so there is nothing to sign up for today. Tap a button to look around a made-up home. The address, the names and the amounts are samples.</p>
+<p class="btnrow"><button class="btn accent" type="button" data-demo="neighbor">Show me a sample home</button><button class="btn ghost" type="button" data-demo="board">Show me what the board sees</button></p>
+<p class="fine" id="me-demo-msg" aria-live="polite"></p>
+</div>
+<div class="grid2">
+<div class="panel"><h3>What you would see</h3><ul class="plain"><li><b>Your dues:</b> what you owe and when, or simply &ldquo;Paid.&rdquo;</li><li><b>Your requests:</b> each one, with the board&rsquo;s answer.</li><li><b>Reminders:</b> trash holidays, meetings and dues, by email or text, only if you want them.</li><li><b>The neighbor directory:</b> only if you choose to be listed.</li></ul></div>
+<div class="panel"><h3>If the board turns accounts on</h3><ul class="plain"><li>You would sign in with Google, or with any email address and a password.</li><li>The board links your account to your address. You see your own home and nobody else&rsquo;s.</li><li>Nobody can read your password, the board included. The sign-in service keeps it scrambled.</li><li>Please do not type a real password into this preview.</li></ul></div>
+</div>
+<details class="realsignin"><summary>I already have an account</summary>
+<div class="panel">
+<button class="btn ghost" type="button" id="me-google" style="width:100%;justify-content:center">Continue with Google</button>
+<p style="text-align:center;color:var(--muted);font-size:.85rem;margin:12px 0">or with email</p>
+<form id="me-form" novalidate>
+<div class="field"><label for="me-email">Email</label><input id="me-email" type="email" autocomplete="email" placeholder="you@anywhere.com"></div>
+<div class="field"><label for="me-pass">Password</label><input id="me-pass" type="password" autocomplete="current-password" placeholder="At least 8 characters"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit" id="me-signin">Sign in</button><button class="btn ghost" type="button" id="me-signup">Create account</button></div>
+<p class="fine" id="me-msg" aria-live="polite"></p>
+<p class="fine"><a href="#" id="me-forgot">Forgot your password?</a></p>
+</form>
+</div>
+</details>
+</div>
+
+<div id="me-in" hidden>
+<div class="me-head"><div><p class="hi" style="font-family:var(--display);font-style:italic;color:var(--accent-deep);margin:0">Welcome back,</p><h2 id="me-name" style="margin:0 0 4px">Neighbor</h2><p id="me-addr" style="color:var(--muted);margin:0"></p></div><button class="btn ghost" type="button" id="me-signout">Sign out</button></div>
+
+<div id="me-nohome" class="panel" hidden style="margin:18px 0">
+<h3>One more step: tell us your address</h3>
+<p style="color:var(--ink-soft)">Your account is ready, but it isn&rsquo;t linked to a home yet. Tell us which house is yours and a board member will connect it, usually within a day or two.</p>
+<form id="me-link" style="margin-top:12px"><div class="frow"><div class="field"><label for="me-link-name">Your name</label><input id="me-link-name" autocomplete="name"></div><div class="field"><label for="me-link-addr">Street address</label><input id="me-link-addr" autocomplete="street-address" placeholder="e.g. 812 Whitehall Street"></div></div><button class="btn" type="submit">Send to the board</button> <span class="fine" id="me-link-msg"></span></form>
+</div>
+
+<div class="me-grid" id="me-tiles">
+<div class="panel me-tile" id="t-dues"><span class="lbl">Dues</span><div id="me-dues"><p class="soft">Loading&hellip;</p></div></div>
+<div class="panel me-tile" id="t-req"><span class="lbl">My requests</span><div id="me-reqs"><p class="soft">Loading&hellip;</p></div><p style="margin-top:12px"><a class="btn ghost" href="#/requests" style="min-height:42px">New request</a></p></div>
+<div class="panel me-tile" id="t-rem"><span class="lbl">Reminders</span>
+<p class="soft" style="margin-bottom:10px">Trash holidays, meetings, dues. A few a month.</p>
+<label class="chk"><input type="checkbox" id="rem-email" checked><span>Email me</span></label>
+<label class="chk" style="margin-top:8px"><input type="checkbox" id="rem-sms"><span>Text me</span></label>
+<div class="field" style="margin:10px 0 0"><label for="rem-phone" style="font-size:.9rem">Mobile number (for texts)</label><input id="rem-phone" type="tel" autocomplete="tel" placeholder="(301) 555-0100"></div>
+<p style="margin-top:10px"><button class="btn" type="button" id="rem-save" style="min-height:42px">Save</button> <span class="fine" id="rem-msg"></span></p></div>
+<div class="panel me-tile" id="t-dir"><span class="lbl">Neighbor directory</span>
+<p class="soft" style="margin-bottom:10px">Off by default. Turn it on to let neighbors find you.</p>
+<label class="chk"><input type="checkbox" id="dir-opt"><span>List me in the directory</span></label>
+<div class="field" style="margin:10px 0 0"><label for="dir-name" style="font-size:.9rem">Show my name as</label><input id="dir-name" placeholder="e.g. Sam N."></div>
+<div class="field" style="margin:0"><label for="dir-phone" style="font-size:.9rem">Phone (optional)</label><input id="dir-phone" type="tel" placeholder="(301) 555-0100"></div>
+<label class="chk" style="margin-top:8px"><input type="checkbox" id="dir-email"><span>Show my email too</span></label>
+<p style="margin-top:10px"><button class="btn" type="button" id="dir-save" style="min-height:42px">Save</button> <span class="fine" id="dir-msg"></span></p>
+<div id="dir-list" style="margin-top:14px"></div></div>
+</div>
+
+<div id="me-board" hidden style="margin-top:22px">
+<h2>Board tools</h2>
+<p class="lead" style="margin-bottom:18px">Only board accounts see this. The same data, the whole association.</p>
+<div class="grid2">
+<div class="panel"><h3>Account requests waiting</h3><div id="b-acct"><p class="soft">Loading&hellip;</p></div></div>
+<div class="panel"><h3>Dues at a glance</h3><div id="b-dues"><p class="soft">Loading&hellip;</p></div></div>
+</div>
+<div class="panel" style="margin-top:16px"><h3>All exterior requests</h3><div id="b-reqs" class="tracker"><p class="soft">Loading&hellip;</p></div></div>
+</div>
+</div>
+
+</div>
+</section>
+<section class="view" id="v-pay" data-page="pay" data-title="Pay my dues">
+<div class="wrap page">
+<h1>Pay my dues</h1>
+<p class="lead">One assessment per household each year, invoiced by mail. The amount is on your invoice and is due within 30 days of the invoice date.</p>
+<div class="grid2">
+<div>
+<h2 style="margin-top:0">By check, no fee</h2>
+<div class="check" id="b-pay-check">
+<div class="row"><span class="k">Pay to the order of</span><span class="v">The Orange&rsquo;s Homeowners Association, Inc.</span></div>
+<div class="row"><span class="k">Amount</span><span class="v">As shown on your invoice</span></div>
+<div class="row"><span class="k">Mail to</span><span class="v">P.O. Box 613<br>Silver Spring, MD 20918-0613</span></div>
+<p class="memo">Memo line: your street address, so the treasurer can credit the right home.</p>
+</div>
+</div>
+<div>
+<h2 style="margin-top:0">Online</h2>
+<div class="panel" id="b-pay-online">
+<p id="pay-online-copy">Prefer to skip the checkbook? Pay online and the money goes straight to the association&rsquo;s account. A small processing fee applies only to online payments. Paying by check stays free.</p>
+<p style="margin-top:18px"><a class="btn accent" id="pay-online-btn" href="#/contact" aria-disabled="true">Online payment coming soon</a></p>
+</div>
+<h2>Reminders, not surprises</h2>
+<p>Every household gets a friendly email before the due date and again before any late fee would apply. Nobody should learn about a deadline after it has passed.</p>
+<h2>Question about your balance?</h2>
+<p>A neighbor answers, not a call center. <a href="mailto:orangeshoa@gmail.com?subject=Dues%20question">Email the board</a> and you&rsquo;ll hear back within a few days.</p>
+</div>
+</div>
+<p class="fine" id="b-pay-late">From the Bylaws (Article XI): assessments unpaid 15 days after the due date incur a late fee of $15 or one-tenth of the delinquent amount (whichever is greater), plus interest at 6% per year. Unpaid assessments are secured by a lien on the property. Members more than 60 days delinquent may not vote or serve on the Board. If paying will be a hardship, contact the board early. Talking to us is always better than a late fee.</p>
+</div>
+</section>
+<section class="view" id="v-news" data-page="news" data-title="Calendar">
+<div class="wrap page">
+<h1>Calendar</h1>
+<p class="lead">Meetings, trash days and holiday changes in one place. Tap a day to see what is on it.</p>
+<div id="cal" class="cal"></div>
+<h2>Announcements</h2>
+<div id="news-list">
+<article class="notice"><time datetime="2026-11-09">November 9, 2026</time><h3>Annual meeting: Wednesday, December 16 at 7:00 p.m.</h3><p>The annual meeting of members runs from 7:00 to 8:30 p.m., online on Google Meet. Board elections, next year&rsquo;s budget and the financial statement are on the agenda. The link to join is on the calendar above.</p></article>
+<article class="notice"><time datetime="2026-08-18">August 18, 2026</time><h3>New association website is live</h3><p>Welcome to the new home of The Orange&rsquo;s HOA. Bookmark this page. Dues info, governing documents, and meeting notices all live here now.</p></article>
+<article class="notice"><time datetime="2026-07-18">July 18, 2026</time><h3>Reminder: annual dues</h3><p>Annual assessments are invoiced to each household and due within 30 days of the invoice date. See <a href="#/pay">Pay my dues</a> for the address and details.</p></article>
+</div>
+</div>
+</section>
+<section class="view" id="v-county" data-page="county" data-title="Trash days and county help">
+<div class="wrap page">
+<h1>Trash days &amp; county help</h1>
+<p class="lead">When things get picked up, what goes where, and who to call. Taken from Montgomery County&rsquo;s own pages.</p>
+<div id="county-body"></div>
+</div>
+</section>
+<section class="view" id="v-newsletter" data-page="newsletter" data-title="Newsletter and seasonal tips">
+<div class="wrap page">
+<h1>Newsletter &amp; seasonal tips</h1>
+<p class="lead">A short letter for every month. It puts itself together from the calendar, the season and neighbor news. Pick any month to see it.</p>
+<div id="nl-body"></div>
+</div>
+</section>
+<section class="view" id="v-neighbors" data-page="neighbors" data-title="Neighbor news">
+<div class="wrap page">
+<h1>Neighbor news</h1>
+<p class="lead">Good news, heads-ups, and lost and found, from the people who live here.</p>
+<div id="nb-body"></div>
+</div>
+</section>
+<section class="view" id="v-requests" data-page="requests" data-title="Change my home's exterior">
+<div class="wrap page">
+<h1>Change my home&rsquo;s exterior</h1>
+<p class="lead">A fence, paint, a roof, a deck, a shed. Ask before the work starts. The form takes about five minutes.</p>
+<div class="panel reqgo">
+<h2>Start your request</h2>
+<p>The request form opens in a new tab. Have a short description ready, and a photo or a sketch if you have one.</p>
+<p class="btnrow"><a class="btn accent big" href="https://docs.google.com/forms/d/e/1FAIpQLSdsZjJsqpZRRjgCI3CQEyOoTH5fAavrVEIEaQPU73VAwLAgYA/viewform" target="_blank" rel="noopener">Open the request form</a></p>
+<p class="fine">It is a Google Form that goes straight to the Architectural Control Committee. Not sure whether your project needs one? <a href="#/contact">Ask the board</a> first.</p>
+</div>
+<h2>What happens next</h2>
+<div class="flow" id="b-req-flow">
+<div><b>Submitted</b><span>You get a confirmation email the same day.</span></div>
+<div><b>Under review</b><span>The board looks it over and may ask a question.</span></div>
+<div><b>Decision</b><span>Approved, approved with conditions, or not approved, in writing.</span></div>
+<div><b>Closed</b><span>Recorded and kept in the archive.</span></div>
+</div>
+<aside class="panel tracker" id="b-req-tracker"><h2 style="margin-top:0;font-size:1.45rem">Where things stand</h2><p style="color:var(--muted);font-size:.98rem">Open requests and recent decisions, by initials only.</p><div id="tracker-body"><table><thead><tr><th>Date</th><th>Request</th><th>Status</th></tr></thead><tbody>
+<tr><td>Oct 12</td><td>Front door paint &middot; S.N.</td><td><span class="pill review">In review</span></td></tr>
+<tr><td>Sep 20</td><td>Back fence &middot; S.N.<br><small style="color:var(--muted)">Matches the old fence line.</small></td><td><span class="pill approved">Approved</span></td></tr>
+</tbody></table><p class="fine">These two rows are samples. Real requests appear here when the board logs them.</p></div></aside>
+</div>
+</section>
+<section class="view" id="v-rules" data-page="rules" data-title="Rules">
+<div class="wrap page">
+<h1>The rules, in plain words</h1>
+<p class="lead">Highlights from our governing documents. The full Declaration and Bylaws in <a href="#/documents">documents</a> always control.</p>
+<div class="rule" id="b-rule-1"><div class="num">&sect;1</div><h3>Vehicles &amp; parking</h3><ul><li>No vehicle repair on association property.</li><li>No RVs, boats, trailers, campers, or similar vehicles parked or stored without written Board consent.</li><li>Unlicensed or inoperable vehicles may stay no more than 72 hours; after 10 days&rsquo; written notice they may be towed at the owner&rsquo;s expense.</li></ul></div>
+<div class="rule" id="b-rule-2"><div class="num">&sect;2</div><h3>Renting your home</h3><ul><li>Leases must be written, residential-only, and for the whole home. No room rentals.</li><li>Minimum lease is one year unless the Board grants a short-term waiver.</li><li>A Montgomery County rental license is required; give the Board a copy on request, with tenant names and your current address.</li></ul></div>
+<div class="rule" id="b-rule-3"><div class="num">&sect;3</div><h3>Exterior changes</h3><ul><li>Exterior modifications need Architectural Control Committee review before work begins. <a href="#/requests">Ask here</a>.</li><li>When in doubt, ask first. A quick email saves everyone time and money.</li></ul></div>
+</div>
+</section>
+<section class="view" id="v-documents" data-page="documents" data-title="Documents">
+<div class="wrap page">
+<h1>Find a document</h1>
+<p class="lead">Plainly named, clearly dated, and public. If something you need isn&rsquo;t here, <a href="#/contact">tell the board</a> and we&rsquo;ll post it.</p>
+<div class="folders" id="b-docs-folders">
+<div class="folder"><h3>Governing documents</h3><p>The rules we all agreed to.</p>
+<a class="doc" href="https://docs.google.com/document/d/1I5FbTuk8EswuUhGoyCx_UA3qYmd0v9rb/edit?usp=sharing&amp;ouid=106505305357460125787&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Bylaws, revised<small>Approved December 20, 2023</small></a>
+<p style="margin-top:12px"><a class="btn ghost" href="https://drive.google.com/drive/folders/1JCyGCcNL7lQ8YaeG_m-JY1L0dsSV4B6J" target="_blank" rel="noopener">Open this folder</a></p></div>
+<div class="folder"><h3>Meeting minutes</h3><p>Board and annual meeting minutes, newest first.</p>
+<p style="margin-top:12px"><a class="btn ghost" href="https://drive.google.com/drive/folders/1khkZf4HXbPZlasDRUr-ta1sznzrSKgZn" target="_blank" rel="noopener">Open this folder</a></p></div>
+<div class="folder"><h3>Finances</h3><p>Annual budget, statements, and the independent audit.</p>
+<p style="margin-top:12px"><a class="btn ghost" href="https://drive.google.com/drive/folders/1ypJRO4d2qEUEDJa_216hao648xK0msxw" target="_blank" rel="noopener">Open this folder</a></p></div>
+<div class="folder"><h3>Forms &amp; resale</h3><p>Proxy forms, request forms, resale packet.</p>
+<a class="doc" href="https://docs.google.com/forms/d/e/1FAIpQLSdsZjJsqpZRRjgCI3CQEyOoTH5fAavrVEIEaQPU73VAwLAgYA/viewform?usp=sharing&amp;ouid=106505305357460125787" target="_blank" rel="noopener">Architectural review request form<small>Google Form &middot; submit online</small></a>
+<p style="margin-top:12px"><a class="btn ghost" href="https://drive.google.com/drive/folders/13MnCXtg44Ab9omexq_IXW7NGidJeRPMR" target="_blank" rel="noopener">Open this folder</a></p></div>
+</div>
+<p class="fine">Books and records of the Association are open to member inspection under the Maryland Homeowners Association Act. Documents here update automatically when the board adds a file to the association&rsquo;s folders.</p>
+</div>
+</section>
+<section class="view" id="v-how" data-page="how" data-title="The board & how it works">
+<div class="wrap page">
+<h1>Meet the board &amp; how it works</h1>
+<p class="lead">The Orange&rsquo;s Homeowners Association, Inc. is a Maryland corporation of 33 member households, run by volunteer neighbors under our Bylaws (revised December 20, 2023). It serves 1&ndash;10 Whitehall Court, 802&ndash;832 Whitehall Street, 726 and 730 University Boulevard, and 807 Orange Drive.</p>
+<h2 style="margin-top:0">Your board</h2>
+<div class="people" id="b-how-people">
+<div class="person"><div class="av">MS</div><div><h3>Maureen Sanelli</h3><div class="role">President</div><p>Presides at Board meetings; sees that Board decisions are carried out.</p></div></div>
+<div class="person"><div class="av">CL</div><div><h3>Christine Lucas</h3><div class="role">Vice President</div><p>Acts for the President when needed; supports Board projects.</p></div></div>
+<div class="person"><div class="av">LM</div><div><h3>Lyuba Tartova Maybury</h3><div class="role">Secretary</div><p>Minutes, records, meeting notices, and this website.</p></div></div>
+<div class="person"><div class="av">MH</div><div><h3>Morgan Hoover</h3><div class="role">Treasurer</div><p>Dues, budget, financial statements, and the annual audit.</p></div></div>
+</div>
+<h2>How the association runs</h2>
+<div class="facts" id="b-how-facts">
+<div class="fact"><h3>Five-member Board</h3><p>Directors serve staggered three-year terms with no pay. Officers are elected by the Board each year.</p></div>
+<div class="fact"><h3>Annual meeting each December</h3><p>Written or electronic notice at least 15 days ahead. Quorum is 40% of votes; one vote per lot, in person or by proxy.</p></div>
+<div class="fact"><h3>Monthly board meetings</h3><p>With reasonable notice to members. Minutes are kept by the Secretary and posted in documents.</p></div>
+<div class="fact"><h3>Independent annual audit</h3><p>Finances are audited each year by an independent accountant and presented at the annual meeting.</p></div>
+<div class="fact"><h3>Open records</h3><p>Books and records are open to member inspection under the Maryland Homeowners Association Act.</p></div>
+<div class="fact"><h3>Could you help?</h3><p>Each job is smaller than it sounds, and some need no board seat at all. <a href="jobs.html">See the jobs, made small</a>.</p></div>
+<div class="fact"><h3>Fiscal year</h3><p>January 1 to December 31. The annual assessment is set and noticed at least 30 days before each period.</p></div>
+</div>
+</div>
+</section>
+<section class="view" id="v-money" data-page="money" data-title="Where the money goes">
+<div class="wrap page">
+<h1>Where the money goes</h1>
+<p class="lead">Every dollar of dues by category, against this year&rsquo;s budget. Full statements and the audit are in <a href="#/documents">documents</a>.</p>
+<div id="budget"><p class="fine demo-note">Sample figures, to show how this page works. The real numbers appear here by themselves once the treasurer&rsquo;s sheet is connected.</p><div class="bars">
+<div class="bar"><b>Landscaping and grounds</b><span class="trk"><span class="fil" style="width:70%"></span></span><span class="amt">$4,200 of $6,000</span></div>
+<div class="bar"><b>Snow removal</b><span class="trk"><span class="fil" style="width:24%"></span></span><span class="amt">$600 of $2,500</span></div>
+<div class="bar"><b>Insurance</b><span class="trk"><span class="fil" style="width:100%"></span></span><span class="amt">$1,850 of $1,850</span></div>
+<div class="bar"><b>Reserve fund</b><span class="trk"><span class="fil" style="width:50%"></span></span><span class="amt">$1,500 of $3,000</span></div>
+<div class="bar"><b>Postage and administration</b><span class="trk"><span class="fil" style="width:44%"></span></span><span class="amt">$310 of $700</span></div>
+<div class="bar total"><b>Total</b><span class="trk"><span class="fil" style="width:60%"></span></span><span class="amt">$8,460 of $14,050</span></div>
+</div></div>
+</div>
+</section>
+<section class="view" id="v-new" data-page="new" data-title="New to the neighborhood">
+<div class="wrap page">
+<h1>Welcome to the grove</h1>
+<p class="lead">Four things to do in your first month.</p>
+<div class="steps" id="b-new-steps">
+<div class="step"><h3>Say hello</h3><p>Email <a href="mailto:orangeshoa@gmail.com">orangeshoa@gmail.com</a> so we have your contact info for notices, meeting announcements, and emergencies.</p></div>
+<div class="step"><h3>Read the essentials</h3><p>Skim the <a href="#/rules">rules</a> and the <a href="https://docs.google.com/document/d/1I5FbTuk8EswuUhGoyCx_UA3qYmd0v9rb/edit?usp=sharing&amp;ouid=106505305357460125787&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Bylaws</a>. They answer most questions before they come up.</p></div>
+<div class="step"><h3>Set up dues</h3><p>Check your closing documents for your current-year dues status, then bookmark <a href="#/pay">Pay my dues</a>.</p></div>
+<div class="step"><h3>Come meet everyone</h3><p>Board meetings and the December annual meeting are open to all members, <a href="#/news">Calendar</a><a href="#/county">Trash days</a> always has what&rsquo;s next.</p></div>
+</div>
+</div>
+</section>
+<section class="view" id="v-contact" data-page="contact" data-title="Contact">
+<div class="wrap page">
+<h1>Report a problem or ask a question</h1>
+<p class="lead">Every message gets an answer from a neighbor on the board. Nothing disappears into a black hole.</p>
+<div class="grid2" id="b-contact-grid">
+<div class="panel"><h3>Report a problem, with a photo</h3><p>A downed cable, a pothole, a light out, damage in the common area. Tap the button, attach a photo from your phone, and tell us where. We get it to the right people and tell you what happened.</p><p style="margin-top:16px"><a class="btn" href="mailto:orangeshoa@gmail.com?subject=Problem%20report&amp;body=Where%3A%20%0AWhat%20I%20saw%3A%20%0AWhen%3A%20%0A%0A(Attach%20a%20photo%20before%20sending.)">Report it with a photo</a></p></div>
+<div class="panel"><h3>Who fixes what</h3><p>Some things are the county&rsquo;s or the utility&rsquo;s job, and going straight to them is faster. Report it to us too and we will follow up.</p><ul style="margin-top:10px;padding-left:1.1em;font-size:.98rem"><li><b>Pothole, street sign, storm drain:</b> <a href="https://www.montgomerycountymd.gov/mc311/" target="_blank" rel="noopener">Montgomery County 311</a> (or dial 311)</li><li><b>Streetlight out:</b> Pepco&rsquo;s streetlight outage form, with the pole number if you can read it</li><li><b>Trash or recycling missed, holiday schedule:</b> <a href="https://www.montgomerycountymd.gov/sws/" target="_blank" rel="noopener">County Solid Waste Services</a></li><li><b>Downed wire:</b> stay back and call 911 if it could be a power line; cable or phone lines go to the provider</li><li><b>Anything inside the association:</b> the button above</li></ul></div>
+<div class="panel"><h3>A question or an idea for the board?</h3><p>Resident items can be added to an upcoming meeting agenda on request.</p><p style="margin-top:16px"><a class="btn" href="mailto:orangeshoa@gmail.com?subject=Question%20for%20the%20board">Write to the board</a></p></div>
+<div class="panel"><h3>Join the email list</h3><p>Meeting notices, dues reminders, announcements. A few emails a month, nothing more.</p><p style="margin-top:16px"><a class="btn accent" href="mailto:orangeshoa@gmail.com?subject=Add%20me%20to%20the%20Orange%27s%20HOA%20email%20list">Add me</a></p></div>
+<div class="panel"><h3>By mail</h3><p>The Orange&rsquo;s Homeowners Association, Inc.<br>P.O. Box 613<br>Silver Spring, MD 20918-0613</p><p style="margin-top:10px">Email: <a href="mailto:orangeshoa@gmail.com">orangeshoa@gmail.com</a></p></div>
+</div>
+</div>
+</section>
+<div class="gohome" id="gohome" hidden>
+<div class="wrap">
+<a class="btn" href="#/"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>Back to home</a>
+<div class="also"><a href="#/pay">Pay dues</a><a href="#/news">Calendar</a><a href="#/county">Trash days</a><a href="#/documents">Documents</a><a href="#/requests">Request a change</a><a href="#/contact">Contact</a></div>
+</div>
+</div>
+</main>
+<footer>
+<div class="wrap">
+<span>&copy; 2026 The Orange&rsquo;s Homeowners Association, Inc. &middot; Silver Spring, MD</span>
+<span><button type="button" class="bigtext" data-bigtext>Make the text bigger</button> &nbsp;&middot;&nbsp; <a href="board-guide.html">For the board</a> &nbsp;&middot;&nbsp; <a href="jobs.html">The jobs</a> &nbsp;&middot;&nbsp; <span class="updated">Site last updated: November 12, 2026</span></span>
+</div>
+</footer>
+<!-- ===================== KNOWLEDGE BASE (hidden) =====================
+     Anything pasted here is searchable from the "Ask a question" box on the Rules
+     page but never shown on its own. Use it for passages of the Declaration and
+     Bylaws. One <article> per passage; data-title is what the result shows.
+     Example:
+     <article data-page="documents" data-title="Declaration, Article VIII &sect;3 (pets)">Text of the passage here.</article>
+-->
+<div id="kb" hidden>
+</div>
+<script src="minisearch.js"></script>
+<script src="site.js"></script>
+<script src="content.js"></script>
+<script src="scene.js"></script>
+<script>
+/* Router: #/ is home, #/name is a page */
+var VIEWS=Array.prototype.slice.call(document.querySelectorAll('.view'));
+function route(){
+  var name=(location.hash.replace(/^#\/?/,'')||'home').split('?')[0];
+  var target=document.getElementById('v-'+name)?name:'home';
+  VIEWS.forEach(function(v){ v.classList.toggle('on',v.id==='v-'+target); });
+  document.body.classList.toggle('sub',target!=='home');
+  document.getElementById('gohome').hidden=(target==='home');
+  var title=document.getElementById('v-'+target).getAttribute('data-title');
+  document.title=(title?title+' | ':'')+"The Orange's HOA";
+  if(!/[?&]to=/.test(location.hash)) window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
+  var h=document.querySelector('#v-'+target+' h1'); if(h&&target!=='home'){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
+  if(target==='home'){ HOA.onMotion(function(){ HOA.heroEnter(); }); } else HOA.enter(document.getElementById('v-'+target),'.page > *');
+}
+window.addEventListener('hashchange',route); route();
+</script>
+</body>
+</html>

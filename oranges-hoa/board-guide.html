@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Guide</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16243A;--soft:#3B4A62;--muted:#586375;--paper:#F8F7F4;--card:#fff;--line:#D5DAE0;--accent:#B5481A;--brand:#1E4E7A;--mist:#EEF1F4}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.wrap{max-width:760px;margin:0 auto;padding:36px max(20px,env(safe-area-inset-right,0px)) 90px max(20px,env(safe-area-inset-left,0px))}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;color:var(--brand);font-weight:700;margin-bottom:18px}
+.k{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+h1{font-size:clamp(2.1rem,6vw,3.2rem);margin-bottom:12px}
+.lead{font-size:1.15rem;color:var(--soft);margin-bottom:30px}
+h2{font-size:1.6rem;margin:38px 0 14px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+.card h3{font-size:1.2rem;margin-bottom:4px}
+.card p{color:var(--soft)}
+.time{display:inline-block;font-size:.85rem;font-weight:700;color:var(--brand);background:var(--mist);border-radius:999px;padding:2px 12px;margin-bottom:8px}
+ul{padding-left:1.2em;color:var(--soft)}
+li{margin:8px 0}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{text-align:left;padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.note{background:var(--mist);border-radius:14px;padding:16px 18px;color:var(--soft)}
+b.sel{user-select:all;-webkit-user-select:all}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:16px;margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:700;min-height:56px;display:flex;align-items:center;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;font-size:1.5rem;color:var(--accent);font-weight:500}
+details[open] summary::after{content:"\2212"}
+details>div{padding:0 20px 18px;color:var(--soft)}
+details>div p+p{margin-top:8px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.jump a,.btn{display:inline-flex;align-items:center;min-height:46px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--brand);font-weight:700;text-decoration:none}
+.btn.go{background:var(--brand);color:#fff;border-color:var(--brand)}
+.role{display:grid;gap:10px}
+.role h3{font-size:1.35rem}
+.role .who{font-size:.95rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.two>div{background:var(--mist);border-radius:12px;padding:12px 14px}
+.two b{display:block;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.two ul{padding-left:1.1em}.two li{margin:4px 0}
+.letter{white-space:pre-wrap;background:var(--mist);border-radius:12px;padding:14px 16px;font-size:.98rem;color:var(--ink);margin-top:10px}
+.copy{font:inherit;font-weight:700;min-height:44px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;margin-top:10px}
+@media print{.back,.jump,.copy,.btn{display:none}details{break-inside:avoid}details>div{display:block}body{font-size:12pt;background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">&larr; Back to the website</a><br>
+<span class="k">For Maureen and the board</span>
+<h1>Running the website takes about ten minutes a month</h1>
+<p class="lead">Nobody on the board has to learn software. Most of the site keeps itself current. This page lists what happens by itself, the few things a person does, and what is still a preview today.</p>
+
+<div class="jump"><a href="#qa">Questions and answers</a><a href="jobs.html">The jobs, made small</a><a href="jobs.html#letters">Letters already written</a></div>
+
+<h2>What happens by itself</h2>
+<div class="card"><h3>Trash days and holiday weeks</h3><p>The calendar works out every Tuesday pickup and moves it when a county holiday lands on a Monday or Tuesday. Nobody types those in.</p></div>
+<div class="card"><h3>The monthly newsletter</h3><p>On the first of the month it assembles itself from the calendar, the seasonal guide and the neighbor notes the board approved. The seasonal guide repeats every year, so it is written once.</p></div>
+<div class="card"><h3>The home screen</h3><p>The next meeting, the next trash day and the latest notice update on their own as the dates pass.</p></div>
+<div class="card"><h3>The picture on the home page</h3><p>It changes with the year without anyone touching it: spring on March 20, summer on June 21, fall on September 22, winter on December 21. It also follows the time of day.</p></div>
+<div class="card"><h3>The &ldquo;last updated&rdquo; stamp</h3><p>The footer shows the date of the newest notice. If the site ever goes stale, it says so itself.</p></div>
+
+<h2>What a board member does</h2>
+<div class="card"><span class="time">2 minutes, once a month</span><h3>Read the newsletter and press Send</h3><p>It arrives already written. Change a line if you like, or send it as it is.</p></div>
+<div class="card"><span class="time">1 minute, when one comes in</span><h3>Approve a neighbor note</h3><p>Each note waits for a board member. Tap <b>Post it</b> or <b>Remove</b>. Nothing appears on the site until someone on the board has read it.</p></div>
+<div class="card"><span class="time">10 seconds, when an email is worth sharing</span><h3>Put an email on the website</h3><p>Forward the email to the website address, or drag it onto the <b>Website</b> label in the board&rsquo;s Gmail. Within ten minutes it is on the home page and under Announcements. If the subject line names a date, such as &ldquo;Board meeting December 9&rdquo;, it goes on the calendar too. There is nothing to log in to and nothing to type.</p><p style="margin-top:8px">To try it today: open the website, tap <b>Sign in</b>, then <b>Show me what the board sees</b>.</p></div>
+<div class="card"><span class="time">1 minute, only if you prefer typing</span><h3>Add a meeting or an announcement by hand</h3><p>Type one row into the shared Google Sheet: the date, a title, a sentence. It shows up in the same places.</p></div>
+<div class="card"><span class="time">A few minutes, in dues season</span><h3>Mark dues as paid</h3><p>The treasurer ticks a household as paid. That neighbor sees &ldquo;Paid&rdquo; in My home, and reminders stop for them.</p></div>
+<div class="card"><span class="time">1 minute, per request</span><h3>Update an exterior request</h3><p>Pick the new status from a list: In review, Needs info, Approved. The neighbor sees it without anyone writing an email.</p></div>
+
+<h2 id="qa">Questions and answers</h2>
+<details><summary>Do I have to learn anything new?</summary><div><p>No. You keep using the board&rsquo;s email the way you do now. The website watches for the emails you mark and does the rest.</p></div></details>
+<details><summary>How do I put something on the website?</summary><div><p>In the board&rsquo;s Gmail, drag the email onto the label called <b>Website</b>. Or forward it to the board address with <b>+website</b> added before the @ sign. That is the whole job.</p></div></details>
+<details><summary>How long until neighbors see it?</summary><div><p>Up to ten minutes. It appears on the home page under &ldquo;Latest notice&rdquo; and on the Calendar page under Announcements.</p></div></details>
+<details><summary>Will it post my whole email, signature and all?</summary><div><p>No. The subject line becomes the headline. The message becomes the text. The greeting, the &ldquo;forwarded message&rdquo; lines and the signature are dropped, and very long emails are cut at about 100 words.</p><p>Tip: write the subject line the way you would want a headline to read.</p></div></details>
+<details><summary>How do I add a meeting to the calendar?</summary><div><p>Put the date in the subject line, for example &ldquo;Board meeting January 12&rdquo;. It is posted as a notice and also placed on the calendar on that day.</p></div></details>
+<details><summary>What if I post something by mistake?</summary><div><p>Open the News &amp; Events sheet and delete that row. It is gone from the website the next time someone opens it. Nothing else needs undoing.</p></div></details>
+<details><summary>Could a stranger post on our website by emailing that address?</summary><div><p>No. Forwarded emails are only accepted from the board members&rsquo; own addresses, which are listed once during setup. Anything from anyone else is set aside and never reaches the site. Dragging onto the label is safe by nature, because only someone inside the board&rsquo;s mailbox can do it.</p></div></details>
+<details><summary>Who keeps the trash days and holidays right?</summary><div><p>Nobody. The calendar works out every Tuesday pickup and moves it in the weeks when a county holiday requires it. The list of county holidays is typed in once a year, which takes about ten minutes.</p></div></details>
+<details><summary>Who writes the monthly newsletter?</summary><div><p>It writes itself from the calendar, the season&rsquo;s home tips and the neighbor notes the board approved. Today it is a page neighbors can read. Sending it out by email is a switch that can be turned on later.</p></div></details>
+<details><summary>Do neighbors need a password?</summary><div><p>No. Everything a neighbor needs is open: dues instructions, the calendar, trash days, rules, documents, the request form. The only part with a sign-in is &ldquo;My home&rdquo;, and that is switched off until the board wants it.</p></div></details>
+<details><summary>Is anyone&rsquo;s private information on it?</summary><div><p>No. There are no home-by-home balances, phone numbers or email addresses on the public pages. Exterior requests show initials only.</p></div></details>
+<details><summary>What does it cost to run?</summary><div><p>The web address is the only bill, usually under twenty dollars a year. The hosting and the Google pieces are free for a site our size. These figures should be confirmed when the address is bought.</p></div></details>
+<details><summary>What if the person who built it moves away?</summary><div><p>Nothing is locked to one person. The web address, the Google account, the sheet and the files belong to the association. The setup page explains every piece, so any web person could take it over in an afternoon.</p></div></details>
+<details><summary>What happens if something breaks?</summary><div><p>The site keeps showing what it already had. Your emails are still in Gmail and the posts are still in the sheet, so nothing is lost. Write to the board address and say which page and what you saw.</p></div></details>
+<details><summary>What does the website not do?</summary><div><p>It does not collect money, chase late payers, hire or supervise contractors, give legal advice, or make decisions. Those still need a person. The <a href="jobs.html">jobs page</a> shows what is left of each role once the routine work is taken away, which may help the board decide what, if anything, is worth paying someone for.</p></div></details>
+
+<h2>What is real today, and what is a preview</h2>
+<table>
+<tr><th>Part</th><th>Today</th></tr>
+<tr><td>Rules, documents, board, who to call, seasonal guides</td><td>Real content. Please check it for mistakes.</td></tr>
+<tr><td>Calendar and trash days</td><td>Real. The annual meeting is Wednesday, December 16 at 7:00 p.m.</td></tr>
+<tr><td>Exterior change requests</td><td>Real. The button opens the board&rsquo;s Google Form.</td></tr>
+<tr><td>My home (dues, requests, reminders)</td><td>Preview with a made-up home. Accounts are not switched on.</td></tr>
+<tr><td>Neighbor news and reminders</td><td>Preview. Notes stay on the phone that wrote them.</td></tr>
+<tr><td>Email to website</td><td>Works by hand in the board view today. Forwarding switches on with the web address.</td></tr>
+<tr><td>Where the money goes</td><td>Sample figures until the treasurer&rsquo;s sheet is connected.</td></tr>
+<tr><td>Paying dues online</td><td>Not set up. Checks by mail, as now.</td></tr>
+</table>
+<p class="note" style="margin-top:14px">The preview parts become real when the site moves from this preview link to its own web address. That is a one-time setup, not something the board maintains.</p>
+
+<h2>Who owns it</h2>
+<ul>
+<li>The association owns the website, the web address and everything in it, whoever builds it.</li>
+<li>The web address should be registered in the association&rsquo;s name with the board&rsquo;s email, not in any one person&rsquo;s.</li>
+<li>Everything can be exported at any time: the pages are plain files and the lists are plain spreadsheets.</li>
+<li>No member information is sold, shared or shown publicly. The neighbor directory is off unless a neighbor turns it on for themselves.</li>
+</ul>
+
+<h2>For whoever sets it up</h2>
+<p class="note">The one-time steps, and the small script that reads the forwarded emails, are on the <a href="setup.html">setup page</a>.</p>
+
+<h2>If you have a question that is not here</h2>
+<p class="note">Write to <b class="sel">orangeshoa@gmail.com</b>. If something looks wrong, say which page and what you saw. A screenshot helps.</p>
+</div>
+</body>
+</html>
