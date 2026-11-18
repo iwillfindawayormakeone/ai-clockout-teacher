@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Jobs, Made Small</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16243A;--soft:#3B4A62;--muted:#586375;--paper:#F8F7F4;--card:#fff;--line:#D5DAE0;--accent:#B5481A;--brand:#1E4E7A;--mist:#EEF1F4}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.wrap{max-width:760px;margin:0 auto;padding:36px max(20px,env(safe-area-inset-right,0px)) 90px max(20px,env(safe-area-inset-left,0px))}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;color:var(--brand);font-weight:700;margin-bottom:18px}
+.k{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+h1{font-size:clamp(2.1rem,6vw,3.2rem);margin-bottom:12px}
+.lead{font-size:1.15rem;color:var(--soft);margin-bottom:30px}
+h2{font-size:1.6rem;margin:38px 0 14px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+.card h3{font-size:1.2rem;margin-bottom:4px}
+.card p{color:var(--soft)}
+.time{display:inline-block;font-size:.85rem;font-weight:700;color:var(--brand);background:var(--mist);border-radius:999px;padding:2px 12px;margin-bottom:8px}
+ul{padding-left:1.2em;color:var(--soft)}
+li{margin:8px 0}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{text-align:left;padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.note{background:var(--mist);border-radius:14px;padding:16px 18px;color:var(--soft)}
+b.sel{user-select:all;-webkit-user-select:all}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:16px;margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:700;min-height:56px;display:flex;align-items:center;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;font-size:1.5rem;color:var(--accent);font-weight:500}
+details[open] summary::after{content:"\2212"}
+details>div{padding:0 20px 18px;color:var(--soft)}
+details>div p+p{margin-top:8px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.jump a,.btn{display:inline-flex;align-items:center;min-height:46px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--brand);font-weight:700;text-decoration:none}
+.btn.go{background:var(--brand);color:#fff;border-color:var(--brand)}
+.role{display:grid;gap:10px}
+.role h3{font-size:1.35rem}
+.role .who{font-size:.95rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.two>div{background:var(--mist);border-radius:12px;padding:12px 14px}
+.two b{display:block;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.two ul{padding-left:1.1em}.two li{margin:4px 0}
+.letter{white-space:pre-wrap;background:var(--mist);border-radius:12px;padding:14px 16px;font-size:.98rem;color:var(--ink);margin-top:10px}
+.copy{font:inherit;font-weight:700;min-height:44px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;margin-top:10px}
+@media print{.back,.jump,.copy,.btn{display:none}details{break-inside:avoid}details>div{display:block}body{font-size:12pt;background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">&larr; Back to the website</a><br>
+<span class="k">For the board, and for anyone thinking of helping</span>
+<h1>The jobs, made small</h1>
+<p class="lead">The association is 33 homes run by neighbors who volunteer. This page shows each job, what the website now does for it, and what is honestly left for a person. The aim is that nobody has to carry much.</p>
+<div class="jump"><a href="#roles">The jobs</a><a href="#dates">Dates that matter</a><a href="#share">Ways to share the work</a><a href="#letters">Letters already written</a></div>
+
+<h2 id="roles">The jobs</h2>
+<div class="card role"><div><h3>President</h3><span class="who">Today: Maureen Sanelli</span></div><p>Presides at board meetings and sees that the board&rsquo;s decisions are carried out.</p><div class="two"><div><b>The website does</b><ul><li>Posts any email you mark for the website</li><li>Keeps the next meeting, with its join link, on the home page</li><li>Answers the common questions neighbors used to email about: trash, dues address, rules</li></ul></div><div><b>Left for a person</b><ul><li>Run the monthly meeting</li><li>Decide what the board decides</li><li>Forward the emails worth sharing</li></ul></div></div><p><span class="time">Our estimate: the meeting, plus a few minutes a week</span></p></div>
+<div class="card role"><div><h3>Vice President</h3><span class="who">Today: Christine Lucas</span></div><p>Acts for the President when needed and supports board projects.</p><div class="two"><div><b>The website does</b><ul><li>Gives a stand-in the same picture the President has: calendar, notices, open requests in one place</li></ul></div><div><b>Left for a person</b><ul><li>Step in when the President is away</li><li>Take one project a year, such as a common-area repair</li></ul></div></div><p><span class="time">Our estimate: the meeting, plus the project</span></p></div>
+<div class="card role"><div><h3>Secretary</h3><span class="who">Today: Lyuba Tartova Maybury</span></div><p>Minutes, records, meeting notices, and the website.</p><div class="two"><div><b>The website does</b><ul><li>Builds the monthly newsletter by itself</li><li>Puts meeting dates on the calendar from an email subject line</li><li>Shows the &ldquo;last updated&rdquo; date so nobody has to check for stale pages</li><li>Has the meeting notice already written (below)</li></ul></div><div><b>Left for a person</b><ul><li>Take minutes and drop the file in the Documents folder</li><li>Send the annual meeting notice at least 15 days ahead</li></ul></div></div><p><span class="time">Our estimate: the meeting, plus about half an hour a month</span></p></div>
+<div class="card role"><div><h3>Treasurer</h3><span class="who">Today: Morgan Hoover</span></div><p>Dues, budget, financial statements, and the annual audit.</p><div class="two"><div><b>The website does</b><ul><li>Tells every neighbor where to send the check and what to write on it</li><li>Explains the late fee in plain words, so fewer people ask</li><li>Has the dues reminder already written (below)</li><li>When accounts are switched on: each home sees its own paid or unpaid status</li></ul></div><div><b>Left for a person</b><ul><li>Send invoices, deposit checks, pay bills</li><li>Keep the books and hand them to the auditor</li><li>Present the budget at the annual meeting</li></ul></div></div><p><span class="time">Our estimate: steady through the year, heaviest at invoice time and before the annual meeting</span></p></div>
+<div class="card role"><div><h3>Exterior requests</h3><span class="who">Architectural Control Committee</span></div><p>Reviews requests for fences, paint, roofs, decks and sheds.</p><div class="two"><div><b>The website does</b><ul><li>Takes each request through one form, so they all arrive the same way</li><li>Shows neighbors where their request stands, by initials only</li><li>Has the &ldquo;we received it&rdquo; reply already written (below)</li></ul></div><div><b>Left for a person</b><ul><li>Look at the request and decide</li><li>Pick the new status from a list</li></ul></div></div><p><span class="time">Our estimate: about fifteen minutes per request</span></p></div>
+<p class="note">The names and duties come from the association&rsquo;s own page about the board. The time estimates are ours, not the board&rsquo;s. Please correct them.</p>
+
+<h2 id="dates">Dates that matter</h2>
+<table>
+<tr><th>When</th><th>What</th></tr>
+<tr><td>Every month</td><td>Board meeting. Minutes go in the Documents folder afterward.</td></tr>
+<tr><td>At least 30 days before January 1</td><td>Next year&rsquo;s assessment is set and members are told.</td></tr>
+<tr><td>At least 15 days before the annual meeting</td><td>The meeting notice goes out, in writing or by email.</td></tr>
+<tr><td>December</td><td>Annual meeting: elections, the budget, the financial statement and the audit.</td></tr>
+<tr><td>January 1</td><td>The fiscal year starts.</td></tr>
+<tr><td>30 days after invoices go out</td><td>Dues are due. A late fee applies 15 days after that.</td></tr>
+</table>
+<p class="note" style="margin-top:14px">These come from the Bylaws as summarized on the website. The website can put each of them on the calendar so nobody has to remember.</p>
+
+<h2 id="share">Ways to share the work</h2>
+<div class="card"><h3>One inbox, three labels</h3><p>Everything arrives at the board&rsquo;s one email address. Whoever opens it drags each email onto a label: <b>Website</b>, <b>Treasurer</b>, or <b>Requests</b>. The right person finds their pile without anyone forwarding or asking.</p></div>
+<div class="card"><h3>Small jobs that do not need a board seat</h3><p>Some neighbors will not join a board but will do one small thing. The board could ask for a <b>welcomer</b> who sends the welcome letter when a home changes hands, a <b>meeting host</b> who starts the video call, and a <b>website keeper</b> who looks at the site once a month.</p></div>
+<div class="card"><h3>A handover page for every job</h3><p>When a role changes hands, the new person reads this page and the board guide and is ready. Nothing lives only in one person&rsquo;s head.</p></div>
+<div class="card"><h3>Pay only for what is left</h3><p>If the board does hire help, this page shows what the help would actually be doing: bookkeeping, invoices and contractors. The routine communication is already handled.</p></div>
+
+<h2 id="letters">Letters already written</h2>
+<p class="lead" style="margin-bottom:16px">Copy one, fill in the parts in [brackets], and send. Please check each against the Bylaws once before the first use.</p>
+<div class="card"><h3>Annual meeting notice</h3><p>Send at least 15 days before the meeting.</p><div class="letter" id="l0">Subject: Annual Meeting of Members, [day, date] at [time]
+
+Dear neighbors,
+
+The annual meeting of The Orange&#x27;s Homeowners Association will be held on [day, date] at [time], [online on Google Meet / at address].
+
+On the agenda: election of directors, next year&#x27;s budget, the financial statement, and your questions.
+
+Every household has one vote. If you cannot attend, you may vote by proxy: reply to this email and we will send the form.
+
+The link to join and the documents are on the website: [web address]
+
+The Board</div><button class="copy" type="button" data-copy="l0">Copy this letter</button></div>
+<div class="card"><h3>Dues reminder</h3><p>A friendly note before the due date.</p><div class="letter" id="l1">Subject: A reminder about this year&#x27;s dues
+
+Dear neighbor,
+
+This is a friendly reminder that the annual assessment of $[amount] is due on [date].
+
+Please make the check out to The Orange&#x27;s Homeowners Association, Inc. and mail it to P.O. Box 613, Silver Spring, MD 20918-0613. Write your street address on the memo line.
+
+If paying on time will be hard this year, write back. Talking to us early is always better than a late fee.
+
+Thank you,
+[name], Treasurer</div><button class="copy" type="button" data-copy="l1">Copy this letter</button></div>
+<div class="card"><h3>Welcome to the neighborhood</h3><p>For a household that has just moved in.</p><div class="letter" id="l2">Subject: Welcome to The Orange&#x27;s
+
+Dear [name],
+
+Welcome to the neighborhood. We are 33 homes, and the association is run by neighbors who volunteer.
+
+Everything you need is on our website: [web address]. It has trash and recycling days, how dues work, the rules in plain words, and a form to use before you change anything on the outside of your home.
+
+If you have a question, write to orangeshoa@gmail.com and a neighbor will answer.
+
+Glad you are here,
+The Board</div><button class="copy" type="button" data-copy="l2">Copy this letter</button></div>
+<div class="card"><h3>We received your request</h3><p>A reply to an exterior change request.</p><div class="letter" id="l3">Subject: We received your request: [project]
+
+Dear [name],
+
+Thank you for sending your request for [project] at [address]. The committee has it and will look it over.
+
+You can expect an answer by [date]. Please wait for a written decision before the work starts. If we need a photo or a measurement, we will write to you.
+
+You can see where your request stands on the website: [web address]
+
+The Architectural Control Committee</div><button class="copy" type="button" data-copy="l3">Copy this letter</button></div>
+
+<h2>Want to help?</h2>
+<p class="note">Write to <b class="sel">orangeshoa@gmail.com</b> and say which small job you would take. The board will be glad to hear from you.</p>
+</div>
+<script>
+document.addEventListener('click',function(e){ var b=e.target.closest('[data-copy]'); if(!b) return; var el=document.getElementById(b.getAttribute('data-copy')), t=el.textContent;
+  function done(){ var o=b.textContent; b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy this letter'; },1800); }
+  function sel(){ var r=document.createRange(); r.selectNodeContents(el); var s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent='Selected. Now press Copy.'; }
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,sel); } else sel(); });
+</script>
+</body>
+</html>
